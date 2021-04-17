@@ -1,0 +1,803 @@
+<!-- 
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>LTI Insurance</title>
+    <meta name="description" content="Insurance">
+    <meta name="keywords" content="Insurance, Motor insurance, Travel insurance, "> -->
+
+    <!-- FAVICON FILES -->
+    <!-- <link href="../assets/images/icons/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="../assets/images/icons/apple-touch-icon-120-precomposed.png" rel="apple-touch-icon" sizes="120x120">
+    <link href="../assets/images/icons/apple-touch-icon-76-precomposed.png" rel="apple-touch-icon" sizes="76x76">
+    <link href="../assets/images/icons/favicon.png" rel="shortcut icon">
+    <link href=""> -->
+    <!-- GOOGLE WEB FONT -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700&display=swap" rel="stylesheet"> -->
+
+    <!-- CSS FILES -->
+    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/fonts/iconfont.css">
+    <link rel="stylesheet" href="../assets/css/swiper.min.css">
+    <link rel="stylesheet" href="../assets/css/venobox.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/select2.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/color-1.css"> -->
+<!-- </head> -->
+<!-- 
+<body> -->
+    <div id="dtr-wrapper" class="clearfix">
+
+        <!-- Header
+============================================= -->
+        <header id="dtr-header-global" class="fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-dark dtr-menu">
+                <div class="container">
+
+                    <!-- light logo -->
+                    <a class="navbar-brand logo-light" href="#home"><img src="../assets/images/LTI-LOGO.png" alt="logo"></a>
+                    <!-- dark logo -->
+                    <!-- <a class="navbar-brand logo-dark" href="#home"><img src="../assets/images/LTI-LOGO.png" alt="logo"></a> -->
+
+                    <!-- nav menu toggler-->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+
+                    <!-- menu starts-->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="dtr-scrollspy navbar-nav ml-auto">
+                            <li class="nav-item"> <a class="nav-link" href="#home" (click)="animate()">Home</a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="#products" (click)="animate()">Products</a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="#about" (click)="animate()">About</a> </li>
+
+                            <!-- dropdown starts-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Resources </a>
+                                <div class="dropdown-menu dropdown-animate" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="#reviews">Reviews</a> <a class="dropdown-item" href="#features">Features</a> <a class="dropdown-item" href="#cta">Contact</a> </div>
+                            </li>
+                            <!-- dropdown ends-->
+
+                            <li class="nav-item"> <a class="nav-link" href="#FAQ">FAQ</a> </li>
+                        </ul>
+                    </div>
+                    <!-- menu ends-->
+
+                    <!-- button here -->
+                    <div class="dtr-btn ml-3 d-lg-block"> <a routerLink="/register">Signup<span><i class="icon-arrow-right" aria-hidden="true"></i></span></a> </div>
+                    <!-- button ends -->
+                </div>
+            </nav>
+        </header>
+        <!-- header ends
+================================================== -->
+
+        <!-- hero section starts
+================================================== -->
+        <section id="home" class="hero-section dtr-py-8 hero-default-bg bg-blue">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <!-- column 1 starts -->
+                    <div class="col-12 col-md-6 dtr-sm-mb-30px color-white">
+
+                        <!-- Heading -->
+                        <h1 class="dtr-mb-4 wow fadeInUp" data-wow-delay="0.4s">Get Insurance Policy</h1>
+
+                        <!-- Text Add Why insurance -->
+                        <p class="dtr-mb-4 text-size-md color-white-muted"> General Insurance helps us protect ourselves and the things we value– from theft, car accidents, travel mishaps – and even from the costs of legal action against us. Buying insurance is important as it ensures that you are financially
+                            secure to face any type of problem in life, and this is why insurance is a very important part of financial planning. The convenient part of it is that you can purchase all these insurance policies online nowadays.</p>
+
+                        <!-- list starts -->
+
+                        <!-- list ends -->
+
+                    </div>
+                    <!-- column 1 ends -->
+
+                    <!-- column 2 starts -->
+                    <div class="col-12 col-md-6 wow fadeInRight" data-wow-delay="0.4s">
+                        <div class="dtr-hero-form">
+
+                            <!-- form header starts -->
+                            <div class="dtr-form-head">
+                                <h4 class="text-center">Get a free quote</h4>
+                            </div>
+
+                            <!-- form body starts -->
+                            <div class="dtr-form-body">
+                                <p class="text-center dtr-mb-4 text-size-sm">We make getting the best insurance simple. Let our team do the work so you don't have to.</p>
+                                <div class="dtr-form dtr-submit-full">
+                                    <form id="contactform" method="post" action="quote-form.php">
+                                        <fieldset>
+                                            <p>
+                                                <input name="name" type="text" placeholder="Name">
+                                            </p>
+                                            <p>
+                                                <input name="number" class="number" type="text" placeholder="Phone">
+                                            </p>
+                                            <p>
+                                                <input name="email" class="required email" type="text" placeholder="Email">
+                                            </p>
+                                            <p class="antispam">Leave this empty: <br />
+                                                <input name="url" />
+                                            </p>
+                                            <p>
+                                                <select name="subject" class="dtr-select">
+                                                <option value="">Select Insurance Type</option>
+                                                <option value="2motor">2-Wheeler Insurance</option>
+                                                <option value="4motor">4-Wheeler Insurance</option>
+                                                <option value="travel">Travel Insurance</option>
+                                            </select>
+                                            </p>
+                                            <button type="submit" class="dtr-btn-round dtr-btn-blue"> Get a quote</button>
+                                            <!--<div id="result"></div>-->
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- form body ends -->
+
+                        </div>
+                    </div>
+                    <!-- column 2 ends -->
+
+                </div>
+            </div>
+        </section>
+        <!-- hero section starts
+================================================== -->
+
+        <!-- quickfeature section starts
+================================================== -->
+
+        <!-- quickfeature section ends
+================================================== -->
+
+        <!-- sticky tabs starts
+================================================== -->
+        <section id="products" class="dtr-sticky-tabs-wrapper dtr-border-top">
+
+            <!-- tabs nav start -->
+            <div class="dtr-sticky-tabs-nav">
+                <nav class="dtr-scrollspy-tabs">
+                    <ul class="dtr-scrollspy nav justify-content-center dtr-sticky-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tab1"><img src="../assets/images/TwoWheeler_64.png" alt="tab1">Two-Wheeler Insurance</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tab2"><img src="../assets/images/FourWheeler_64.png" alt="tab2">Four-Wheeler Insurance</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tab3"><img src="../assets/images/Travel_64.png" alt="tab3">Travel Insurance</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- tabs nav ends -->
+
+            <div data-target=".dtr-scrollspy-tabs">
+
+                <!-- tab 1 starts -->
+                <section id="tab1" class="dtr-sticky-tabs-section">
+                    <div class="dtr-sticky-tabs-content">
+                        <div class="container">
+                            <div class="row align-items-center">
+
+                                <!-- column 1 starts -->
+                                <div class="col-12 col-md-7 dtr-sm-mb-30px wow fadeInLeft" data-wow-delay="0.4s"> <img src="../assets/images/bikeInsurance.svg" alt="logo"> </div>
+                                <!-- column 1 ends -->
+
+                                <!-- column 2 starts -->
+                                <div class="col-12 col-md-5 wow fadeInRight" data-wow-delay="0.4s">
+
+                                    <!-- Icon Image -->
+                                    <img src="../assets/images/TwoWheeler_64.png" alt="logo" class="dtr-mb-4">
+
+                                    <!-- Heading -->
+                                    <h2 class="dtr-mb-4">Two-Wheeler Insurance</h2>
+
+                                    <!-- Text -->
+                                    <p class="dtr-mb-5">
+                                        A two-wheeler insurance provides a safety net against theft, fire, natural disasters, malicious acts, etc. Further, in case of third-party injuries or property damage, the third-party liability covers for the same. Also, a bike insurance is mandated by
+                                        The Motor Vehicles Act, 1988 in India.
+                                    </p>
+
+                                    <!-- button here -->
+                                    <div class="dtr-btn"> <a>Buy Insurance<span><i class="icon-arrow-right" aria-hidden="true"></i></span> </a> </div>
+                                    <div class="dtr-btn"> <a>Renew Insurance<span><i class="icon-arrow-right" aria-hidden="true"></i></span> </a> </div>
+                                </div>
+                                <!-- column 2 ends -->
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- tab 1 ends -->
+
+                <!-- tab 2 starts -->
+                <section id="tab2" class="dtr-sticky-tabs-section">
+                    <div class="dtr-sticky-tabs-content">
+                        <div class="container">
+                            <div class="row align-items-center">
+
+                                <!-- column 1 starts -->
+                                <div class="col-12 col-md-5 dtr-sm-mb-30px wow fadeInRight" data-wow-delay="0.4s">
+
+                                    <!-- Icon Image -->
+                                    <img src="../assets/images/FourWheeler_64.png" alt="logo" class="dtr-mb-4">
+
+                                    <!-- Heading -->
+                                    <h2 class="dtr-mb-4">Four-Wheeler Insurance</h2>
+
+                                    <!-- Text -->
+                                    <p class="dtr-mb-5">Risk Covers like car insurance is to protect us from unforeseen events and unplanned liabilities. Anyone can get stuck on the road with their car after an accident, car engine failure due to rains or theft of the vehicle.
+                                        In any of the cases, having a car insurance policy will be a savior. </p>
+
+                                    <!-- button here -->
+                                    <div class="dtr-btn"> <a>Buy Insurance<span><i class="icon-arrow-right" aria-hidden="true"></i></span> </a> </div>
+                                    <div class="dtr-btn"> <a>Renew Insurance<span><i class="icon-arrow-right" aria-hidden="true"></i></span> </a> </div>
+                                </div>
+                                <!-- column 1 ends -->
+
+                                <!-- column 2 starts -->
+                                <div class="col-12 col-md-7 text-right wow fadeInLeft" data-wow-delay="0.4s"> <img src="../assets/images/carInsurance.svg" alt="logo"> </div>
+                                <!-- column 2 ends -->
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- tab 2 ends -->
+
+                <!-- tab 3 starts -->
+                <section id="tab3" class="dtr-sticky-tabs-section">
+                    <div class="dtr-sticky-tabs-content">
+                        <div class="container">
+                            <div class="row align-items-center">
+
+                                <!-- column 1 starts -->
+                                <div class="col-12 col-md-7 dtr-sm-mb-30px wow fadeInLeft" data-wow-delay="0.4s"> <img src="../assets/images/travel.svg" alt="logo"> </div>
+                                <!-- column 1 ends -->
+
+                                <!-- column 2 starts -->
+                                <div class="col-12 col-md-5 wow fadeInRight" data-wow-delay="0.4s">
+
+                                    <!-- Icon Image -->
+                                    <img src="../assets/images/Travel_64.png" alt="logo" class="dtr-mb-4">
+
+                                    <!-- Heading -->
+                                    <h2 class="dtr-mb-4">Travel Insurance</h2>
+
+                                    <!-- Text -->
+                                    <p class="dtr-mb-5">
+                                        Unfortunate events such as baggage loss, passport loss, a medical emergency or an accident can affect your travels, whether for business or leisure. International Travel Insurance protects you from such perils by ensuring that you are not left stranded
+                                        in any kind of emergency.
+                                    </p>
+
+                                    <!-- button here -->
+                                    <div class="dtr-btn"> <a>Buy Insurance<span><i class="icon-arrow-right" aria-hidden="true"></i></span> </a> </div>
+                                    <div class="dtr-btn"> <a>Renew Insurance<span><i class="icon-arrow-right" aria-hidden="true"></i></span> </a> </div>
+                                </div>
+                                <!-- column 2 ends -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- tab 3 ends -->
+
+            </div>
+        </section>
+        <!-- sticky tabs starts
+================================================== -->
+
+        <!-- about starts
+================================================== -->
+        <section id="about" class="bg-light-blue dtr-py-7">
+            <div class="container">
+                <div class="row">
+
+                    <!-- column 1 starts -->
+                    <div class="col-12 col-md-6">
+
+                        <!-- text here -->
+                        <p class="text-size-xl dtr-mb-4">About Us</p>
+                        <p class="dtr-mb-7">
+                            LTI Insurance Company Limited is General Insurance Company. It was incorporated in Mumbai, Maharashtra on December 5 2016. The Company has strong presence with many offices and skilled employees and Agent. The Company received the certificate of registration
+                            from IRDA on 2nd May 2017 to conduct general insurance business in India. The Company has continuously been expanding its operations to reach out to its customers. The Company has its brand identity as ‘Lets Insure and Be Secure’
+                            to reposition itself in the minds of Indian consumers as a brand that protects and cares about customer’s financial worries around their most prized possession - their vehicles With this, the Company not just aims to take its
+                            service to the next level, but also seeks to provide the best customer experience at every touchpoint and make insurance a pull rather than a push product.
+
+                        </p>
+
+                        <!-- info starts -->
+                        <div class="d-flex align-items-center">
+                            <div class="dtr-mr-5"></div>
+                            <!--<img src="assets/images/sig.png" alt="image">--> 
+                        </div>
+                        <!-- info ends -->
+
+                        <!-- image here-->
+                        <!--<img src="assets/images/aboutus.png" alt="image" class="dtr-rounded mt-5 dtr-sm-mb-30px wow fadeInLeft" data-wow-delay="0.4s">--> 
+                    </div>
+                    <!-- column 1 ends -->
+
+                    <!-- column 2 starts -->
+                    <div class="col-12 col-md-6 wow fadeInRight" data-wow-delay="0.4s"> 
+                        <!--<img src="assets/images/aboutus.png" alt="image" class="dtr-rounded dtr-mb-5">-->
+                        <p class="text-size-xl dtr-mb-4">Your Dreams 🤝 Our Commitment</p>
+
+                        <!-- accordion starts -->
+                        <div class="dtr-accordion accordion" id="home-accordion">
+
+                            <!-- accordion tab 1 starts -->
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="dtr-mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> What is our vision? </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#home-accordion">
+                                    <div class="card-body">
+                                        Leveraging technology to integrate people and processes.
+                                        <br>To excel in service and performance.
+                                        <br> To uphold the highest ethical standards in conducting our business.<br> Provide excellent customer service
+                                     </div>
+                                </div>
+                                </div>
+                            <!-- accordion tab 1 ends -->
+
+                            <!-- accordion tab 2 starts -->
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="dtr-mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> What is our mission? </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#home-accordion">
+                                    <div class="card-body">
+                                        To be the most preferred choice of customers for General Insurance by building Relationships and grow profitably.<br> To provide Insurance protection to all. <br> To ensure customer satisfaction. <br>To function
+                                        on sound business principles. </div>
+                                </div>
+                                <!-- accordion tab 2 ends -->
+
+                            </div>
+                            <!-- accordion ends -->
+
+                        </div>
+                        <!-- column 2 ends -->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- about ends
+================================================== -->
+
+        <!-- testimonial starts
+================================================== -->
+        <section id="reviews" class="dtr-py-7 bg-grey">
+            <h2 class="text-center">Reviews</h2>
+
+            <!-- swiper starts -->
+            <div class="swiper-container dtr-testimonial-carousel dtr-swiper-has-arrows mt-5">
+                <div class="swiper-wrapper">
+
+                    <!-- slide 1 starts -->
+                    <div class="swiper-slide">
+                        <div class="dtr-testimonial-wrapper">
+                            <div class="d-flex align-items-center dtr-mb-4">
+                                <!-- image-->
+                                <img src="../assets/images/user-6.jpg" width="80" height="80" alt="image" class="rounded-circle dtr-mr-3">
+                                <!-- client info -->
+                                <div class="dtr-mr-5">
+                                    <h6 class="dtr-mb-0">Ellen Keys</h6>
+                                    <p class="dtr-mb-0">Travel Insurance</p>
+                                </div>
+                                <span class="dtr-5-stars ml-auto"></span> </div>
+                            <!-- review text -->
+                            Missed my connecting flight to New Zealand. Thank God I had travel insurance. They really helped me out.                            <!-- review text ends -->
+                        </div>
+                    </div>
+                    <!-- slide 1 ends -->
+
+                    <!-- slide 2 starts -->
+                    <div class="swiper-slide">
+                        <div class="dtr-testimonial-wrapper">
+                            <div class="d-flex align-items-center dtr-mb-4">
+                                <!-- image-->
+                                <img src="../assets/images/user-7.jpg" width="80" height="80" alt="image" class="rounded-circle dtr-mr-3">
+                                <!-- client info -->
+                                <div class="dtr-mr-5">
+                                    <h6 class="dtr-mb-0">David Wenner</h6>
+                                    <p class="dtr-mb-0">Two-Wheeler Insurance</p>
+                                </div>
+                                <span class="dtr-5-stars ml-auto"></span> </div>
+                            <!-- review text -->
+                            It is easy to compare different two-wheeler insurance plans online. Initially, you can compare the difference in coverage provided in a comprehensive or third-party insurance plan. While making the purchase, I was able check all the policy features, the cost of the premium, coverage type, inclusions, and exclusions and then make the decision. Very happy.                            <!-- review text ends -->
+                        </div>
+                    </div>
+                    <!-- slide 2 ends -->
+
+                    <!-- slide 3 starts -->
+                    <div class="swiper-slide">
+                        <div class="dtr-testimonial-wrapper">
+                            <div class="d-flex align-items-center dtr-mb-4">
+                                <!-- image-->
+                                <img src="../assets/images/user-5.jpg" width="80" height="80" alt="image" class="rounded-circle dtr-mr-3">
+                                <!-- client info -->
+                                <div class="dtr-mr-5">
+                                    <h6 class="dtr-mb-0">Jenny Anderson</h6>
+                                    <p class="dtr-mb-0">Four-Wheeler Insurance</p>
+                                </div>
+                                <span class="dtr-5-stars ml-auto"></span> </div>
+                            <!-- review text -->
+                            The Client Support team available on this site is quite effective. When I posted a query related to the enhancement of benefits for my Car insurance policy, I got an instant reply. Based on the reply, I purchased two add-on covers for my Hyundai Xcent.                            <!-- review text ends -->
+                        </div>
+                    </div>
+                    <!-- slide 3 ends -->
+
+                    <!-- slide 4 starts -->
+                    <div class="swiper-slide">
+                        <div class="dtr-testimonial-wrapper">
+                            <div class="d-flex align-items-center dtr-mb-4">
+                                <!-- image-->
+                                <img src="../assets/images/user-4.jpg" width="80" height="80" alt="image" class="rounded-circle dtr-mr-3">
+                                <!-- client info -->
+                                <div class="dtr-mr-5">
+                                    <h6 class="dtr-mb-0">Kyle McCullum</h6>
+                                    <p class="dtr-mb-0"> Happy Customer</p>
+                                </div>
+                                <span class="dtr-5-stars ml-auto"></span> </div>
+                            <!-- review text -->
+                            These guys helped me cancel my policy during the free-look period. All I did was emailed them about the two-wheeler policy cancellation. Your customer service is excellent and you guys are always there to support your customers. Best services. Thank you!                            <!-- review text ends -->
+                        </div>
+                    </div>
+                    <!-- slide 4 ends -->
+
+                </div>
+                <!-- Arrows -->
+                <div class="swiper-button-next dtr-swiper-next"></div>
+                <div class="swiper-button-prev dtr-swiper-prev"></div>
+            </div>
+            <!-- Swiper ends -->
+
+        </section>
+        <!-- testimonial ends
+================================================== -->
+
+        <!-- cta section starts
+================================================== -->
+        <section id="cta" class="dtr-py-7 bg-white">
+            <div class="container">
+                <div class="row">
+
+                    <!-- column 1 starts -->
+                    <div class="col-12 col-lg-6 text-size-md">
+
+                        <!-- map starts -->
+                        <div class="dtr-map clearfix">
+                            <div class="mapouter">
+                                <div class="gmap_canvas">
+                                    <!--<iframe id="gmap_canvas" src="https://maps.google.com/maps?q=Envato%20Pty%20Ltd.%2C%20King%20Street%2C%20Melbourne%20VIC%2C%20Australia&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>-->
+                                    <iframe id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15126.257644333695!2d73.7939088679395!3d18.593666685642244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8e8e65e9c43210e0!2sShivar%20Garden%20Restaurant!5e0!3m2!1sen!2sin!4v1617117501348!5m2!1sen!2sin"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- map ends -->
+
+                        <p class="text-size-xl dtr-mt-5">Talk to an expert:</p>
+                        <div class="d-flex">
+                            <div><i class="icon-phone-call dtr-left-icon dtr-icon-scale"></i><span class="color-blue">0333 567 8900</span></div>
+                            <div class="ml-5"><i class="icon-message-square dtr-left-icon dtr-icon-scale"></i><a href="#chat"><span class="color-blue">generalinsurancelti@gmail.com</span></a></div>
+                        </div>
+                    </div>
+                    <!-- column 1 ends -->
+
+                    <!-- column 2 starts -->
+                    <div class="col-12 col-lg-6">
+                        <div class="d-flex dtr-mb-4">
+                            <div class="dtr-mr-5">
+                                <h2>Contact Us</h2>
+
+                            </div>
+                            <!-- icon starts -->
+                            <span class="dtr-icon-with-bg dtr-icon-blue ml-auto"><i class="icon-envelope-open-text"></i></span>
+                            <!-- icon ends -->
+                        </div>
+
+                        <!-- form starts -->
+                        <div class="dtr-form dtr-submit-full">
+                            <form id="contactform" method="post" action="contact-form.php">
+                                <fieldset>
+                                    <div class="dtr-form-row-2col">
+                                        <p class="dtr-form-column">
+                                            <input name="name" type="text" placeholder="Name">
+                                        </p>
+                                        <p class="dtr-form-column">
+                                            <input name="number" class="number" type="text" placeholder="Phone">
+                                        </p>
+                                    </div>
+                                    <p>
+                                        <input name="email" class="required email" type="text" placeholder="Email">
+                                    </p>
+                                    <p class="antispam">Leave this empty: <br />
+                                        <input name="url" />
+                                    </p>
+                                    <p>
+                                        <textarea rows="6" name="message" id="message" class="required" placeholder="Message"></textarea>
+                                    </p>
+                                    <button type="submit" class="dtr-btn-round dtr-btn-blue">Send</button>
+                                    <div id="result"></div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <!-- form ends -->
+
+                    </div>
+                    <!-- column 2 ends -->
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- cta section ends
+================================================== -->
+
+        <!-- features section starts
+================================================== -->
+        <section id="features" class="dtr-pt-7 dtr-pb-5 bg-white">
+            <div class="container">
+                <h2 class="text-center">Core Features</h2>
+    
+                <div class="row mt-5">
+
+                    <!-- box 1 starts -->
+                    <div class="col-12 col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="dtr-feature-box"> <span class="dtr-feature-box-icon"><i class="icon-sun2"></i></span>
+                            <h5>Better Coverage</h5>
+                            <p>It’s fast and convenient! Explore coverage, choose add-ons, and make the payment in just a few minutes.</p>
+                        </div>
+                    </div>
+                    <!-- box 1 ends -->
+
+                    <!-- box 2 starts -->
+                    <div class="col-12 col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="dtr-feature-box"> <span class="dtr-feature-box-icon"><i class="icon-shopping-bag1"></i></span>
+                            <h5>Cost Effective</h5>
+                            <p>No hidden fees or charges. You get to choose the plan & coverage and customize it the way you want. What you see is what you get..</p>
+                        </div>
+                    </div>
+                    <!-- box 2 ends -->
+
+                    <!-- box 3 starts -->
+                    <div class="col-12 col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="dtr-feature-box"> <span class="dtr-feature-box-icon"><i class="icon-bookmark2"></i></span>
+                            <h5>Best Practices</h5>
+                            <p>Few documents required. Just a verification and your policy would be ready to be claimed.</p>
+                        </div>
+                    </div>
+                    <!-- box 3 ends -->
+
+                    <!-- box 4 starts -->
+                    <div class="col-12 col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="dtr-feature-box"> <span class="dtr-feature-box-icon"><i class="icon-user-check1"></i></span>
+                            <h5>Customer First</h5>
+                            <p>Advice from insurance expert Got questions? Our experts will answer all your policy related queries so that you have all the information you need.</p>
+                        </div>
+                    </div>
+                    <!-- box 4 ends -->
+
+                    <!-- box 5 starts -->
+                    <div class="col-12 col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="dtr-feature-box"> <span class="dtr-feature-box-icon"><i class="icon-sliders"></i></span>
+                            <h5>Flexible Plans</h5>
+                            <p>It only takes a few minutes to buy insurance online. Pick a plan that suits your needs, share a few details, make payment and that’s it! Your policy is issued in no time.</p>
+                        </div>
+                    </div>
+                    <!-- box 5 ends -->
+
+                    <!-- box 6 starts -->
+                    <div class="col-12 col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="dtr-feature-box"> <span class="dtr-feature-box-icon"><i class="icon-briefcase1"></i></span>
+                            <h5>Premium Service</h5>
+                            <p>Tax Benefits upto Rs.2,00,00/-.</p>
+                        </div>
+                    </div>
+                    <!-- box 6 ends -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- features section ends
+================================================== -->
+
+
+        <!-- FAQ section starts
+================================================== -->
+        <section id="FAQ" class="dtr-py-7 bg-white">
+            <div class="container">
+                <h2 class="text-center">Frequently Asked Questions</h2>            
+
+                <!-- blog swiper starts -->
+                <div class="swiper-container dtr-swiper-has-arrows dtr-blog-carousel mt-5">
+                    <div class="swiper-wrapper">
+                        
+                        <!--FAQ BLOCK-->
+                        <div class="card" style="width: 80%; margin-left: 10%;">
+                            <div id="accordion">
+                                <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Two Wheeler Insurance
+                                    </button>
+                                    </h5>
+                                </div>
+                            
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>
+                                                <h6 class="mb-0">Question 1</h6>
+                                                <p>Answer 1</p>
+                                            </li>
+                                            <li>
+                                                <h6 class="mb-0">Question 1</h6>
+                                                <p>Answer 1</p>
+                                            </li>
+                                            <li>
+                                                <h6 class="mb-0">Question 1</h6>
+                                                <p>Answer 1</p>
+                                            </li>
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Four Wheeler Insurance
+                                        </button>
+                                    </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>
+                                                <h6 class="mb-0">Question 1</h6>
+                                                <p>Answer 1</p>
+                                            </li>
+                                            <li>
+                                                <h6 class="mb-0">Question 1</h6>
+                                                <p>Answer 1</p>
+                                            </li>
+                                            <li>
+                                                <h6 class="mb-0">Question 1</h6>
+                                                <p>Answer 1</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Travel Insurance
+                                        </button>
+                                    </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>
+                                                <h6 class="mb-0">Question 1</h6>
+                                                <p>Answer 1</p>
+                                            </li>
+                                            <li>
+                                                <h6 class="mb-0">Question 1</h6>
+                                                <p>Answer 1</p>
+                                            </li>
+                                            <li>
+                                                <h6 class="mb-0">Question 1</h6>
+                                                <p>Answer 1</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                        <!--FAQ ENDS-->
+
+                    </div>
+                    <!-- Arrows -->
+                    <div class="swiper-button-next dtr-swiper-next"></div>
+                    <div class="swiper-button-prev dtr-swiper-prev"></div>
+                </div>
+                <!-- Swiper ends -->
+
+            </div>
+        </section>
+
+        <!-- FAQ section ends
+================================================== -->
+
+        <!-- footer starts
+================================================== -->
+
+        <footer id="dtr-footer-global" class="bg-blue color-white">
+            <div class="container">
+
+                <!-- footer columns row starts -->
+                <div class="row">
+
+                    <!-- column 1 starts -->
+                    <div class="col-10 col-sm-6 col-lg-6 dtr-sm-mb-30px">
+                        <p><img src="../assets/images/LTI-LOGO.png" alt="image" class="wow pulse" data-wow-delay="0.4s"></p>
+                        <p class="dtr-rounded-alert wow fadeInUp" data-wow-delay="0.6s">4.5 out of 5 based on <span class="color-theme">2450 reviews</span></p>
+                    </div>
+                    <!-- column 1 ends -->
+
+
+                    <!-- column 4 ends -->
+
+                </div>
+                <!-- footer columns row ends -->
+
+                <!-- copyright row starts -->
+                <div class="row dtr-mt-7">
+
+                    <div class="col-12 col-md-6"> Insurance is a subject matter of solicitation <br>&copy; copyright 2021@reserved with LTI Insurance </div>
+                    <div class="col-12 col-md-6">
+                        <ul class="dtr-social-list text-right color-muted-white">
+                            <li>
+                                <a  class="dtr-facebook"></a>
+                            </li>
+                            <li>
+                                <a  class="dtr-twitter"></a>
+                            </li>
+                            <li>
+                                <a class="dtr-linkedin"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- copyright row ends -->
+
+            </div>
+        </footer>
+        <!-- footer ends
+================================================== -->
+
+        </div>
+        <!-- #dtr-wrapper ends -->
+        <!-- JS FILES -->
+        <!-- <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+        <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../assets/js/jquery.easing.js" type="text/javascript"></script>
+        <script src="../assets/js/swiper.min.js" type="text/javascript"></script>
+        <script src="../assets/js/venobox.min.js" type="text/javascript"></script>
+        <script src="../assets/js/select2.min.js" type="text/javascript"></script>
+        <script src="../assets/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="../assets/js/jquery.form.js" type="text/javascript"></script>
+        <script src="../assets/js/wow.min.js" type="text/javascript"></script>
+        <script src="../assets/js/custom.js" type="text/javascript"></script>
+        -->
+        <!-- <script> 
+            new WOW().init();
+        </script> -->
+<!-- </body> -->

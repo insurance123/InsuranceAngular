@@ -1,0 +1,49 @@
+<div class="form-body" class="container-fluid">
+    <div class="website-logo">
+        <a routerLink="/">
+            <div class="logo">
+                <img class="logo-size" src="../../assets/images/logo-dark.svg" alt="Insurance Logo">
+            </div>
+        </a>
+    </div>
+    <div class="row">
+        <div class="img-holder">
+            <div class="bg"></div>
+            <div class="info-holder">
+
+            </div>
+        </div>
+        <div class="form-holder" style="height: 50vmax;">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Get more things done with Logging platform.</h3>
+
+                    <div class="page-links">
+                        <a routerLink="/login" class="active">Login</a><a routerLink="/register">Register</a>
+                    </div>
+                    <form #loginForm="ngForm" (submit)="login(loginForm)">
+                        <input class="form-control" type="text" name="username" placeholder="E-mail Address" required #email="ngModel" [(ngModel)]="userEmail">
+                        <input class="form-control" type="password" name="password" placeholder="Password" required #password="ngModel" [(ngModel)]="userPassword">
+                        
+                        <div class="inline-el-holder">
+                            <span class="inline-el">
+                                <div class="rad-with-details">
+                                    <input class="form-check-input" type="radio" id="rad1" name="userType" [(ngModel)]="userType" value="admin" required (change)="onItemChange($event.target.value)"><label for="rad1">Admin</label>
+                                </div>
+                            </span>
+                            <span class="inline-el">
+                                <div class="rad-with-details">
+                                    <input class="form-check-input" type="radio" id="rad2" name="userType" value="customer" [(ngModel)]="userType" required checked (change)="onItemChange($event.target.value)"><label for="rad2">Customer</label>
+                                </div>
+                            </span>
+                        </div>
+                        
+                        <div class="form-button">
+                            <button id="submit" type="submit" class="ibtn">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
