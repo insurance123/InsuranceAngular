@@ -1,0 +1,129 @@
+<h1 style="margin-top: 10px;text-align: center;">Travel Insurance</h1>
+<div style="padding: 3em;">
+  
+  <mat-horizontal-stepper linear [labelPosition]="'bottom'">
+    <mat-step>
+      <div style="display: block;"><p class="buildInsPlan">Let’s plan your travel insurance!</p></div>
+      <div class="circle">
+          <div class="images">
+            <img src="/assets/travel2.jpg" alt="bike" style=" height: 70px; width: 70px;border-radius: 50%;">
+          </div>
+          <br>
+          <br>
+          <div class="vertical-space"></div>
+          <form>
+            <ng-template matStepLabel>
+              <p>Provide Details</p>
+            </ng-template>
+
+            <div *ngIf="Step1">
+              <mat-form-field [style.width.px]=350>
+                <div class="label">
+                  Start Date</div>
+                <div class="vertical-space"></div>
+                <input type="date" matInput name="startDate" required>
+              </mat-form-field>
+                <div class="vertical-space"></div>
+
+              <mat-form-field [style.width.px]=350>
+                <div class="label">End Date: </div>
+                <div class="vertical-space"></div>
+                <input type="date" matInput name="endDate" required>
+              </mat-form-field><br>
+              <div class="vertical-space"></div>
+              <div class="vertical-space"></div>
+              <div class="dtr-btn"><a (click)="showForm2()"><span><i class="icon-arrow-right"></i></span></a></div>
+            </div>
+
+            <div *ngIf="Step2">
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Source:</div>
+                <div class="vertical-space"></div>
+                <input matInput name="source" required>
+              </mat-form-field>
+
+                <div class="vertical-space"></div>
+
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Destination: </div>
+                <div class="vertical-space"></div>
+                <input matInput name="destination" required>
+              </mat-form-field><br>
+              <div class="vertical-space"></div>
+              <div class="dtr-btn"><a (click)="showForm3()"><span><i class="icon-arrow-right"></i></span></a></div>
+            </div>
+
+            <div *ngIf="Step3">
+              <mat-form-field [style.width.px]=350>
+                <div class="vertical-space"></div>
+                <div class="vertical-space"></div>
+                <div class="label">Mode of Transport:</div>
+                <div class="vertical-space"></div>
+                <input matInput name="modeOfTransport" required>
+              </mat-form-field>
+
+                <div class="vertical-space"></div>
+
+              
+              <div class="vertical-space"></div>
+              <div class="vertical-space"></div>
+              <div class="vertical-space"></div>
+              <div class="choosePlan"><button type="submit" mat-button class="button" matStepperNext><span>Choose Plan </span></button></div>
+            <!-- </div> -->
+            </div>
+          </form>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>
+        <p>Choose Plans</p>
+      </ng-template>
+
+      <div class="choosePlanForm">
+        <h1 style="display: block; text-align: center; font-weight: bold;">>>>Choose Your Plan<<<</h1>
+          <div class="policyPlan">
+            <span class="planName">Individual Travel Insurance</span>
+            <hr>
+            <ul>
+              <li>Covers baggage related,journey related and medical suport .</li>
+              <li>Renew expired policy without inspection. Policy will start 3 days from today.</li>
+            </ul>
+            <div class="width50 text-right">
+              <button class="btnChoosePolicy btnChoosePolicy-o" mat-button matStepperNext>Choose</button>
+            </div>
+            
+          </div>
+
+          <div class="policyPlan">
+            <span class="planName">Students  Travel Insurance</span>
+            <hr>
+            <ul>
+              <!-- <li>It is mandatory as per law.</li> -->
+              <li>Covers baggage related,stay related,journey related and medical suport.</li>
+              <li>Renew expired policy without inspection.It will start 3 days from today</li>
+            </ul>
+            
+            <div class="width50 text-right">
+              <button class="btnChoosePolicy btnChoosePolicy-o" mat-button matStepperNext>Choose</button>
+            </div>
+            
+          </div>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>
+        <p>Get Estimation</p>
+      </ng-template>
+      
+      <div class="choosePlanForm">
+        <button matStepperPrevious>Back</button>
+        <h1 style="display: block; text-align: center; font-weight: bold;">Get Your Estimation!</h1>
+        <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Home</span></button></div>
+        <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Pay</span></button></div>
+      </div>
+    </mat-step>
+    
+  </mat-horizontal-stepper>
+</div>

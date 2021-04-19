@@ -1,0 +1,63 @@
+<h1 style="margin-top: 10px;text-align: center;">Travel Renew Insurance</h1>
+<div style="padding: 3em;">
+  
+  <mat-horizontal-stepper linear [labelPosition]="'bottom'">
+    <mat-step >
+      <div style="display: block;"><p class="buildInsPlan">Let’s start renewing your travel insurance plan!</p></div>
+      <div class="circle">
+          <div class="images">
+            <img src="/assets/travel2.jpg" alt="bike" style=" height: 70px; width: 70px;border-radius: 50%;">
+          </div>
+          <br>
+          <br>
+          <form>
+            <ng-template matStepLabel>
+              <p>Provide Details</p>
+            </ng-template>
+
+            <div *ngIf="Step1">
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Policy Id:</div>
+                <div class="vertical-space"></div>
+                <input matInput name="policyId" required>
+              </mat-form-field>
+                <div class="vertical-space"></div>
+
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Policy Name: </div>
+                <div class="vertical-space"></div>
+                <input matInput name="policyName" required>
+              </mat-form-field><br>
+              <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Next </span></button></div>
+            </div>
+              <div class="vertical-space"></div>
+              
+          </form>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>
+        <p>Details</p>
+      </ng-template>
+
+      <div class="choosePlanForm">
+        
+      </div> 
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>
+        <p>Get Estimation</p>
+      </ng-template>
+      
+      <div class="choosePlanForm">
+        <button matStepperPrevious>Back</button>
+        <h1 style="display: block; text-align: center; font-weight: bold;">Get Your Estimation!</h1>
+        <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Home</span></button></div>
+        <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Pay</span></button></div>
+      </div>
+    </mat-step>
+    
+  </mat-horizontal-stepper>
+</div>

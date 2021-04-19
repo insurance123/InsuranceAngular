@@ -1,0 +1,239 @@
+.circle {
+    margin: auto;
+    background: lightblue;
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    box-shadow: 5px 10px 18px #888888;
+    padding: 20px;
+}
+
+.images{
+    width: 83px;
+    height: 64px;
+    border-radius: 50%;
+    /* border-bottom: 1px solid #cecece; */
+    position: relative;
+    left: 40%;
+    top: 30px;
+    display: block;
+}
+.vertical-space {
+    display: block;
+    width: 100%;
+    margin: 0;
+    clear: both;
+    border: 0 none;
+    height: 20px;
+}
+
+.label{
+    position: relative;
+    left: 70px;
+    width: 210px;
+    padding: 5px;
+    box-shadow: 5px 10px 18px #888888;
+    font-weight: bold;
+    font-size: medium;
+    background-color: aliceblue;
+    border-radius:20px;
+}
+
+mat-form-field.mat-form-field {
+    padding-left: 20px;
+    text-align: center;
+  }
+
+  .dtr-btn {
+    width: auto;
+    height: auto;
+    position: relative;
+    display: inline-block;
+    padding: 15px 70px 15px 20px;
+    margin-left: 130px;
+    cursor: pointer;
+    outline: none;
+    -webkit-backface-visibility: hidden;
+    vertical-align: middle;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    white-space: normal;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(20, 39, 82, 0.03);
+    box-shadow: 0px 3px 5px 0px rgba(20, 39, 82, 0.03);
+    text-decoration: none;
+    font-size: 1em;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+.dtr-btn span {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: large;
+    text-align: center;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 150px; 
+    background-color: orange ;
+    color: white;
+
+}
+
+.dtr-btn span i {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 40px;
+    /* font-weight: bold; */
+}
+
+.dtr-btn:hover span i {
+    -webkit-animation: toRightFromLeft 0.3s forwards;
+    -moz-animation: toRightFromLeft 0.3s forwards;
+    animation: toRightFromLeft 0.3s forwards;
+}
+
+@media screen and (max-width: 1366px){
+.buildInsPlan {
+    top: 240px;
+}}
+
+@media only screen and (max-width: 1024px)
+{.buildInsPlan {
+    display: none;
+}}
+@media only screen and (max-width: 1140px){
+.buildInsPlan {
+    font-size: 2.3rem;
+    padding-right: 20px;
+}}
+.buildInsPlan {
+    position: absolute;
+    width: 27%;
+    top: 300px;
+    font-size: 3rem;
+    color: #3a3a3a;
+    font-family: 'AllianzB';
+    left: 80px;
+    z-index: 1;
+}
+
+p{
+    padding-bottom: 5px;
+    line-height: 1.4;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.button {
+    border-radius: 6px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 5px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: -5px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  .choosePlan{
+    width: auto;
+    height: auto;
+    position: relative;
+    display: inline-block;
+    padding: 15px 70px 15px 20px;
+    margin-left: 90px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .choosePlanForm{
+    margin: auto;
+    background: lightblue;
+    border-radius: 5px;
+    width: 600px;
+    height: 400px;
+    box-shadow: 5px 10px 18px #888888;
+    padding: 20px;
+  }
+
+  .policyPlan{
+    margin: 40px;
+    background: rgb(206, 224, 230);
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 190px;
+    height: 250px;
+    box-shadow: 5px 10px 18px #888888;
+    padding: 10px;
+    display: inline;
+    float:left;
+  }
+
+  .width50 {
+    width: 45% !important;
+    /* float: left !important; */
+    margin-left: 55px;
+  }
+.text-right {
+    text-align: right;
+}
+
+.btnChoosePolicy-o {
+    border: 1px solid #e42125;
+    color: #e42125;
+    background: #fff;
+    text-align: right;
+    float: right;
+    padding: 7px 20px !important;
+    border-radius: 50px !important;
+    width: auto !important;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.planName{
+  text-align: center;
+  color: #e42125;
+  font-size: medium;
+  font-weight: bold;
+}
+ 

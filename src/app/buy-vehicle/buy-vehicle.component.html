@@ -1,0 +1,144 @@
+<h1 style="margin-top: 10px;text-align: center;">Vehicle Insurance</h1>
+<div style="padding: 3em;">
+  
+  <mat-horizontal-stepper linear [labelPosition]="'bottom'">
+    <mat-step>
+      <div style="display: block;"><p class="buildInsPlan">Let’s start building your bike insurance plan!</p></div>
+      <div class="circle">
+          <div class="images">
+            <img src="../../assets/motor.png" alt="bike" style=" height: 70px; width: 70px;border-radius: 50%;">
+          </div>
+          <br>
+          <br>
+          <form #vehicleForm="ngForm" (submit)="register(vehicleForm)">
+            <ng-template matStepLabel>
+              <p>Provide Details</p>
+            </ng-template>
+
+            <div *ngIf="Step1">
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Vehicle Registration Number:</div>
+                <div class="vertical-space"></div>
+                <input matInput name="registrationNumber" required #regnumber="ngModel" [(ngModel)]="vehicle.registrationNumber">
+              </mat-form-field>
+                <div class="vertical-space"></div>
+
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Vehicle Registration State is: </div>
+                <div class="vertical-space"></div>
+                <input matInput  name="registrationState" required #regstate="ngModel" [(ngModel)]="vehicle.registrationState">
+              </mat-form-field><br>
+              <div class="vertical-space"></div>
+              <div class="dtr-btn"><a (click)="showForm2()"><span><i class="icon-arrow-right"></i></span></a></div>
+            </div>
+
+            <div *ngIf="Step2">
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Vehicle Manufacturer:</div>
+                <div class="vertical-space"></div>
+                <input matInput name="manufacturer" required #manufacturer="ngModel" [(ngModel)]="vehicle.manufacturer">
+              </mat-form-field>
+
+                <div class="vertical-space"></div>
+
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Vehicle Model is: </div>
+                <div class="vertical-space"></div>
+                <input matInput name="model"  required #model="ngModel" [(ngModel)]="vehicle.model">
+              </mat-form-field><br>
+              <div class="vertical-space"></div>
+              <div class="dtr-btn"><a (click)="showForm3()"><span><i class="icon-arrow-right"></i></span></a></div>
+            </div>
+
+            <div *ngIf="Step3">
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Vehicle Type is:</div>
+                <div class="vertical-space"></div>
+                <input matInput name="vehicleType" required #vehicleType="ngModel" [(ngModel)]="vehicle.vehicleType">
+              </mat-form-field>
+
+                <div class="vertical-space"></div>
+
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Vehicle Engine number is: </div>
+                <div class="vertical-space"></div>
+                <input matInput name="engineNumber" required #engineNumber="ngModel" [(ngModel)]="vehicle.engineNumber">
+              </mat-form-field><br>
+              <div class="vertical-space"></div>
+              <div class="dtr-btn"><a (click)="showForm4()"><span><i class="icon-arrow-right"></i></span></a></div>
+            </div>
+
+            <div *ngIf="Step4">
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Vehicle Chassis Number is:</div>
+                <div class="vertical-space"></div>
+                <input matInput name="chassisNumber"  required #chassisnumber="ngModel" [(ngModel)]="vehicle.chassisNumber">
+              </mat-form-field>
+
+                <div class="vertical-space"></div>
+
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Vehicle Fuel Type is: </div>
+                <div class="vertical-space"></div>
+                <input matInput name="fuelType" required #fuelType="ngModel" [(ngModel)]="vehicle.fuelType">
+              </mat-form-field><br>
+              <div class="choosePlan"><button mat-button class="button" type="submit" matStepperNext><span>Choose Plan </span></button></div>
+              <!-- <div class="dtr-btn"><button mat-button matStepperNext>Choose Plan</button></div> -->
+            </div>
+          </form>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>
+        <p>Choose Plans</p>
+      </ng-template>
+
+      <div class="choosePlanForm">
+        <h1 style="display: block; text-align: center; font-weight: bold;">>>>Choose Your Cover<<<</h1>
+          <div class="policyPlan">
+            <span class="planName">Comprehensive Cover</span>
+            <hr>
+            <!-- <p class="info">This policy covers your vehicle's damage due to theft & accidents along with third party mandatory cover.</p> -->
+            <ul>
+              <li>Covers damages from natural calamities, theft & accidents.</li>
+              <li>Renew expired policy without inspection. Policy will start 3 days from today.</li>
+            </ul>
+            <div class="width50 text-right">
+              <button class="btnChoosePolicy btnChoosePolicy-o" mat-button matStepperNext>Choose</button>
+            </div>
+            
+          </div>
+
+          <div class="policyPlan">
+            <span class="planName">Third Party Liability Coverage</span>
+            <hr>
+            <ul>
+              <!-- <li>It is mandatory as per law.</li> -->
+              <li>Covers damages to someone else's property.</li>
+              <li>Injury or death of third party</li>
+            </ul>
+            <br>
+            <div class="width50 text-right">
+              <button class="btnChoosePolicy btnChoosePolicy-o" mat-button matStepperNext>Choose</button>
+            </div>
+            
+          </div>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>
+        <p>Get Estimation</p>
+      </ng-template>
+      
+      <div class="choosePlanForm">
+        <button matStepperPrevious>Back</button>
+        <h1 style="display: block; text-align: center; font-weight: bold;">Get Your Estimation!</h1>
+        <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Home</span></button></div>
+        <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Pay</span></button></div>
+      </div>
+    </mat-step>
+    
+  </mat-horizontal-stepper>
+</div>
