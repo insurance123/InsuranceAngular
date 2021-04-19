@@ -15,8 +15,8 @@ export class InsurancePaymentService {
   {
     return this.httpClient.post<Vehicle>('http://localhost:9090/addVehicle?userId='+userId,vehicle);
   }
-  buymotorinsurance(cvp:CustomerVehiclePolicy,userId:number,vehicleId:number,policyId:number):Observable<CustomerVehiclePolicy>{
-    return this.httpClient.post<CustomerVehiclePolicy>(`http://localhost:9090/buyMotorInsurance?userId=${userId}&policyId=${policyId}&vehicleId=${vehicleId}`,cvp)
+  buymotorinsurance(cvp:CustomerVehiclePolicy):Observable<CustomerVehiclePolicy>{
+    return this.httpClient.post<CustomerVehiclePolicy>(`http://localhost:9090/buyMotorInsurance`,cvp)
   }
 
 }

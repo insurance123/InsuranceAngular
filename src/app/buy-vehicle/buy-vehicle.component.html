@@ -10,7 +10,7 @@
           </div>
           <br>
           <br>
-          <form #vehicleForm="ngForm" (submit)="register(vehicleForm)">
+          <form #vehicleForm="ngForm">
             <ng-template matStepLabel>
               <p>Provide Details</p>
             </ng-template>
@@ -82,8 +82,18 @@
                 <div class="vertical-space"></div>
                 <input matInput name="fuelType" required #fuelType="ngModel" [(ngModel)]="vehicle.fuelType">
               </mat-form-field><br>
-              <div class="choosePlan"><button mat-button class="button" type="submit" matStepperNext><span>Choose Plan </span></button></div>
+              <div class="dtr-btn"><a (click)="showForm5()"><span><i class="icon-arrow-right"></i></span></a></div>
               <!-- <div class="dtr-btn"><button mat-button matStepperNext>Choose Plan</button></div> -->
+            </div>
+            <div *ngIf="Step5">
+              <mat-form-field [style.width.px]=350>
+                <div class="label">Age of the Vehicle</div>
+                <div class="vertical-space"></div>
+                <input matInput name="age"  required #age="ngModel" [(ngModel)]="vehicle.age">
+              </mat-form-field>
+
+                <div class="vertical-space"></div>
+                <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Choose Plan </span></button></div>
             </div>
           </form>
       </div>
@@ -120,7 +130,7 @@
             </ul>
             <br>
             <div class="width50 text-right">
-              <button class="btnChoosePolicy btnChoosePolicy-o" mat-button matStepperNext>Choose</button>
+              <button class="btnChoosePolicy btnChoosePolicy-o" mat-button matStepperNext (click)="calculatePremium()">Choose</button>
             </div>
             
           </div>
@@ -134,9 +144,24 @@
       
       <div class="choosePlanForm">
         <button matStepperPrevious>Back</button>
-        <h1 style="display: block; text-align: center; font-weight: bold;">Get Your Estimation!</h1>
+        <h1 style="display: block; text-align: center; font-weight: bold;">Your Estimation!</h1>
+        <table>
+          <tr>
+            <th>Policy Name</th>
+            <th>Premium</th>
+            <th>Duration</th>
+          </tr>
+          <tr>
+            <td>{{policy.policyName}}</td>
+            <td>Rs. {{policy.premiumAmount}}</td>
+            <td>{{policy.duration}} Year</td>
+            
+            <td><button class="button" type="submit" matStepperNext (click)="payservice()">Choose</button></td>
+            
+          </tr>
+        </table>
         <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Home</span></button></div>
-        <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Pay</span></button></div>
+        <!-- <div class="choosePlan"><button mat-button class="button" type="submit" matStepperNext ><span>Pay</span></button></div> -->
       </div>
     </mat-step>
     

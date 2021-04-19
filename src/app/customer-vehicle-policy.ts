@@ -7,7 +7,8 @@ export class CustomerVehiclePolicy {
     startDate: String;
     endDate: String;
     coverageAmount: number;
-    // policy :Policy;
-    // user: User;
-    // vehicle: Vehicle;
+    premiumAmount:number;
+    policyId :number;
+    customerId: number;
+    vehicleId: number;
 }

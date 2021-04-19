@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
       this.service.loginUser(this.user).subscribe(
         fetchedData=>{
           console.log(fetchedData);
+          sessionStorage.setItem('customerId', String(fetchedData.userId));
           alert("Customer Logged In Successful");
         }
       );
