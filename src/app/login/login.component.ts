@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
       this.service.loginUser(this.user).subscribe(
         fetchedData=>{
           console.log(fetchedData);
+          alert("Customer Logged In Successful");
         }
       );
     }
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
       this.service.loginAdmin(this.admin).subscribe(
         fetchedData=>{
           console.log(fetchedData);
+          alert("Admin Logged In Successful");
         }
       );
     }
