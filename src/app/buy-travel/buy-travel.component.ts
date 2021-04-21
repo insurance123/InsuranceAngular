@@ -30,6 +30,14 @@ export class BuyTravelComponent implements OnInit {
   calculatedCoverage:number = 100000;
   ctp:CustomerTravelPolicy = new CustomerTravelPolicy();
   user:User = new User();
+
+  minDate= new Date();
+  maxDate=new Date(2030, 6, 20);
+  minEndDate=new Date();
+  maxEndDate=new Date(2021, 11, 30);
+  minDateofBirth=new Date(1950, 0, 1);
+  maxDateofBirth=new Date(2002, 11, 25);
+
   constructor( private service:TravelInsuranceService, private router:Router, private userService:UserService) { }
 
   ngOnInit(): void {
@@ -157,6 +165,7 @@ export class BuyTravelComponent implements OnInit {
   noOfDays: number;
   Difference_In_Days:number;
   userAge:number;
+  //getYear:Date;
   calculatePremium(){
     let d1 = new Date(this.travel.endDate);
     let d2 = new Date(this.travel.startDate);
@@ -168,6 +177,9 @@ export class BuyTravelComponent implements OnInit {
     this.Difference_In_Days = this.noOfDays / (1000 * 3600 * 24);
     //this.userAge = Math.floor(this.userAge);
     //console.log(this.age);
+    let getYear = date1.getFullYear()-18;
+    let date2 = getYear + "-01-01";
+    console.log(new Date(date2));
 
     this.service.getPolicyFor("Travel").subscribe(
       fetchedPolicy=>{

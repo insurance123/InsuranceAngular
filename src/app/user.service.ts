@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Admin } from './admin';
+import { LoginStatus } from './login-status';
 import { User } from './user';
 
 @Injectable({
@@ -15,8 +16,8 @@ export class UserService {
     return this.httpClient.post<User>('http://localhost:9090/registercustomer', user);
   }
 
-  loginUser(user:User):Observable<User>{
-    return this.httpClient.post<User>("http://localhost:9090/logincustomer",user);
+  loginUser(user:User):Observable<LoginStatus>{
+    return this.httpClient.post<LoginStatus>("http://localhost:9090/logincustomer",user);
   }
 
   loginAdmin(admin:Admin):Observable<Admin>{

@@ -68,18 +68,36 @@
 
             <div *ngIf="Step1">
               <mat-form-field [style.width.px]=320>
+                <!-- <div class="label">
+                  Start Date</div>
+                <div class="vertical-space"></div>
+                <input type="date" matInput name="startDate" required #startDate="ngModel" [(ngModel)]="travel.startDate"> -->
                 <div class="label">
                   Start Date</div>
                 <div class="vertical-space"></div>
-                <input type="date" matInput name="startDate" required #startDate="ngModel" [(ngModel)]="travel.startDate">
+                <!-- <input  matInput  [matDatepicker]="startDate"  required #startDate="ngModel" [(ngModel)]="travel.startDate"> -->
+                <input  matInput  [matDatepicker]="startDate" [min]="minDate" [max]="maxDate" required #start="ngModel" [(ngModel)]="travel.startDate" [ngModelOptions]="{standalone: true}">
+                <mat-datepicker-toggle [for]="startDate" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #startDate></mat-datepicker>
+
               </mat-form-field>
                 <!-- <div class="vertical-space"></div> -->
 
-              <mat-form-field [style.width.px]=320>
+              <!-- <mat-form-field [style.width.px]=320>
                 <div class="label">End Date: </div>
                 <div class="vertical-space"></div>
                 <input type="date" matInput name="endDate" required #endDate="ngModel" [(ngModel)]="travel.endDate">
-              </mat-form-field><br>
+              </mat-form-field> -->
+              <mat-form-field [style.width.px]=320>
+                <div class="label">End Date: </div>
+                <div class="vertical-space"></div>
+                <!-- <input type="date" matInput name="endDate" required #endDate="ngModel" [(ngModel)]="travel.endDate"> -->
+                <input  matInput  [matDatepicker]="endDate" [min]="minEndDate" [max]="maxEndDate" #end="ngModel" [(ngModel)]="travel.endDate" [ngModelOptions]="{standalone: true}"> 
+                <mat-datepicker-toggle [for]="endDate" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #endDate></mat-datepicker>
+              </mat-form-field>  
+              
+              <br>
               <div class="vertical-space"></div>
               <!-- <div class="vertical-space"></div> -->
               <div class="dtr-btn"><a (click)="showForm2()"><span><i class="icon-arrow-right"></i></span></a></div>
@@ -112,11 +130,20 @@
                 <input matInput name="modeOfTransport" required #modeOfTransport = "ngModel" [(ngModel)] = "travel.modeOfTransport">
               </mat-form-field>
               <!-- <div class="vertical-space"></div> -->
-              <mat-form-field [style.width.px]=320>
+              <!-- <mat-form-field [style.width.px]=320>
                 <div class="label">Date of Birth: </div>
                 <div class="vertical-space"></div>
                 <input type="date" matInput name="DOB" required #DOB="ngModel" [(ngModel)]="user.dateOfBirth">
+              </mat-form-field> -->
+              <mat-form-field [style.width.px]=320>
+                <div class="label">Date of Birth: </div>
+                <div class="vertical-space"></div>
+                <!-- <input type="date" matInput name="DOB" required #DOB="ngModel" [(ngModel)]="user.dateOfBirth"> -->
+                <input  matInput  [matDatepicker]="DOB" [min]="minDateofBirth" [max]="maxDateOfBirth" #dateofbirth="ngModel" [(ngModel)]="user.dateOfBirth" [ngModelOptions]="{standalone: true}"> 
+                <mat-datepicker-toggle [for]="DOB" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #DOB></mat-datepicker>
               </mat-form-field>
+
               <div class="vertical-space"></div>
                 <button class="dtr-btn" mat-button matStepperNext><span><i class="icon-arrow-right"></i></span></button>
 

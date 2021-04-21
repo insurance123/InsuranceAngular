@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BuyTravelComponent } from './buy-travel/buy-travel.component';
 import { BuyVehicleComponent } from './buy-vehicle/buy-vehicle.component';
+import { EditDetailsComponent } from './edit-details/edit-details.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PaymentComponent } from './payment/payment.component';
 import { RegisterComponent } from './register/register.component';
 import { RenewVehicleComponent } from './renew-vehicle/renew-vehicle.component';
+import { UserClaimsComponent } from './user-claims/user-claims.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserPoliciesComponent } from './user-policies/user-policies.component';
 
 const routes: Routes = [
   {
@@ -29,6 +33,18 @@ const routes: Routes = [
   },
   {
     path: "buytravel", component: BuyTravelComponent
+  },
+  {
+    path: "userdashboard", component: UserDashboardComponent
+  },
+  {
+    path: "editdetails", component: EditDetailsComponent
+  },
+  {
+    path: "userpolicies", component: UserPoliciesComponent
+  },
+  {
+    path: "userclaims", component: UserClaimsComponent
   }
 
 ];

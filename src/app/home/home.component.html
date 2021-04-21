@@ -64,12 +64,15 @@
                             <!-- dropdown ends-->
 
                             <li class="nav-item"> <a class="nav-link" href="#FAQ">FAQ</a> </li>
+
+                            <li class="nav-item" *ngIf="userId"><a class="nav-link" href="#">Dashboard</a></li>
+                            <li class="nav-item" *ngIf="userId"><a class="nav-link" href="/" (click)="logout()">Logout</a></li>
                         </ul>
                     </div>
                     <!-- menu ends-->
 
                     <!-- button here -->
-                    <div class="dtr-btn ml-3 d-lg-block"> <a routerLink="/register">Signup<span><i class="icon-arrow-right" aria-hidden="true"></i></span></a> </div>
+                    <div class="dtr-btn ml-3 d-lg-block" *ngIf="userId == null"> <a routerLink="/register">Signup<span><i class="icon-arrow-right" aria-hidden="true"></i></span></a> </div>
                     <!-- button ends -->
                 </div>
             </nav>
@@ -113,7 +116,7 @@
                             <div class="dtr-form-body">
                                 <p class="text-center dtr-mb-4 text-size-sm">We make getting the best insurance simple. Let our team do the work so you don't have to.</p>
                                 <div class="dtr-form dtr-submit-full">
-                                    <form id="contactform" method="post" action="quote-form.php">
+                                    <form id="contactform">
                                         <fieldset>
                                             <p>
                                                 <input name="name" type="text" placeholder="Name">
@@ -128,15 +131,20 @@
                                                 <input name="url" />
                                             </p>
                                             <p>
-                                                <select name="subject" class="dtr-select">
+                                                <!-- <select name="subject" class="dtr-select">
                                                 <option value="">Select Insurance Type</option>
                                                 <option value="2motor">2-Wheeler Insurance</option>
                                                 <option value="4motor">4-Wheeler Insurance</option>
                                                 <option value="travel">Travel Insurance</option>
-                                            </select>
+                                            </select> -->
+                                            <mat-select class="dropdown" [(value)]='insuranceType' placeholder="Select Type">
+                                                <mat-option value='Bike'>Bike</mat-option>
+                                                <mat-option value='Car'>Car</mat-option>
+                                                <mat-option value='Travel'>Travel</mat-option>
+                                              </mat-select>
+                    
                                             </p>
-                                            <button type="submit" class="dtr-btn-round dtr-btn-blue"> Get a quote</button>
-                                            <!--<div id="result"></div>-->
+                                            <button class="dtr-btn-round dtr-btn-blue" data-toggle="modal" data-target="#exampleModalCenter" (click)="fetchPolicy()"> Get a quote</button>                                            <!--<div id="result"></div>-->
                                         </fieldset>
                                     </form>
                                 </div>
@@ -146,6 +154,45 @@
                         </div>
                     </div>
                     <!-- column 2 ends -->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h3 style="font-size: 24px;" class="modal-title" id="exampleModalLongTitle">Policy Details</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Policy Name</th>
+                                        <th scope="col">Premium Amount</th>
+                                        <th scope="col">Duration</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row" style="padding-top: 25px;">{{policy.policyName}}</th>
+                                        <td style="padding-top: 25px;">{{policy.premiumAmount}}</td>
+                                        <td style="padding-top: 25px;">{{policy.duration}}</td>
+                                        
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                            <div class="modal-footer">
+                            <span>*This is the base price. Price will vary according to your vehicle details. To check the exact price please visit Buy Insurance Page.</span>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!--  -->
 
                 </div>
             </div>
@@ -240,7 +287,7 @@
                                         In any of the cases, having a car insurance policy will be a savior. </p>
 
                                     <!-- button here -->
-                                    <div class="dtr-btn"> <a>Buy Insurance<span><i class="icon-arrow-right" aria-hidden="true"></i></span> </a> </div>
+                                    <div class="dtr-btn"> <a routerLink="/buyvehicle">Buy Insurance<span><i class="icon-arrow-right" aria-hidden="true"></i></span> </a> </div>
                                     <div class="dtr-btn"> <a>Renew Insurance<span><i class="icon-arrow-right" aria-hidden="true"></i></span> </a> </div>
                                 </div>
                                 <!-- column 1 ends -->
@@ -495,7 +542,7 @@
                         <p class="text-size-xl dtr-mt-5">Talk to an expert:</p>
                         <div class="d-flex">
                             <div><i class="icon-phone-call dtr-left-icon dtr-icon-scale"></i><span class="color-blue">0333 567 8900</span></div>
-                            <div class="ml-5"><i class="icon-message-square dtr-left-icon dtr-icon-scale"></i><a href="#chat"><span class="color-blue">generalinsurancelti@gmail.com</span></a></div>
+                            <div class="ml-5"><i class="icon-message-square dtr-left-icon dtr-icon-scale"></i><a href="#chat"><span class="color-blue">generalinsurancelti@outlook.com</span></a></div>
                         </div>
                     </div>
                     <!-- column 1 ends -->
@@ -513,7 +560,7 @@
                         </div>
 
                         <!-- form starts -->
-                        <div class="dtr-form dtr-submit-full">
+                        <!-- <div class="dtr-form dtr-submit-full">
                             <form id="contactform" method="post" action="contact-form.php">
                                 <fieldset>
                                     <div class="dtr-form-row-2col">
@@ -537,6 +584,50 @@
                                     <div id="result"></div>
                                 </fieldset>
                             </form>
+                        </div> -->
+
+
+                        <div class="dtr-form dtr-submit-full">
+                            <form id="contactform" #queryform="ngForm" (submit)="addquery(queryform)">
+                                <fieldset>
+                                    <!-- <div class="dtr-form-row-2col"> -->
+                                        <p>
+                                            <!-- <input class="form-control" type="text" name="name" placeholder="Full Name" #name="ngModel" [(ngModel)]="contactus.userName"> -->
+                                            
+                                            <input class="form-control" type="text" name="name" placeholder="eg.John Doe" #nm="ngModel"  minlength="4" required #name=ngModel [(ngModel)] = contactus.userName>
+                                            <div *ngIf="nm.invalid && (nm.touched||nm.dirty)" style="color: red;border: red;">
+                                                <div *ngIf=nm.errors.required>Name is required</div>
+                                                <div *ngIf=nm.errors.pattern>Name must contain atleast 4 character</div>
+                                                <div *ngIf=nm.errors.minlength>Name must contain atleast 4 character</div> 
+                                            <!-- </div> -->
+                                            <br>
+                                            
+                                            <!-- <input class="form-control" type="text" name="name" placeholder="Full Name" required #name="ngModel" 
+                                            [(ngModel)]="user.userName"> -->
+ 
+                                        <!-- </p> -->
+                                        <!-- <p class="dtr-form-column">
+                                            <input name="number" class="number" type="text" placeholder="Phone">
+                                        </p> -->
+                                    </div>
+                                    <p>
+                                        <!-- <input class="form-control" type="email" name="email" required placeholder="Email" #email="ngModel" [(ngModel)]="contactus.userEmail"> -->
+                                        <input class="form-control" type="email" #em="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}$" required placeholder="eg.Johndoe@gmail.com" name="email"  #email=ngModel [(ngModel)] = contactus.userEmail>
+                                        <div *ngIf="em.invalid && (em.touched||em.dirty)" style="color: red;border: red;">
+                                            <div *ngIf="em.errors.required">email is required</div>
+                                            <div *ngIf="em.errors.pattern">Invalid email</div>
+                                        </div><br>
+
+                                        <p class="antispam">Leave this empty: <br />
+                                            <input name="url" />
+                                        </p>
+                                        <p>
+                                            <textarea rows="6" class="form-control" type="text" name="query" required placeholder="Write your query here" #query="ngModel" [(ngModel)]="contactus.query"></textarea>
+                                        </p>
+                                        <button type="submit" class="dtr-btn-round dtr-btn-blue">Send</button>
+                                        <div id="result"></div>
+                                    </fieldset>
+                                </form>
                         </div>
                         <!-- form ends -->
 
@@ -630,7 +721,7 @@
                 <!-- blog swiper starts -->
                 <div class="swiper-container dtr-swiper-has-arrows dtr-blog-carousel mt-5">
                     <div class="swiper-wrapper">
-                        
+
                         <!--FAQ BLOCK-->
                         <div class="card" style="width: 80%; margin-left: 10%;">
                             <div id="accordion">
@@ -647,22 +738,23 @@
                                     <div class="card-body">
                                         <ul>
                                             <li>
-                                                <h6 class="mb-0">Question 1</h6>
-                                                <p>Answer 1</p>
+                                                <h2 class="mb-0">What are the benefits of buying two wheeler insurance online?</h2>
+                                                <p>When you buy two wheeler insurance online, you get an instant policy in a contactless way, as there is no documentation or paperwork involved. Also, you get the advantage of choosing from multiple payment options, e.g. Credit Card (Visa, Master Amex card), Net banking, Debit Card etc.</p>
                                             </li>
                                             <li>
-                                                <h6 class="mb-0">Question 1</h6>
-                                                <p>Answer 1</p>
+                                                <h2 class="mb-0">What is the penalty that I may incur if my two wheeler is uninsured?</h2>
+                                                <p>As per Section 197 of the Motor Vehicles Act, 1988, if you are caught driving without insurance, you will be charged ₹2000 fine the first time and ₹4000 subsequently.</p>
                                             </li>
-                                            <li>
-                                                <h6 class="mb-0">Question 1</h6>
+                                            <!-- <li>
+                                                <h2 class="mb-0">Question 1</h2>
                                                 <p>Answer 1</p>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                         
                                     </div>
                                 </div>
                                 </div>
+
 
                                 <div class="card">
                                     <div class="card-header" id="headingTwo">
@@ -676,17 +768,19 @@
                                     <div class="card-body">
                                         <ul>
                                             <li>
-                                                <h6 class="mb-0">Question 1</h6>
-                                                <p>Answer 1</p>
+                                                <h2 class="mb-0">Why do I need to insure my car?</h2>
+                                                <p>In India, third-party car insurance is compulsory for all car owners. Moreover, own-damage car insurance covers you in case of accidents, theft and fire. In case of any untoward incident, you don't have to pay out of pocket for repairs or replacement if you have a valid insurance policy.</p>
                                             </li>
                                             <li>
-                                                <h6 class="mb-0">Question 1</h6>
-                                                <p>Answer 1</p>
+                                                <h2 class="mb-0">What are the risks covered by Private Car Package Insurance Policy?</h2>
+                                                <p>Car insurance covers damages to your own car, as well as the damages your car makes to others & surrounding property. Some of the risks it covers include fire, theft, natural calamities, explosion and self-ignition.
+                                                    What is personal accident insurance cover?
+                                                    Personal accident insurance covers death or disability caused due to an unfortunate accident. The motor insurance policy essentially has a personal accident cover for the registered owner-driver, as per tariff, for which no extra premium is to be paid. For a person other than the registered owner and driver, the personal accident cover has to be purchased separately by paying an additional premium. The amount paid as compensation depends upon the extent of opted cover.</p>
                                             </li>
-                                            <li>
-                                                <h6 class="mb-0">Question 1</h6>
+                                            <!-- <li>
+                                                <h2 class="mb-0">Question 1</h2>
                                                 <p>Answer 1</p>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
                                     </div>
@@ -704,29 +798,33 @@
                                     <div class="card-body">
                                         <ul>
                                             <li>
-                                                <h6 class="mb-0">Question 1</h6>
-                                                <p>Answer 1</p>
+                                                <h2 class="mb-0">Why do I need Travel Insurance?</h2>
+                                                <p>Unfortunate events such as baggage loss, passport loss, a medical emergency or an accident can affect your travels, whether for business or leisure. International Travel Insurance protects you from such perils by ensuring that you are not left stranded in any kind of emergency.
+                                                    Is there cover for pre-medical conditions like Diabetes?
+                                                    Any claim due to or arising out of pre-existing medical condition/ailment whether declared or undeclared is not covered under the policy.</p>
                                             </li>
                                             <li>
-                                                <h6 class="mb-0">Question 1</h6>
-                                                <p>Answer 1</p>
+                                                <h2 class="mb-0">What are the procedures if pre-approval is required?</h2>
+                                                <p>For hospitalization, we have a toll free no., which you have to call for the cashless claim, and for a physician visit, you will be reimbursed on the bills. Please call our toll free numbers to register your claim.</p>
                                             </li>
-                                            <li>
-                                                <h6 class="mb-0">Question 1</h6>
+                                            <!-- <li>
+                                                <h2 class="mb-0">Question 1</h2>
                                                 <p>Answer 1</p>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
                                     </div>
                                 </div>
                             </div>
                         </div>    
+
+
                         <!--FAQ ENDS-->
 
                     </div>
                     <!-- Arrows -->
-                    <div class="swiper-button-next dtr-swiper-next"></div>
-                    <div class="swiper-button-prev dtr-swiper-prev"></div>
+                    <!-- <div class="swiper-button-next dtr-swiper-next"></div>
+                    <div class="swiper-button-prev dtr-swiper-prev"></div> -->
                 </div>
                 <!-- Swiper ends -->
 

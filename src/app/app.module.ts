@@ -20,7 +20,12 @@ import { AdminComponent } from './admin/admin.component';
 import { CustomerComponent } from './customer/customer.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { EditDetailsComponent } from './edit-details/edit-details.component';
+import { UserPoliciesComponent } from './user-policies/user-policies.component';
+import { UserClaimsComponent } from './user-claims/user-claims.component';
 
 
 @NgModule({
@@ -35,7 +40,11 @@ import {MatTableModule} from '@angular/material/table';
     RenewTravelComponent,
     PaymentComponent,
     AdminComponent,
-    CustomerComponent
+    CustomerComponent,
+    UserDashboardComponent,
+    EditDetailsComponent,
+    UserPoliciesComponent,
+    UserClaimsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,9 @@ import {MatTableModule} from '@angular/material/table';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

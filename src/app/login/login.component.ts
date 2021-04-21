@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Admin } from '../admin';
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -33,12 +34,36 @@ export class LoginComponent implements OnInit {
       this.user.password = this.userPassword;
       this.service.loginUser(this.user).subscribe(
         fetchedData=>{
-          console.log(fetchedData);
-          sessionStorage.setItem('customerId', String(fetchedData.userId));
-          alert(Number(sessionStorage.getItem('customer')));
-          this.router.navigate(['/buytravel']);
+          //console.log(fetchedData);
+          localStorage.setItem('customerId', String(fetchedData.userId));
+          //alert(Number(sessionStorage.getItem('customer')));
+          Swal.fire({
+            title: "Login Successful",
+            text:"Please proceed to avail the services",
+            icon: "success",
+            confirmButtonText: "Okay"
+          });
+          this.router.navigate(['']);
         }
       );
+      // this.user.userEmail = this.userEmail;
+      // this.user.userEmail = this.userPassword;
+      // this.service.loginUser(this.user).subscribe(
+      //   fetchedData=>{
+      //     console.log(fetchedData);
+      //     if(fetchedData.status == "SUCCESS"){
+      //       sessionStorage.setItem('customerId', String(fetchedData.userId));
+      //       // console.log(fetchedData.customerId);
+      //       Swal.fire({
+      //               title: "Login Successful",
+      //               text:"Please proceed to avail the services",
+      //               icon: "success",
+      //               confirmButtonText: "Okay"
+      //             });
+      //             this.router.navigate(['']);
+      //     }
+      //   }
+      // );
     }
     else{
       this.admin.adminEmail = this.userEmail;
