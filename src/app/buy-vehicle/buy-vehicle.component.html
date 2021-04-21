@@ -1,6 +1,56 @@
-<h1 style="margin-top: 10px;text-align: center;">Vehicle Insurance</h1>
-<div style="padding: 3em;">
-  
+<!-- Header
+============================================= -->
+<header id="dtr-header-global" class="fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark dtr-menu">
+      <div class="container">
+
+          <!-- light logo -->
+          <a class="navbar-brand logo-light" routerLink="/"><img src="../assets/images/LTI-LOGO.png" alt="logo"></a>
+          <!-- dark logo -->
+          <!-- <a class="navbar-brand logo-dark" href="#home"><img src="../assets/images/LTI-LOGO.png" alt="logo"></a> -->
+
+          <!-- nav menu toggler-->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+
+          <!-- menu starts-->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="dtr-scrollspy navbar-nav ml-auto">
+                <li class="nav-item"> <a class="nav-link" routerLink="/">Home</a> </li>
+                  <!-- <li class="nav-item"> <a class="nav-link" href="#home" (click)="animate()">Home</a> </li>
+                  <li class="nav-item"> <a class="nav-link" href="#products" (click)="animate()">Products</a> </li>
+                  <li class="nav-item"> <a class="nav-link" href="#about" (click)="animate()">About</a> </li> -->
+
+                  <!-- dropdown starts -->
+                  <!-- <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Resources </a>
+                      <div class="dropdown-menu dropdown-animate" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="#reviews">Reviews</a> <a class="dropdown-item" href="#features">Features</a> <a class="dropdown-item" href="#cta">Contact</a> </div>
+                  </li>
+                  
+                  
+                  <li class="nav-item"> <a class="nav-link" href="#FAQ">FAQ</a> </li> -->
+                  <li class="nav-item" *ngIf="userId"><a class="nav-link" href="#">Dashboard</a></li>
+                  <li class="nav-item" *ngIf="userId"><a class="nav-link" href="/buyvehicle" (click)="logout()">Logout</a></li>
+                 
+              </ul>
+               <!-- button here -->
+               <div *ngIf="userId == null" class="dtr-btn ml-3 d-lg-block"> <a routerLink="/register">Signup<span><i class="icon-arrow-right" aria-hidden="true"></i></span></a> </div>
+              
+               <!-- button ends -->
+          </div>
+          <!-- menu ends-->
+
+          
+      </div>
+  </nav>
+</header>
+<!-- header ends
+================================================== -->
+<div style="background-color:#0089f3;">
+
+
+
+<div style="padding: 10em 3em;">
+  <h1 style="text-align: center;">Vehicle Insurance</h1>
   <mat-horizontal-stepper linear [labelPosition]="'bottom'">
     <mat-step>
       <div style="display: block;"><p class="buildInsPlan">Let’s start building your bike insurance plan!</p></div>
@@ -17,19 +67,26 @@
 
             <div *ngIf="Step1">
               <mat-form-field [style.width.px]=350>
-                <div class="label">Vehicle Registration Number:</div>
+                <div class="label">Registration Number</div>
                 <div class="vertical-space"></div>
-                <input matInput name="registrationNumber" required #regnumber="ngModel" [(ngModel)]="vehicle.registrationNumber">
-              </mat-form-field>
-                <div class="vertical-space"></div>
+                <!-- <input matInput name="registrationNumber" required #regnumber="ngModel" [(ngModel)]="vehicle.registrationNumber"> -->
+                <input matInput #regno="ngModel" name="registrationNumber" pattern="^[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{4}$" required  #regnumber="ngModel" [(ngModel)]="vehicle.registrationNumber">
 
-              <mat-form-field [style.width.px]=350>
-                <div class="label">Vehicle Registration State is: </div>
+              </mat-form-field>
+              <div *ngIf="regno.invalid && (regno.touched||regno.dirty)" style="color: red;border: red;">
+                  <div *ngIf="regno.errors.required">Registration Number is required</div>
+                  <div *ngIf="regno.errors.pattern">Invalid Registration Number</div>
+              </div><br>
+              <!-- </mat-form-field> -->
+                <!-- <div class="vertical-space"></div> -->
+
+              <mat-form-field [style.width.px]=340>
+                <div class="label">Registration State</div>
                 <div class="vertical-space"></div>
-                <input matInput  name="registrationState" required #regstate="ngModel" [(ngModel)]="vehicle.registrationState">
+                <input matInput  name="registrationState" required #regstate="ngModel" [(ngModel)]="vehicle.registrationState" [(ngModel)]="searchText">
               </mat-form-field><br>
               <div class="vertical-space"></div>
-              <div class="dtr-btn"><a (click)="showForm2()"><span><i class="icon-arrow-right"></i></span></a></div>
+              <div class="dtr-btn" ><a (click)="showForm2()" [disabled]="!searchText"><span><i class="icon-arrow-right"></i></span></a></div>
             </div>
 
             <div *ngIf="Step2">
@@ -39,10 +96,10 @@
                 <input matInput name="manufacturer" required #manufacturer="ngModel" [(ngModel)]="vehicle.manufacturer">
               </mat-form-field>
 
-                <div class="vertical-space"></div>
+                <!-- <div class="vertical-space"></div> -->
 
-              <mat-form-field [style.width.px]=350>
-                <div class="label">Vehicle Model is: </div>
+              <mat-form-field [style.width.px]=340>
+                <div class="label">Vehicle Model</div>
                 <div class="vertical-space"></div>
                 <input matInput name="model"  required #model="ngModel" [(ngModel)]="vehicle.model">
               </mat-form-field><br>
@@ -52,15 +109,19 @@
 
             <div *ngIf="Step3">
               <mat-form-field [style.width.px]=350>
-                <div class="label">Vehicle Type is:</div>
+                <div class="label">Vehicle Type</div>
                 <div class="vertical-space"></div>
-                <input matInput name="vehicleType" required #vehicleType="ngModel" [(ngModel)]="vehicle.vehicleType">
+                <!-- <input matInput name="vehicleType" required #vehicleType="ngModel" [(ngModel)]="vehicle.vehicleType"> -->
+                <mat-select [(value)]='vehicleType'>
+                  <mat-option value='Bike'>Bike</mat-option>
+                  <mat-option value='Car'>Car</mat-option>
+                </mat-select>
               </mat-form-field>
 
-                <div class="vertical-space"></div>
+                <!-- <div class="vertical-space"></div> -->
 
-              <mat-form-field [style.width.px]=350>
-                <div class="label">Vehicle Engine number is: </div>
+              <mat-form-field [style.width.px]=340>
+                <div class="label">Engine Number</div>
                 <div class="vertical-space"></div>
                 <input matInput name="engineNumber" required #engineNumber="ngModel" [(ngModel)]="vehicle.engineNumber">
               </mat-form-field><br>
@@ -70,17 +131,21 @@
 
             <div *ngIf="Step4">
               <mat-form-field [style.width.px]=350>
-                <div class="label">Vehicle Chassis Number is:</div>
+                <div class="label">Chassis Number</div>
                 <div class="vertical-space"></div>
                 <input matInput name="chassisNumber"  required #chassisnumber="ngModel" [(ngModel)]="vehicle.chassisNumber">
               </mat-form-field>
 
-                <div class="vertical-space"></div>
+                <!-- <div class="vertical-space"></div> -->
 
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field [style.width.px]=340>
                 <div class="label">Vehicle Fuel Type is: </div>
                 <div class="vertical-space"></div>
-                <input matInput name="fuelType" required #fuelType="ngModel" [(ngModel)]="vehicle.fuelType">
+                <!-- <input matInput name="fuelType" required #fuelType="ngModel" [(ngModel)]="vehicle.fuelType"> -->
+                <mat-select [(value)]='fuelType'>
+                  <mat-option value='Petrol'>Petrol</mat-option>
+                  <mat-option value='Diesel'>Diesel</mat-option>
+                </mat-select>
               </mat-form-field><br>
               <div class="dtr-btn"><a (click)="showForm5()"><span><i class="icon-arrow-right"></i></span></a></div>
               <!-- <div class="dtr-btn"><button mat-button matStepperNext>Choose Plan</button></div> -->
@@ -89,11 +154,17 @@
               <mat-form-field [style.width.px]=350>
                 <div class="label">Age of the Vehicle</div>
                 <div class="vertical-space"></div>
-                <input matInput name="age"  required #age="ngModel" [(ngModel)]="vehicle.age">
+                <!-- <input matInput name="age"  required #age="ngModel" [(ngModel)]="vehicle.age"> -->
+              <!-- </mat-form-field> -->
+              <input matInput #agecheck="ngModel" pattern="^([0-9]|1[0-5])$" name="age" required  #age="ngModel" [(ngModel)]="vehicle.age">
               </mat-form-field>
+              <div *ngIf="agecheck.invalid && (agecheck.touched||agecheck.dirty)" style="color: red;border: red;">
+                  <div *ngIf="agecheck.errors.required">Vehicle age is required</div>
+                  <div *ngIf="agecheck.errors.pattern">Age should between 0-15</div>
+              </div><br>
 
                 <div class="vertical-space"></div>
-                <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Choose Plan </span></button></div>
+                <button class="dtr-btn" mat-button matStepperNext><span><i class="icon-arrow-right"></i></span></button>
             </div>
           </form>
       </div>
@@ -115,7 +186,7 @@
               <li>Renew expired policy without inspection. Policy will start 3 days from today.</li>
             </ul>
             <div class="width50 text-right">
-              <button class="btnChoosePolicy btnChoosePolicy-o" mat-button matStepperNext>Choose</button>
+              <button class="btnChoosePolicy btnChoosePolicy-o" mat-button matStepperNext (click)="calculatePremium()">Choose</button>
             </div>
             
           </div>
@@ -142,28 +213,120 @@
         <p>Get Estimation</p>
       </ng-template>
       
-      <div class="choosePlanForm">
+      <div class="choosePlanForm" *ngIf="showPlans">
         <button matStepperPrevious>Back</button>
         <h1 style="display: block; text-align: center; font-weight: bold;">Your Estimation!</h1>
-        <table>
-          <tr>
-            <th>Policy Name</th>
-            <th>Premium</th>
-            <th>Duration</th>
-          </tr>
-          <tr>
-            <td>{{policy.policyName}}</td>
-            <td>Rs. {{policy.premiumAmount}}</td>
-            <td>{{policy.duration}} Year</td>
-            
-            <td><button class="button" type="submit" matStepperNext (click)="payservice()">Choose</button></td>
-            
-          </tr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Policy Name</th>
+              <th scope="col">Premium Amount</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let policy of displayPolicies">
+              <th scope="row" style="padding-top: 25px;">{{policy.policyName}}</th>
+              <td style="padding-top: 25px;">Rs. {{policy.premiumAmount}}</td>
+              <td style="padding-top: 25px;">{{policy.duration}} Year</td>
+              <td><button type="button" class="btn btn-dark btn-sm" (click)="showPay(policy)">Choose</button></td>
+            </tr>
+          </tbody>
         </table>
-        <div class="choosePlan"><button mat-button class="button" matStepperNext><span>Home</span></button></div>
-        <!-- <div class="choosePlan"><button mat-button class="button" type="submit" matStepperNext ><span>Pay</span></button></div> -->
+        
       </div>
+      <div class="container py-5" *ngIf="showPayment">
+        <!-- For demo purpose -->
+        <div class="row mb-4">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-6">Bootstrap Payment Forms</h1>
+            </div>
+        </div> <!-- End -->
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="card ">
+                    <div class="card-header">
+                        <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                            <!-- Credit card form tabs -->
+                            <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                                <li class="nav-item"> <a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Credit Card / Debit Card </a> </li>
+                                
+                            </ul>
+                        </div> <!-- End -->
+                        <!-- Credit card form content -->
+                        <div class="tab-content">
+                            <!-- credit card info-->
+                            <div id="credit-card" class="tab-pane fade show active pt-3">
+                                <form role="form" >
+                                    <div class="form-group"> 
+                                        <label for="username">
+                                            <h6>Card Owner</h6>
+                                        </label> 
+                                        <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> 
+                                    </div>
+    
+                                    <div class="form-group"> 
+                                        <label for="cardNumber">
+                                            <h6>Card number</h6>
+                                        </label>
+                                        <div class="input-group"> 
+                                            <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control " required>
+                                            <div class="input-group-append"> 
+                                                <span class="input-group-text text-muted"> 
+                                                    <i class="fab fa-cc-visa mx-1"></i> 
+                                                    <i class="fab fa-cc-mastercard mx-1"></i> 
+                                                    <i class="fab fa-cc-amex mx-1"></i> 
+                                                </span> 
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <div class="form-group"> 
+                                                <label>
+                                                    <span class="hidden-xs">
+                                                        <h6>Expiration Date</h6>
+                                                    </span>
+                                                </label>
+                                                <div class="input-group"> 
+                                                    <input type="number" placeholder="MM" name="" class="form-control" required> 
+                                                    <input type="number" placeholder="YY" name="" class="form-control" required> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div *ngFor="let policy of policies">
+                                            <div>{{policy}}</div> -->
+                                        <!-- </div> -->
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-4"> 
+                                                <label matTooltip="Three digit CV code on the back of your card">
+                                                    <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                                </label> <input type="text" required class="form-control"> 
+                                            </div>
+                                        </div>
+    
+                                    </div>
+    
+                                    <div class="card-footer"> 
+                                        <button class="subscribe btn btn-primary btn-block shadow-sm" (click)="addInsurance()"> Confirm Payment </button>
+                                    </div>    
+                                </form>
+                            
+                            </div> <!-- End -->
+                        <!-- End -->
+                        <!-- <button (click) = "logout()">Logout</button> -->
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+    
+    
     </mat-step>
     
   </mat-horizontal-stepper>
+</div>
 </div>

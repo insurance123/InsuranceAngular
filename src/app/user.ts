@@ -4,5 +4,5 @@ export class User {
     userEmail: String;
     userPhone: String;
     password:String;    
-    dateOfBirth: String;
+    dateOfBirth: Date;
 }

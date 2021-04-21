@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BuyTravelComponent } from './buy-travel/buy-travel.component';
 import { BuyVehicleComponent } from './buy-vehicle/buy-vehicle.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -25,6 +26,9 @@ const routes: Routes = [
   },
   {
     path: "payment", component:PaymentComponent
+  },
+  {
+    path: "buytravel", component: BuyTravelComponent
   }
 
 ];

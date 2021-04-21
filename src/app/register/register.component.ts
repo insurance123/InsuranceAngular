@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private service:UserService) { }
+  constructor(private service:UserService, private router:Router) { }
 
   user:User= new User();
   ngOnInit(): void {
@@ -19,8 +21,13 @@ export class RegisterComponent implements OnInit {
   register(regform:NgForm){
     this.service.registerUser(this.user).subscribe(
       fetchedData=>{
-        console.log(fetchedData);
-        alert("Successfully registered");
+        Swal.fire({
+          title: "Registration Successful",
+          text: "Please login to continue.",
+          icon: "success",
+          confirmButtonText: "Okay"
+        });
+        this.router.navigate[('/login')];
       }
     );
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Admin } from '../admin';
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   userEmail:String = "";
   userPassword:String = "";
   
-  constructor(private service:UserService) { }
+  constructor(private service:UserService, private router:Router) { }
 
   onItemChange(value){
     this.userType=value;
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit {
         fetchedData=>{
           console.log(fetchedData);
           sessionStorage.setItem('customerId', String(fetchedData.userId));
-          alert("Customer Logged In Successful");
+          alert(Number(sessionStorage.getItem('customer')));
+          this.router.navigate(['/buytravel']);
         }
       );
     }

@@ -6,6 +6,9 @@ import { Policy } from '../policy';
 import { User } from '../user';
 import { Vehicle } from '../vehicle';
 import { VehicleInsuranceService } from '../vehicle-insurance.service';
+import Swal from 'sweetalert2';
+import {WOW} from "wowjs/dist/wow.min";
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-buy-vehicle',
@@ -13,6 +16,7 @@ import { VehicleInsuranceService } from '../vehicle-insurance.service';
   styleUrls: ['./buy-vehicle.component.css']
 })
 export class BuyVehicleComponent implements OnInit {
+  
   age:number = 0;
   Step1:boolean = true;
   Step2:boolean = false;
@@ -20,22 +24,24 @@ export class BuyVehicleComponent implements OnInit {
   Step4:boolean = false;
   Step5:boolean = false;
   vehicle: Vehicle = new Vehicle();
-  vehicleType:String;
+  vehicleType = 'Bike';
+  fuelType = 'Petrol'
   policies:Policy;
-  user:User = {
-    userId: 1042,
-    userName: "John",
-    userEmail: "john@gmail.com",
-    password: "john@123",
-    userPhone: "9876543210",
-    dateOfBirth: "1996-02-19"
-  };
+  userId:any;
+  vehicleId:number;
   basePremium:number;
   policy:Policy = new Policy();
+  policy1:Policy = new Policy();
+  policy2:Policy = new Policy();
   displayPolicies:Array<Policy> = [];
-  constructor(private service:VehicleInsuranceService, private router:Router) { }
+  selectedPolicy:Policy = new Policy();
+  calculatedCoverage:number = 100000;
+  constructor(private service:VehicleInsuranceService, private router:Router, private userService:UserService) { }
 
   ngOnInit(): void {
+    // Check whether user is signed in
+    this.userId = localStorage.getItem('customerId');
+   
   }
 
   public showForm1 () {
@@ -73,52 +79,133 @@ export class BuyVehicleComponent implements OnInit {
 
   }
 
-  userId:number=1041;
-  policyId:number= 2041;
-  
-  cvp:CustomerVehiclePolicy = new CustomerVehiclePolicy();
+  showPayment:boolean=false;
+  showPlans:boolean=true;
 
-  payservice(){
-   if(sessionStorage.getItem("customerId") == null) {
-     this.router.navigate(['/login']);
+  showPay(policy) {
+    this.checkLogin();
+    this.selectedPolicy = policy;
+    
+  }
+
+  logout() {
+    localStorage.removeItem("customerId");
+  }
+  
+  // policyId:number= 2041;
+  cvp:CustomerVehiclePolicy = new CustomerVehiclePolicy();
+  
+  userEmail:String;
+  userPassword:String;
+  checkUser:User = new User();
+  checkLogin(){
+   if(this.userId == null) {
+    Swal.fire({
+      title: 'Please Log In to continue',
+      html:
+        '<input type="email" id="swal-input1" class="swal2-input" placeholder="Enter Email Id">' +
+        '<input type="password" id="swal-input2" class="swal2-input" placeholder="Enter Password">',
+      focusConfirm: false,
+      confirmButtonText: `Log In`,
+      preConfirm: () => {
+        return [
+          this.userEmail = (<HTMLInputElement>document.getElementById('swal-input1')).value,
+          this.userPassword = (<HTMLInputElement>document.getElementById('swal-input2')).value,
+          this.checkUser.userEmail = this.userEmail,
+          this.checkUser.password = this.userPassword,
+          this.userService.loginUser(this.checkUser).subscribe(
+            fetchedUser=> {
+              localStorage.setItem('customerId', String(fetchedUser.userId));
+              this.userId = Number(localStorage.getItem('customerId'));
+              
+              console.log(this.userId);
+              this.vehicle.fuelType = this.fuelType;
+              this.vehicle.vehicleType = this.vehicleType;
+              this.vehicle.userId = this.userId;
+              
+              this.service.addVehicle(this.vehicle).subscribe(
+                fetchedData=>{
+                  this.vehicleId = fetchedData.vehicleId;
+                }
+              );
+            }
+            
+          )
+        ]
+      }
+    }).then(() => {
+      Swal.fire('Logged In','', 'success');
+      // this.addVehicle();
+    })
+    
+    this.showPlans = false;
+    this.showPayment = true;
    }
    else {
-    this.userId = Number(sessionStorage.getItem('customerId'));
-
-    this.vehicle.customer = this.user;
-    this.service.addVehicle(this.vehicle).subscribe(
-      fetchedData=>{
-      
-        this.vehicle = fetchedData;
-        console.log(this.vehicle);
-        
-      }
-    );
-    this.cvp.startDate = "2021-04-19";
-    this.cvp.endDate = "2022-04-19";
-    this.cvp.coverageAmount = 10000.0;
-    this.cvp.premiumAmount = this.basePremium;
-    this.cvp.customerId = 1042,
-    this.cvp.policyId = this.policy.policyId;
-    this.cvp.vehicleId = 4057;
-    this.service.buymotorinsurance(this.cvp).subscribe(
-      fetchedData=>{
-        console.log(fetchedData);
-      }
-    );
+    
+    this.addVehicle();
+    this.showPlans = false;
+    this.showPayment = true;
     
    }
   
 }
 
+addVehicle() {
+    
+    // this.userId = localStorage.getItem('customerId');
+    // console.log(Number(localStorage.getItem('customerId')));
+    console.log(this.userId);
+    this.vehicle.fuelType = this.fuelType;
+    this.vehicle.vehicleType = this.vehicleType;
+    this.vehicle.userId = this.userId;
+    
+    this.service.addVehicle(this.vehicle).subscribe(
+      fetchedData=>{
+        this.vehicleId = fetchedData.vehicleId;
+      }
+    );
+}
+
 addInsurance() {
+  this.vehicle.vehicleId = this.vehicleId;
+  // this.addVehicle();
+  this.cvp.startDate = "2021-04-20"; //Get today's date
+    if(this.selectedPolicy.duration == 1) {
+      this.cvp.endDate = "2022-04-20";
+      this.calculatedCoverage = 100000;
+    }
+    else if(this.selectedPolicy.duration == 3) {
+      this.cvp.endDate = "2024-04-20";
+      this.calculatedCoverage = 300000;
+    }
+    else if(this.selectedPolicy.duration == 5) {
+      this.cvp.endDate = "2026-04-20";
+      this.calculatedCoverage = 500000;
+    }
+    this.cvp.coverageAmount = this.calculatedCoverage;
+    this.cvp.premiumAmount = this.selectedPolicy.premiumAmount;
+    this.cvp.customerId = this.userId,
+    this.cvp.policyId = this.selectedPolicy.policyId;
+    this.cvp.vehicleId = this.vehicleId;
+    this.service.buymotorinsurance(this.cvp).subscribe(
+      fetchedData=>{
+        Swal.fire({
+          title: "Successful",
+          text: "Insurance bought successfully. Check your E-Mail for details.",
+          icon: "success",
+          confirmButtonText: "Okay"
+        });
+        this.router.navigate(['/']);
+      }
+  
+    );
   
 }
 
 calculatePremium() {
-  this.service.getPolicyFor("Bike").subscribe(
+  this.service.getPolicyFor(this.vehicleType).subscribe(
     fetchedPolicies=> {
-      console.log(fetchedPolicies);
       this.policies = fetchedPolicies[0];
       this.policy.policyName = this.policies.policyName;
       this.policy.policyId = this.policies.policyId;
@@ -149,20 +236,29 @@ calculatePremium() {
         }
         this.policy.premiumAmount = this.basePremium;
       }
-      // for(let i = 0; i < 3 ; i++) {
-      //   this.displayPolicies[i] = this.policy;
-      // }
-       
-      // this.displayPolicies[1].duration = 3;
-      // this.displayPolicies[1].premiumAmount = this.basePremium * 3 - 500;
-      // console.log(this.displayPolicies); 
-      // console.log(this.displayPolicies[1]);
-      // this.displayPolicies[2].duration =5;
-      // this.displayPolicies[2].premiumAmount = this.basePremium * 5 - 1000;
+      
+      this.displayPolicies[0] = this.policy;
+      this.policy1.policyId = this.policy.policyId;
+      this.policy1.policyName = this.policy.policyName;
+      this.policy1.policyFor = this.policy1.policyFor;
+      this.policy1.duration = 3;
+      this.policy1.premiumAmount = this.basePremium * 3 - 500;
+      this.displayPolicies[1] = this.policy1;
+
+      this.policy2.policyId = this.policy.policyId;
+      this.policy2.policyName = this.policy.policyName;
+      this.policy2.policyFor = this.policy1.policyFor;
+      this.policy2.duration = 5;
+      this.policy2.premiumAmount = this.basePremium * 5 - 1000;
+      this.displayPolicies[2] = this.policy2;
+
+
 
     }
  
+    
   )
+  
 }
 
 }

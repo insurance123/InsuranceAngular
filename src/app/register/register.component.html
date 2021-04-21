@@ -1,3 +1,4 @@
+
 <div class="form-body" class="container-fluid">
     <div class="website-logo">
         <a routerLink="/">
@@ -21,10 +22,35 @@
                     <div class="page-links">
                         <a routerLink="/login">Login</a><a routerLink="/register" class="active">Register</a>
                     </div>
-                    <form #regForm="ngForm" (submit)="register(regForm)">
+                    <!-- <form #regForm="ngForm" (submit)="register(regForm)">
+                        
                         <input class="form-control" type="text" name="name" placeholder="Full Name" required #name="ngModel" [(ngModel)]="user.userName">
                         <input class="form-control" type="email" name="email" placeholder="E-mail Address" required #email="ngModel" [(ngModel)]="user.userEmail">
                         <input class="form-control" type="password" name="password" placeholder="Password" required #password="ngModel" [(ngModel)]="user.password">
+                        <div class="form-button">
+                            <button id="submit" type="submit" class="ibtn">Register</button>
+                        </div>
+                    </form> -->
+                    <form role="form" #regForm="ngForm" (ngSubmit)="register(regForm)">
+                        <input type="text" #nm="ngModel" id="userName" class="form-control" name="userName" placeholder="eg.John Doe" minlength="4" required #userName=ngModel [(ngModel)] = user.userName>
+                            <div *ngIf="nm.invalid && (nm.touched || nm.dirty)" style="color: red;border: red;">
+                                <div *ngIf=nm.errors.required>Name is required</div>
+                                <div *ngIf=nm.errors.pattern>Name msut contain atleast 4 character</div>
+                                <div *ngIf=nm.errors.minlength>Name must contain atleast 4 character</div> 
+                            </div><br>
+
+            
+                        <input type="email" #em="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9-]+.[a-z]{2,4}$" required id="userEmail" class="form-control" name="userEmail" placeholder="eg.Johndoe@gmail.com" #userEmail=ngModel [(ngModel)] = user.userEmail>
+                        <div *ngIf="em.invalid && (em.touched||em.dirty)" style="color: red;border: red;">
+                            <div *ngIf="em.errors.required">email is required</div>
+                            <div *ngIf="em.errors.pattern">Invalid email</div>
+                        </div><br>
+                        <!-- Not working -->
+                        <input type="password" class="form-control" #pwd="ngModel" pattern="^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$" minlength="8" required id="password" name="password" placeholder="Enter a strong Password" #password=ngModel [(ngModel)] ="user.password">
+                            <div *ngIf="pwd.invalid && (pwd.touched||pwd.dirty)" style="color: red;border: red;">
+                                <div *ngIf="pwd.errors.required">Password is required</div>
+                                <div *ngIf="pwd.errors.pattern">Invalid password</div>
+                            </div>
                         <div class="form-button">
                             <button id="submit" type="submit" class="ibtn">Register</button>
                         </div>

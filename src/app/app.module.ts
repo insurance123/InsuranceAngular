@@ -18,6 +18,8 @@ import { RenewTravelComponent } from './renew-travel/renew-travel.component';
 import { PaymentComponent } from './payment/payment.component';
 import { AdminComponent } from './admin/admin.component';
 import { CustomerComponent } from './customer/customer.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -44,6 +46,8 @@ import { CustomerComponent } from './customer/customer.component';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

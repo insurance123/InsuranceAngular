@@ -9,6 +9,6 @@ export class CustomerVehiclePolicy {
     coverageAmount: number;
     premiumAmount:number;
     policyId :number;
-    customerId: number;
+    customerId: Number;
     vehicleId: number;
 }

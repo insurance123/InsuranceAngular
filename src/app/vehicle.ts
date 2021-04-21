@@ -12,5 +12,5 @@ export class Vehicle {
     chassisNumber :String;
     fuelType:String;
     age:number;
-    customer: User;
+    userId:number
 }
