@@ -61,9 +61,9 @@
                                 <span>User</span>
                             </a>
                             <ul>
-                                <li class="active"><a href="userdashboard.html">Profile</a></li>
-                                <li><a href="userpolicies.html">Your Policies</a></li>
-                                <li><a href="userclaims.html">Your Claims</a></li>
+                                <li class="active"><a routerLink="/userdashboard">Profile</a></li>
+                                <li><a routerLink="/userpolicies">Your Policies</a></li>
+                                <li><a routerLink="/userclaims">Your Claims</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -79,12 +79,12 @@
         <!-- Page Header Start -->
         <section class="page--header">
             <!-- Page Title Start -->
-            <h2 class="page--title1 h5"><b> Welcome User</b></h2>
+            <!-- <h2 class="page--title1 h5"><b> Welcome User</b></h2> -->
         </section>
         <!-- Page Header End -->
 
         <!-- Main Content Start -->
-        <section class="main--content">
+        <!-- <section class="main--content">
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">User Details</h3><br><br>
@@ -97,7 +97,178 @@
                     <div class="span--middle"><a href="edituserdetails.html"><button type="button" class="btn btn-sm btn-rounded btn-outline-secondary label-orange boldit">Edit Details</button></a></div>
                 </div>    
             </div> 
+        </section> -->
+        <!-- <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading" style="margin-left: 10px">
+                    <h3 class="panel-title">Profile</h3>
+                </div>
+                <div class="panel-content">
+                    
+                    <div class="form-group row">
+                        <span class="label-text col-md-2 col-form-label text-md-right">User Id</span>
+
+                        <div class="col-md-10">
+                            <p class="form-control-plaintext">email@example.com</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <span class="label-text col-md-2 col-form-label text-md-right">User Name</span>
+
+                        <div class="col-md-10">
+                            <p class="form-control-plaintext">email@example.com</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <span class="label-text col-md-2 col-form-label text-md-right">Email</span>
+
+                        <div class="col-md-10">
+                            <p class="form-control-plaintext">email@example.com</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <span class="label-text col-md-2 col-form-label text-md-right">DOB</span>
+
+                        <div class="col-md-10">
+                            <p class="form-control-plaintext">email@example.com</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <span class="label-text col-md-2 col-form-label text-md-right">Phone</span>
+
+                        <div class="col-md-10">
+                            <p class="form-control-plaintext">email@example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="span--middle"><a href="edit-user-details.html"><button type="button" class="btn btn-sm btn-rounded btn-outline-secondary label-orange boldit">Edit Details</button></a></div>
+                    
+                </div>    
+            </div>        
+        </div> -->
+        <section class="main--content">
+
+            <div class="panel">
+
+                <!-- Edit Product Start -->
+                <div class="records--body">
+                    <div class="title">
+                        <h6 class="h6">User Details</h6>
+
+                    </div>
+
+                    <!-- Tabs Nav Start -->
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a href="#tab01" data-toggle="tab" class="nav-link active">Your Details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#tab02" data-toggle="tab" class="nav-link">Update Details</a>
+                        </li>
+
+
+                    </ul>
+                    <!-- Tabs Nav End -->
+
+                    <!-- Tab Content Start -->
+                    <div class="tab-content">
+                        <!-- Tab Pane Start -->
+                        <div class="tab-pane fade show active" id="tab01">
+                            <div class="panel-content">
+                    
+                                <div class="form-group row">
+                                    <span class="label-text col-md-2 col-form-label text-md-right">User Id</span>
+            
+                                    <div class="col-md-10">
+                                        <p class="form-control-plaintext">1061</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <span class="label-text col-md-2 col-form-label text-md-right">User Name</span>
+            
+                                    <div class="col-md-10">
+                                        <p class="form-control-plaintext">Bhushan</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <span class="label-text col-md-2 col-form-label text-md-right">Email</span>
+            
+                                    <div class="col-md-10">
+                                        <p class="form-control-plaintext">bhushan@g.com</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <span class="label-text col-md-2 col-form-label text-md-right">DOB</span>
+            
+                                    <div class="col-md-10">
+                                        <p class="form-control-plaintext">22/02/1998</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <span class="label-text col-md-2 col-form-label text-md-right">Phone</span>
+            
+                                    <div class="col-md-10">
+                                        <p class="form-control-plaintext">9988776655</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                        <!-- Tab Pane End -->
+                        <!-- Tab Pane Start -->
+                        <div class="tab-pane fade" id="tab02">
+                            <form action="#">
+                                <div class="form-group row">
+                                    <span class="label-text col-md-3 col-form-label">Your Name</span>
+
+                                    <div class="col-md-9">
+                                        <input type="text" name="number" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <span class="label-text col-md-3 col-form-label">Email Address</span>
+
+                                    <div class="col-md-9">
+                                        <input type="text" name="number" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <span class="label-text col-md-3 col-form-label">Contact No</span>
+
+                                    <div class="col-md-9">
+                                        <input type="text" name="number" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <span class="label-text col-md-3 col-form-label">DOB</span>
+
+                                    <div class="col-md-9">
+                                        <input type="text" name="number" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-md-9 offset-md-3">
+                                        <input type="submit" value="Update Details" class="btn btn-rounded btn-success">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Tab Pane End -->
+                        <!-- Tab Pane Start -->
+                    </div>
+                    <!-- Tab Pane End -->
+
+                    <!-- Tab Pane Start -->
+                    <!-- Tab Pane End -->
+                </div>
+                <!-- Tab Content End -->
+            </div>
+            <!-- Edit Product End -->
         </section>
+        <!-- Main Content End -->
         <!-- Main Content End -->
         
         <!-- Main Footer Start -->

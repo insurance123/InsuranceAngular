@@ -9,6 +9,8 @@ import { VehicleInsuranceService } from '../vehicle-insurance.service';
 import Swal from 'sweetalert2';
 import {WOW} from "wowjs/dist/wow.min";
 import { UserService } from '../user.service';
+import { Document } from '../document';
+import { DocumentUploadService } from '../document-upload.service';
 
 @Component({
   selector: 'app-buy-vehicle',
@@ -36,7 +38,8 @@ export class BuyVehicleComponent implements OnInit {
   displayPolicies:Array<Policy> = [];
   selectedPolicy:Policy = new Policy();
   calculatedCoverage:number = 100000;
-  constructor(private service:VehicleInsuranceService, private router:Router, private userService:UserService) { }
+  document;
+  constructor(private service:VehicleInsuranceService, private router:Router, private userService:UserService, private documentService: DocumentUploadService) { }
 
   ngOnInit(): void {
     // Check whether user is signed in
@@ -78,14 +81,43 @@ export class BuyVehicleComponent implements OnInit {
     this.Step5 = true;
 
   }
-
+  uploadForm:boolean = false;
   showPayment:boolean=false;
   showPlans:boolean=true;
 
-  showPay(policy) {
+  public showDocument(policy){
     this.checkLogin();
     this.selectedPolicy = policy;
+    this.uploadForm = true;
+    this.showPlans = false;
+    this.showPayment = false;
+  }
+  onFileChange(event){
+   
+    this.document = event.target.files[0];
     
+  }
+  showPay() {
+    console.log(this.document);
+    let formData: FormData = new FormData();
+    this.userId = localStorage.getItem('customerId');
+    formData.append('userId', this.userId);
+    formData.append('rcBook', this.document);
+    for (var pair of formData.getAll("documentPath")) {
+      console.log(pair); 
+  }
+    console.log(JSON.stringify(formData));
+    // this.userId = localStorage.getItem('customerId');
+    // this.formData.append('userId', this.userId);
+    // this.formData.append('documentPath', this.document);
+    //console.log(this.formData);
+    this.uploadForm = false;
+    this.showPayment = true;
+     this.documentService.uploadDocument(formData).subscribe(
+     fetchedData=>{
+        console.log(fetchedData);
+      }
+    );
   }
 
   logout() {
@@ -139,7 +171,7 @@ export class BuyVehicleComponent implements OnInit {
     })
     
     this.showPlans = false;
-    this.showPayment = true;
+    //this.showPayment = true;
    }
    else {
     

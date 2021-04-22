@@ -65,7 +65,7 @@
 
                             <li class="nav-item"> <a class="nav-link" href="#FAQ">FAQ</a> </li>
 
-                            <li class="nav-item" *ngIf="userId"><a class="nav-link" href="#">Dashboard</a></li>
+                            <li class="nav-item" *ngIf="userId"><a class="nav-link" routerLink="/userdashboard">Dashboard</a></li>
                             <li class="nav-item" *ngIf="userId"><a class="nav-link" href="/" (click)="logout()">Logout</a></li>
                         </ul>
                     </div>
@@ -82,121 +82,121 @@
 
         <!-- hero section starts
 ================================================== -->
-        <section id="home" class="hero-section dtr-py-8 hero-default-bg bg-blue">
-            <div class="container">
-                <div class="row align-items-center">
+<section id="home" class="hero-section dtr-py-8 hero-default-bg bg-blue">
+    <div class="container">
+        <div class="row align-items-center">
 
-                    <!-- column 1 starts -->
-                    <div class="col-12 col-md-6 dtr-sm-mb-30px color-white">
+            <!-- column 1 starts -->
+            <div class="col-12 col-md-6 dtr-sm-mb-30px color-white">
 
-                        <!-- Heading -->
-                        <h1 class="dtr-mb-4 wow fadeInUp" data-wow-delay="0.4s">Get Insurance Policy</h1>
+                <!-- Heading -->
+                <h1 class="dtr-mb-4 wow fadeInUp" data-wow-delay="0.4s">Get Insurance Policy</h1>
 
-                        <!-- Text Add Why insurance -->
-                        <p class="dtr-mb-4 text-size-md color-white-muted"> General Insurance helps us protect ourselves and the things we value– from theft, car accidents, travel mishaps – and even from the costs of legal action against us. Buying insurance is important as it ensures that you are financially
-                            secure to face any type of problem in life, and this is why insurance is a very important part of financial planning. The convenient part of it is that you can purchase all these insurance policies online nowadays.</p>
+                <!-- Text Add Why insurance -->
+                <p class="dtr-mb-4 text-size-md color-white-muted"> General Insurance helps us protect ourselves and the things we value– from theft, car accidents, travel mishaps – and even from the costs of legal action against us. Buying insurance is important as it ensures that you are financially
+                    secure to face any type of problem in life, and this is why insurance is a very important part of financial planning. The convenient part of it is that you can purchase all these insurance policies online nowadays.</p>
 
-                        <!-- list starts -->
+                <!-- list starts -->
 
-                        <!-- list ends -->
+                <!-- list ends -->
 
+            </div>
+            <!-- column 1 ends -->
+
+            <!-- column 2 starts -->
+            <div class="col-12 col-md-6 wow fadeInRight" data-wow-delay="0.4s">
+                <div class="dtr-hero-form">
+
+                    <!-- form header starts -->
+                    <div class="dtr-form-head">
+                        <h4 class="text-center">Get a free quote</h4>
                     </div>
-                    <!-- column 1 ends -->
 
-                    <!-- column 2 starts -->
-                    <div class="col-12 col-md-6 wow fadeInRight" data-wow-delay="0.4s">
-                        <div class="dtr-hero-form">
-
-                            <!-- form header starts -->
-                            <div class="dtr-form-head">
-                                <h4 class="text-center">Get a free quote</h4>
-                            </div>
-
-                            <!-- form body starts -->
-                            <div class="dtr-form-body">
-                                <p class="text-center dtr-mb-4 text-size-sm">We make getting the best insurance simple. Let our team do the work so you don't have to.</p>
-                                <div class="dtr-form dtr-submit-full">
-                                    <form id="contactform">
-                                        <fieldset>
-                                            <p>
-                                                <input name="name" type="text" placeholder="Name">
-                                            </p>
-                                            <p>
-                                                <input name="number" class="number" type="text" placeholder="Phone">
-                                            </p>
-                                            <p>
-                                                <input name="email" class="required email" type="text" placeholder="Email">
-                                            </p>
-                                            <p class="antispam">Leave this empty: <br />
-                                                <input name="url" />
-                                            </p>
-                                            <p>
-                                                <!-- <select name="subject" class="dtr-select">
-                                                <option value="">Select Insurance Type</option>
-                                                <option value="2motor">2-Wheeler Insurance</option>
-                                                <option value="4motor">4-Wheeler Insurance</option>
-                                                <option value="travel">Travel Insurance</option>
-                                            </select> -->
-                                            <mat-select class="dropdown" [(value)]='insuranceType' placeholder="Select Type">
-                                                <mat-option value='Bike'>Bike</mat-option>
-                                                <mat-option value='Car'>Car</mat-option>
-                                                <mat-option value='Travel'>Travel</mat-option>
-                                              </mat-select>
-                    
-                                            </p>
-                                            <button class="dtr-btn-round dtr-btn-blue" data-toggle="modal" data-target="#exampleModalCenter" (click)="fetchPolicy()"> Get a quote</button>                                            <!--<div id="result"></div>-->
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- form body ends -->
-
+                    <!-- form body starts -->
+                    <div class="dtr-form-body">
+                        <p class="text-center dtr-mb-4 text-size-sm">We make getting the best insurance simple. Let our team do the work so you don't have to.</p>
+                        <div class="dtr-form dtr-submit-full">
+                            <form id="contactform">
+                                <fieldset>
+                                    <p>
+                                        <input name="name" type="text" placeholder="Name">
+                                    </p>
+                                    <p>
+                                        <input name="number" class="number" type="text" placeholder="Phone">
+                                    </p>
+                                    <p>
+                                        <input name="email" class="required email" type="text" placeholder="Email">
+                                    </p>
+                                    <p class="antispam">Leave this empty: <br />
+                                        <input name="url" />
+                                    </p>
+                                    <p>
+                                        <!-- <select name="subject" class="dtr-select">
+                                        <option value="">Select Insurance Type</option>
+                                        <option value="2motor">2-Wheeler Insurance</option>
+                                        <option value="4motor">4-Wheeler Insurance</option>
+                                        <option value="travel">Travel Insurance</option>
+                                    </select> -->
+                                    <mat-select class="dropdown" [(value)]='insuranceType' placeholder="Select Type">
+                                        <mat-option value='Bike'>Bike</mat-option>
+                                        <mat-option value='Car'>Car</mat-option>
+                                        <mat-option value='Travel'>Travel</mat-option>
+                                      </mat-select>
+            
+                                    </p>
+                                    <button type="submit" class="dtr-btn-round dtr-btn-blue" data-toggle="modal" data-target="#exampleModalCenter" (click)="fetchPolicy()"> Get a quote</button>                                            <!--<div id="result"></div>-->
+                                </fieldset>
+                            </form>
                         </div>
                     </div>
-                    <!-- column 2 ends -->
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h3 style="font-size: 24px;" class="modal-title" id="exampleModalLongTitle">Policy Details</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body">
-                                <table class="table">
-                                    <thead>
-                                      <tr>
-                                        <th scope="col">Policy Name</th>
-                                        <th scope="col">Premium Amount</th>
-                                        <th scope="col">Duration</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <th scope="row" style="padding-top: 25px;">{{policy.policyName}}</th>
-                                        <td style="padding-top: 25px;">{{policy.premiumAmount}}</td>
-                                        <td style="padding-top: 25px;">{{policy.duration}}</td>
-                                        
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                            </div>
-                            <div class="modal-footer">
-                            <span>*This is the base price. Price will vary according to your vehicle details. To check the exact price please visit Buy Insurance Page.</span>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <!--  -->
+                    <!-- form body ends -->
 
                 </div>
             </div>
-        </section>
+            <!-- column 2 ends -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h3 style="font-size: 24px;" class="modal-title" id="exampleModalLongTitle">Policy Details</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Policy Name</th>
+                                <th scope="col">Premium Amount</th>
+                                <th scope="col">Duration</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row" style="padding-top: 25px;">{{policy.policyName}}</th>
+                                <td style="padding-top: 25px;">{{policy.premiumAmount}}</td>
+                                <td style="padding-top: 25px;">{{policy.duration}}</td>
+                                
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="modal-footer">
+                    <span>*This is the base price. Price will vary according to your vehicle details. To check the exact price please visit Buy Insurance Page.</span>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!--  -->
+
+        </div>
+    </div>
+</section>
         <!-- hero section starts
 ================================================== -->
 

@@ -230,12 +230,39 @@
               <th scope="row" style="padding-top: 25px;">{{policy.policyName}}</th>
               <td style="padding-top: 25px;">Rs. {{policy.premiumAmount}}</td>
               <td style="padding-top: 25px;">{{policy.duration}} Year</td>
-              <td><button type="button" class="btn btn-dark btn-sm" (click)="showPay(policy)">Choose</button></td>
+              <td><button type="button" class="btn btn-dark btn-sm" (click)="showDocument(policy)">Choose</button></td>
             </tr>
           </tbody>
         </table>
-        
+      
       </div>
+      <!--Uploading document form-->
+      <div class="choosePlanForm" *ngIf="uploadForm">
+        <button matStepperPrevious>Back</button>
+        <h1 style="display: block; text-align: center; font-weight: bold;">Upload Document</h1>
+        <div class="card">
+          <!-- <div class="card-header">
+            Featured
+          </div> -->
+          <div class="card-body">
+            <!-- <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            <form #uploadDoc="ngForm" (submit)="showPay()" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload RC Book: </label><br>
+                <input type="file" name="document" class="form-control-file btn btn-dark btn-sm" id="exampleFormControlFile1" (change)="onFileChange($event)" [ngModelOptions]="{standalone: true}">
+              </div>
+              <button type="submit" class="btn btn-dark btn-sm">Pay</button>
+            </form>
+          </div>
+          <!-- <div class="card-footer">
+           
+          </div> -->
+        </div>
+       
+      </div>
+      <!--Payment-->
       <div class="container py-5" *ngIf="showPayment">
         <!-- For demo purpose -->
         <div class="row mb-4">
@@ -272,10 +299,11 @@
                                         </label>
                                         <div class="input-group"> 
                                             <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control " required pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$">
-                                            <div *ngIf="credno.invalid && (credno.touched||credno.dirty)" style="color: red;border: red;">
+                                            <!-- <div *ngIf="credno.invalid && (credno.touched||credno.dirty)" style="color: red;border: red;">
                                               <div *ngIf="credno.errors.required">Registration Number is required</div>
                                               <div *ngIf="credno.errors.pattern">Invalid Registration Number</div>
-                                          </div><br>
+                                          </div> -->
+                                          <br>
                                             <div class="input-group-append"> 
                                                 <span class="input-group-text text-muted"> 
                                                     <i class="fab fa-cc-visa mx-1"></i> 

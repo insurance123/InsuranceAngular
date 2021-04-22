@@ -1,5 +1,8 @@
+import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import {WOW} from "wowjs/dist/wow.min";
 import { ContactUs } from '../contact-us';
 import { HomeService } from '../home.service';
@@ -16,13 +19,18 @@ export class HomeComponent implements OnInit {
   contactus:ContactUs = new ContactUs();
   policy:Policy = new Policy();
   insuranceType:'Bike';
-  userId:any;
-  constructor(private homeService:HomeService, private service:VehicleInsuranceService) { }
+  userId;
+  constructor(private homeService:HomeService, private service:VehicleInsuranceService, private router: Router) { }
 
   ngOnInit(): void {
     
      // Check whether user is signed in
      this.userId = localStorage.getItem('customerId');
+     const wow = new WOW({
+      live: false
+    });
+    wow.init();
+    wow.sync();
   }
 
   logout() {
@@ -37,9 +45,18 @@ export class HomeComponent implements OnInit {
   addquery(queryform:NgForm){
     this.homeService.addNewQuery(this.contactus).subscribe(
       fetchedData => {
-        console.log(fetchedData);
+        //console.log(fetchedData);
+        
+        Swal.fire({
+          title: "Query Submitted!",
+          text: "Your query has been submitted successfully",
+          icon: "success",
+          confirmButtonText: "Okay"
+        });
+        this.router.navigate[('')];
       }
     );
+    queryform.resetForm();
   }
 
   fetchPolicy() {
