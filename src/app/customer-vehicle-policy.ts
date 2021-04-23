@@ -3,7 +3,7 @@ import { User } from "./user";
 import { Vehicle } from "./vehicle";
 
 export class CustomerVehiclePolicy {
-    //customerVehiclePolicyId: number;
+    customerVehiclePolicyId: number;
     startDate: String;
     endDate: String;
     coverageAmount: number;

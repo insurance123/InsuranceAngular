@@ -72,6 +72,7 @@ export class LoginComponent implements OnInit {
         fetchedData=>{
           console.log(fetchedData);
           alert("Admin Logged In Successful");
+          this.router.navigate(['/admindashboard']);
         }
       );
     }

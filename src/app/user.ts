@@ -5,4 +5,5 @@ export class User {
     userPhone: String;
     password:String;    
     dateOfBirth: Date;
+    aadharCard: String;
 }

@@ -26,6 +26,10 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { EditDetailsComponent } from './edit-details/edit-details.component';
 import { UserPoliciesComponent } from './user-policies/user-policies.component';
 import { UserClaimsComponent } from './user-claims/user-claims.component';
+import { ClaimsComponent } from './claims/claims.component';
+import { EditpoliciesComponent } from './editpolicies/editpolicies.component';
+import { PoliciesComponent } from './policies/policies.component';
+import { UserDetailsDtoComponent } from './user-details-dto/user-details-dto.component';
 
 
 @NgModule({
@@ -44,7 +48,11 @@ import { UserClaimsComponent } from './user-claims/user-claims.component';
     UserDashboardComponent,
     EditDetailsComponent,
     UserPoliciesComponent,
-    UserClaimsComponent
+    UserClaimsComponent,
+    ClaimsComponent,
+    EditpoliciesComponent,
+    PoliciesComponent,
+    UserDetailsDtoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
 import { BuyTravelComponent } from './buy-travel/buy-travel.component';
 import { BuyVehicleComponent } from './buy-vehicle/buy-vehicle.component';
+import { ClaimsComponent } from './claims/claims.component';
 import { EditDetailsComponent } from './edit-details/edit-details.component';
+import { EditpoliciesComponent } from './editpolicies/editpolicies.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PaymentComponent } from './payment/payment.component';
+import { PoliciesComponent } from './policies/policies.component';
 import { RegisterComponent } from './register/register.component';
 import { RenewVehicleComponent } from './renew-vehicle/renew-vehicle.component';
 import { UserClaimsComponent } from './user-claims/user-claims.component';
@@ -45,6 +49,18 @@ const routes: Routes = [
   },
   {
     path: "userclaims", component: UserClaimsComponent
+  },
+  {
+    path: "admindashboard",component:AdminComponent
+  },
+  {
+    path: "policies", component: PoliciesComponent
+  },
+  {
+    path: "editpolicies", component: EditpoliciesComponent
+  },
+  {
+    path: "claims", component: ClaimsComponent
   }
 
 ];

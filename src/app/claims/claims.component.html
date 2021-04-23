@@ -1,0 +1,209 @@
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <!-- Navbar Start -->
+    <header class="navbar navbar-fixed">
+        <!-- Navbar Header Start -->
+        <div class="navbar--header">
+            <!-- Logo Start -->
+            <a routerLink="" class="logo">
+                <img src="../../assets/css/admin/img/logo_new.png" alt="" width="60%">
+                <!-- <h3 class="page--title h3">LTI Insurance</h3> -->
+            </a>
+
+            <!-- Logo End -->
+
+            <!-- Sidebar Toggle Button Start -->
+            <a href="#" class="navbar--btn" data-toggle="sidebar" title="Toggle Sidebar">
+                <i class="fa fa-bars"></i>
+            </a>
+            <!-- Sidebar Toggle Button End -->
+        </div>
+        <!-- Navbar Header End -->
+
+        <!-- Sidebar Toggle Button Start -->
+        <a href="#" class="navbar--btn" data-toggle="sidebar" title="Toggle Sidebar">
+            <i class="fa fa-bars"></i>
+        </a>
+        <!-- Sidebar Toggle Button End -->
+
+        <!-- Navbar Search Start -->
+        <!-- Navbar Search End -->
+
+        <div class="navbar--nav ml-auto">
+            <ul class="nav">
+
+
+                <!-- Nav Language Start -->
+                <!-- Nav Language End -->
+
+                <!-- Nav User Start -->
+                <li class="nav-item dropdown nav--user online">
+                    <a href="#" class="nav-link" data-toggle="dropdown">
+                        <img src="assets/img/avatars/01_80x80.png" alt="" class="rounded-circle">
+                        <span>Admin</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-divider"></li>
+                        <li><a href="#"><i class="fa fa-power-off" (click)="logout()"></i>Logout</a></li>
+                    </ul>
+                </li>
+                <!-- Nav User End -->
+            </ul>
+        </div>
+    </header>
+    <!-- Navbar End -->
+
+    <!-- Sidebar Start -->
+    <!-- Sidebar Start -->
+    <aside class="sidebar" data-trigger="scrollbar">
+        <!-- Sidebar Profile Start -->
+        <!-- Sidebar Profile End -->
+
+        <!-- Sidebar Navigation Start -->
+        <div class="sidebar--nav">
+            <ul>
+                <li>
+                    <ul>
+                        <li class="active open">
+                            <a href="#">
+
+                                <span>Admin</span>
+                            </a>
+
+                            <ul>
+                                <li>
+                                    <a routerLink="/admindashboard">Dashboard</a>
+                                </li>
+                                <li><a routerLink="/policies">Policies</a></li>
+                                <li><a routerLink="/editpolicies">Edit Policies</a></li>
+                                <li><a routerLink="/claims">Claims</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+            </ul>
+        </div>
+        <!-- Sidebar Navigation End -->
+
+        <!-- Sidebar Widgets Start -->
+        <!-- Sidebar Widgets End -->
+    </aside>
+    <!-- Sidebar End -->
+
+    <!-- Main Container Start -->
+    <main class="main--container">
+        <!-- Page Header Start -->
+        <section class="page--header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <!-- Page Title Start -->
+                        <h2 class="page--title h5">Claims</h2>
+                        <!-- Page Title End -->
+
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a routerLink="/admindashboard">Admin</a></li>
+                            <li class="breadcrumb-item active"><span>Claims</span></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- Page Header End -->
+
+        <!-- Main Content Start -->
+        <section class="main--content">
+
+
+            <div class="panel">
+                <!-- Records List Start -->
+                <div class="records--list" data-title="Vehicle Claims Listing">
+                    <table id="recordsListView">
+                        <thead>
+                            <tr>
+                                <th>Claim ID</th>
+                                <th>Policy ID</th>
+                                <th>Claim Date</th>
+                                <th>Amount</th>
+                                <th>Document proof</th>
+                                <th>Status</th>
+                                <th class="not-sortable">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of claims[0]">
+                                <td>{{c.claimId}}</td>
+                                <td>{{c.customerVehiclePolicy.customerVehiclePolicyId}}</td>
+                                <td>{{c.claimDate}}</td>
+                                <td>{{c.claimAmount}}</td>
+                                <td><a href="../../assets/uploads/proof-1101Mini Project II - PhoneBook.pdf" class="btn btn-outline-info btn-sm mb-3" target="_blank">View</a></td>
+                                <td>{{c.claimStatus}}</td>
+                                <td>
+                                    <div class="col mb-1">
+                                        <button class="btn btn-rounded btn-success btn-sm mb-3" (click)="updateVehicleStatus(c.claimId,'ACCEPTED')">Approve</button>
+
+                                        <button class="btn btn-rounded btn-danger btn-sm mb-3" (click)="updateVehicleStatus(c.claimId,'REJECTED')">Reject</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Records List End -->
+            </div>
+
+            <div class="panel">
+                <!-- Records List Start -->
+                <div class="records--list table-responsive" data-title="Travel Claims Listing">
+                    <table id="recordsListView">
+                        <thead>
+                            <tr>
+                                <th>Claim ID</th>
+                                <th>Policy ID</th>
+                                <th>Claim Date</th>
+                                <th>Amount</th>
+                                <th>Document proof</th>
+                                <th>Status</th>
+                                <th class="not-sortable">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of travelClaims[0]">
+                                <td>{{c.claimId}}</td>
+                                <td>{{c.customerTravelPolicy.customerTravelPolicyId}}</td>
+                                <td>{{c.claimDate}}</td>
+                                <td>{{c.claimAmount}}</td>
+                                <td><a href="../../assets/uploads/proof-1101Case Study - General Insurance.pdf" class="btn btn-outline-info btn-sm mb-3" target="_blank">View</a></td>
+                                <td>{{c.claimStatus}}</td>
+                                <td>
+                                    <div class="col mb-1">
+                                        <button class="btn btn-rounded btn-success btn-sm mb-3" (click)="updateTravelStatus(c.claimId,'ACCEPTED')">Approve</button>
+
+                                        <button class="btn btn-rounded btn-danger btn-sm mb-3" (click)="updateTravelStatus(c.claimId,'REJECTED')">Reject</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Records List End -->
+            </div>
+        </section>
+        <!-- Main Content End -->
+
+        <!-- Main Footer Start -->
+
+        <!-- Main Footer End -->
+    </main>
+    <!-- Main Container End -->
+</div>
+<!-- Wrapper End -->
