@@ -39,11 +39,14 @@ export class BuyVehicleComponent implements OnInit {
   selectedPolicy:Policy = new Policy();
   calculatedCoverage:number = 100000;
   document;
+  aClass:string = "hide";
+
   constructor(private service:VehicleInsuranceService, private router:Router, private userService:UserService, private documentService: DocumentUploadService) { }
 
   ngOnInit(): void {
     // Check whether user is signed in
     this.userId = localStorage.getItem('customerId');
+    
    
   }
 
@@ -51,8 +54,13 @@ export class BuyVehicleComponent implements OnInit {
     this.Step2 = false;
     this.Step3 = false;
     this.Step1 = true;
+    this.Step4 = false;
+    this.Step5 = false;
+    
   }
-
+  showState(){
+    this.vehicle.registrationState = this.vehicle.registrationNumber.slice(0,4);
+  }
   public showForm2 () {
     this.Step1 = false;
     this.Step3 = false;
@@ -202,17 +210,30 @@ addVehicle() {
 addInsurance() {
   this.vehicle.vehicleId = this.vehicleId;
   // this.addVehicle();
-  this.cvp.startDate = "2021-04-20"; //Get today's date
+  this.cvp.startDate = new Date(); //Get today's date
     if(this.selectedPolicy.duration == 1) {
-      this.cvp.endDate = "2022-04-20";
+      var year = new Date(this.cvp.startDate).getFullYear();
+      var month = new Date(this.cvp.startDate).getMonth();
+      var day = new Date(this.cvp.startDate).getDate();
+      var date = new Date(year + 1, month, day);
+      this.cvp.endDate = date;
+      console.log(this.cvp.endDate);
       this.calculatedCoverage = 100000;
     }
     else if(this.selectedPolicy.duration == 3) {
-      this.cvp.endDate = "2024-04-20";
+      var year = new Date(this.cvp.startDate).getFullYear();
+      var month = new Date(this.cvp.startDate).getMonth();
+      var day = new Date(this.cvp.startDate).getDate();
+      var date = new Date(year + 3, month, day);
+      this.cvp.endDate = date;
       this.calculatedCoverage = 300000;
     }
     else if(this.selectedPolicy.duration == 5) {
-      this.cvp.endDate = "2026-04-20";
+      var year = new Date(this.cvp.startDate).getFullYear();
+      var month = new Date(this.cvp.startDate).getMonth();
+      var day = new Date(this.cvp.startDate).getDate();
+      var date = new Date(year + 3, month, day);
+      this.cvp.endDate = date;
       this.calculatedCoverage = 500000;
     }
     this.cvp.coverageAmount = this.calculatedCoverage;

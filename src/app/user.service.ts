@@ -6,6 +6,7 @@ import { Claims } from './claims';
 import { CustomerTravelPolicy } from './customer-travel-policy';
 import { CustomerVehiclePolicy } from './customer-vehicle-policy';
 import { LoginStatus } from './login-status';
+import { Resetpassword } from './resetpassword';
 import { TravelClaims } from './travel-claims';
 import { User } from './user';
 import { UserDetailsDto } from './user-details-dto';
@@ -68,5 +69,18 @@ export class UserService {
   renewMotor(policyId:number):Observable<any> {
     return this.httpClient.post<any>('http://localhost:9090/renewMotorInsurance?cvpId='+policyId,policyId);
   }
-
+  generateotp(userEmail:String){
+    return this.httpClient.get("http://localhost:9090/forgotpassword?userEmail="+userEmail, {responseType:'text'});
+  }
+  
+  resetPassword(userEmail:Resetpassword){
+    return this.httpClient.put("http://localhost:9090/updatecustomerpassword", userEmail, {responseType:'text'})
+  
+  }
+  
+  findcustomerbyemail(userEmail:String): Observable<User>{
+    return this.httpClient.get<User>("http://localhost:9090/findcustomerbyemail?userEmail="+userEmail);
+  
+  }
+  
 }

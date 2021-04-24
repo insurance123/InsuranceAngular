@@ -2,8 +2,8 @@
 <div class="form-body" class="container-fluid">
     <div class="website-logo">
         <a routerLink="/">
-            <div class="logo">
-                <img class="logo-size" src="../../assets/images/logo-light.svg" alt="">
+            <div>
+                <img class="logo-size" src="../../assets/images/logo_new.png" alt="">
             </div>
         </a>
     </div>
@@ -31,11 +31,11 @@
                             <button id="submit" type="submit" class="ibtn">Register</button>
                         </div>
                     </form> -->
-                    <form role="form" #regForm="ngForm" (ngSubmit)="register(regForm)">
-                        <input type="text" #nm="ngModel" id="userName" class="form-control" name="userName" placeholder="eg.John Doe" minlength="4" required #userName=ngModel [(ngModel)] = user.userName>
+                    <form role="form" #regForm="ngForm" (ngSubmit)="register(regForm)" name="regForm">
+                        <input type="text" #nm="ngModel" id="userName" class="form-control" name="userName" placeholder="eg.John Doe" minlength="4" pattern="^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)" required #userName=ngModel [(ngModel)] = user.userName>
                             <div *ngIf="nm.invalid && (nm.touched || nm.dirty)" style="color: red;border: red;">
                                 <div *ngIf=nm.errors.required>Name is required</div>
-                                <div *ngIf=nm.errors.pattern>Name msut contain atleast 4 character</div>
+                                <div *ngIf=nm.errors.pattern>Name must contain letters</div>
                                 <div *ngIf=nm.errors.minlength>Name must contain atleast 4 character</div> 
                             </div><br>
 
@@ -52,7 +52,7 @@
                                 <div *ngIf="pwd.errors.pattern">Invalid password</div>
                             </div>
                         <div class="form-button">
-                            <button id="submit" type="submit" class="ibtn">Register</button>
+                            <button id="submit" type="submit"  [disabled]="!regForm.valid">Register</button>
                         </div>
                     </form>
                 </div>

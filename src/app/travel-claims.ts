@@ -1,3 +1,5 @@
+import { CustomerTravelPolicy } from "./customer-travel-policy";
+
 export class TravelClaims {
     claimId:number;
 	claimDate: Date;

@@ -1,8 +1,8 @@
 <div class="form-body" class="container-fluid">
     <div class="website-logo">
         <a routerLink="/">
-            <div class="logo">
-                <img class="logo-size" src="../../assets/images/logo-dark.svg" alt="Insurance Logo">
+            <div >
+                <img class="logo-size" src="../../assets/images/logo_new.png" alt="Insurance Logo">
             </div>
         </a>
     </div>
@@ -22,9 +22,21 @@
                         <a routerLink="/login" class="active">Login</a><a routerLink="/register">Register</a>
                     </div>
                     <form #loginForm="ngForm" (submit)="login(loginForm)">
-                        <input class="form-control" type="text" name="username" placeholder="E-mail Address" required #email="ngModel" [(ngModel)]="userEmail">
-                        <input class="form-control" type="password" name="password" placeholder="Password" required #password="ngModel" [(ngModel)]="userPassword">
-                        
+                        <input class="form-control" type="text" name="username"  pattern="[a-z0-9._%+-]+@[a-z0-9-]+.[a-z]{2,4}$" placeholder="E-mail Address" required #email="ngModel" [(ngModel)]="userEmail">
+                        <div *ngIf="email.invalid && (email.touched||email.dirty)" style="color: red;border: red;">
+                            <div *ngIf="email.errors.required">email is required</div>
+                            <div *ngIf="email.errors.pattern">Invalid email</div>
+                        </div><br>
+                        <!-- <input class="form-control" type="password" name="password" placeholder="Password" required #password="ngModel" [(ngModel)]="userPassword"> -->
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input matinput type="password" [type]="hide ? 'password':'text'" class="form-control"  name="password" placeholder="Password" required #password="ngModel" [(ngModel)]="userPassword" style="width: 100%;"/>
+                            <span id="visibility"><i class="fa fa-eye" matSuffix (click)="hide = !hide">
+                                {{hide ? '':''}}
+                            </i>
+                        </span>
+                        </mat-form-field>
+
                         <div class="inline-el-holder">
                             <span class="inline-el">
                                 <div class="rad-with-details">
@@ -39,7 +51,7 @@
                         </div>
                         
                         <div class="form-button">
-                            <button id="submit" type="submit" class="ibtn">Login</button>
+                            <button id="submit" type="submit" [disabled]="!loginForm.valid">Login</button>
                         </div>
                     </form>
                 </div>

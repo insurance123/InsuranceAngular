@@ -28,12 +28,21 @@ export class ClaimsComponent implements OnInit {
 
     this.service.fetchTravelClaims().subscribe(
       fetchedClaims=>{
-        console.log(fetchedClaims);
-        this.travelClaims.push(fetchedClaims);
+        //console.log(fetchedClaims[0]);
+        for(let i in fetchedClaims){
+          console.log(fetchedClaims[i]);
+          this.travelClaims.push(fetchedClaims[i]);
+        }
+        //this.travelClaims.push(fetchedClaims);
+        console.log(this.travelClaims);
       }
     );
   }
 
+  logout() {
+    localStorage.removeItem("adminId");
+    this.router.navigate(['']);
+  }
 
   updateVehicleStatus(claimId:number, status:String){
     console.log(claimId,status);

@@ -1,6 +1,6 @@
 export class LoginStatus {
-    status: string;
-   message: string;
+    userStatus: String;
    userId: number;
-   name: string;
+   userName: String;
+   userEmail: String;
 }

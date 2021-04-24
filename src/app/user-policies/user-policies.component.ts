@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { CustomerTravelPolicy } from '../customer-travel-policy';
 import { CustomerVehiclePolicy } from '../customer-vehicle-policy';
 import { User } from '../user';
@@ -18,7 +20,7 @@ export class UserPoliciesComponent implements OnInit {
   claimstatus:String;
   ifClicked;
   user:User =new User();
-  constructor(private service:UserService) { }
+  constructor(private service:UserService, private router:Router) { }
   vehiclepolicies:Array<CustomerVehiclePolicy> = new Array<CustomerVehiclePolicy>();
   travelpolicies:Array<CustomerTravelPolicy> = new Array<CustomerTravelPolicy>();
   ngOnInit(): void {
@@ -56,13 +58,22 @@ export class UserPoliciesComponent implements OnInit {
   renewMotor(policy:CustomerVehiclePolicy){
     this.userId = localStorage.getItem('customerId');
     console.log(policy);
-    policy.startDate="2021-04-23";
-    policy.endDate="2022-04-22";
+    policy.startDate=new Date();
+    policy.endDate=new Date();
     policy.customerId=this.userId;
     
     this.service.renewMotor(policy.customerVehiclePolicyId).subscribe(
       renew => {
         console.log(renew);
+        Swal.fire(
+          {
+            title: "Policy Renewed",
+            text: "Your policy has been successfully renewed",
+            icon: "success",
+            confirmButtonText: "Okay"
+          }
+        );
+        this.router.navigate(['/userpolicies']);
       }
     );
   }

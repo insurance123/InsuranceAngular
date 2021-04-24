@@ -14,7 +14,7 @@ export class UserClaimsComponent implements OnInit {
   user:User=new User();
   vehicleclaims:Array<Claims> = new Array<Claims>();
   travelclaims:Array<TravelClaims> = new Array<TravelClaims>();
-
+  
   constructor(private service:UserService) { }
 
   ngOnInit(): void {
@@ -22,19 +22,24 @@ export class UserClaimsComponent implements OnInit {
     this.service.getUserDetails(this.userId).subscribe(
       UserDetails => {
         this.user = UserDetails;
-        console.log(UserDetails);
+        //console.log(UserDetails);
       }
     );
     this.service.getMotorClaims(this.userId).subscribe(
       motorclaims => {
-        this.vehicleclaims.push(motorclaims);
-        console.log(this.vehicleclaims[0]);
+        for(let i in motorclaims){
+          this.vehicleclaims.push(motorclaims[i]);
+        console.log(motorclaims[i]);
+        }
       }
     );
     this.service.getTravelClaims(this.userId).subscribe(
       travelClaims => {
-        this.travelclaims.push(travelClaims);
-        console.log(this.travelclaims[0]);
+        for(let i in travelClaims){
+          this.travelclaims.push(travelClaims[i]);
+          console.log(this.travelclaims[i]);
+        }
+        
       }
     );
   }

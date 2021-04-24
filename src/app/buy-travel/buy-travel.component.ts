@@ -42,8 +42,7 @@ export class BuyTravelComponent implements OnInit {
   minDateofBirth=new Date(1950, 0, 1);
   maxDateofBirth=new Date(2002, 11, 25);
 
-   mindob = new Date().getFullYear()-78;
-   maxdob = new Date().getFullYear()-18;
+  
   constructor( private service:TravelInsuranceService, private router:Router, private userService:UserService) { }
 
   ngOnInit(): void {
@@ -171,6 +170,10 @@ export class BuyTravelComponent implements OnInit {
   noOfDays: number;
   Difference_In_Days:number;
   userAge:number;
+  mindob = new Date().getFullYear()-78;
+  maxdob = new Date().getFullYear()-18;
+  startDOB = new Date(this.mindob-1,12,1);
+  endDOB = new Date(this.maxdob,11,31);
   //getYear:Date;
   calculatePremium(){
     let d1 = new Date(this.travel.endDate);
@@ -184,8 +187,8 @@ export class BuyTravelComponent implements OnInit {
     //this.userAge = Math.floor(this.userAge);
     //console.log(this.age);
     
-    console.log(new Date(this.maxdob));
-
+    console.log(this.startDOB);
+    console.log(this.endDOB);
     this.service.getPolicyFor("Travel").subscribe(
       fetchedPolicy=>{
         this.policy = fetchedPolicy[0];

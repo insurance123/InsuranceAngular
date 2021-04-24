@@ -76,7 +76,7 @@
                   Start Date</div>
                 <div class="vertical-space"></div>
                 <!-- <input  matInput  [matDatepicker]="startDate"  required #startDate="ngModel" [(ngModel)]="travel.startDate"> -->
-                <input  matInput  [matDatepicker]="startDate" [min]="minDate" [max]="maxDate" required #start="ngModel" [(ngModel)]="travel.startDate" [ngModelOptions]="{standalone: true}">
+                <input  matInput  [matDatepicker]="startDate" [min]="start_date" required #start="ngModel" [(ngModel)]="travel.startDate" [ngModelOptions]="{standalone: true}">
                 <mat-datepicker-toggle [for]="startDate" matSuffix></mat-datepicker-toggle>
                 <mat-datepicker #startDate></mat-datepicker>
 
@@ -139,7 +139,7 @@
                 <div class="label">Date of Birth: </div>
                 <div class="vertical-space"></div>
                 <!-- <input type="date" matInput name="DOB" required #DOB="ngModel" [(ngModel)]="user.dateOfBirth"> -->
-                <input  matInput  [matDatepicker]="DOB" [min]="minDateofBirth" [max]="maxDateOfBirth" #dateofbirth="ngModel" [(ngModel)]="user.dateOfBirth" [ngModelOptions]="{standalone: true}"> 
+                <input  matInput  [matDatepicker]="DOB" [min]="startDOB" [max]="endDOB" #dateofbirth="ngModel" [(ngModel)]="user.dateOfBirth" [ngModelOptions]="{standalone: true}"> 
                 <mat-datepicker-toggle [for]="DOB" matSuffix></mat-datepicker-toggle>
                 <mat-datepicker #DOB></mat-datepicker>
               </mat-form-field>

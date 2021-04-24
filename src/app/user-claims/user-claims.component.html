@@ -5,9 +5,9 @@
         <!-- Navbar Header Start -->
         <div class="navbar--header">
             <!-- Logo Start -->
-            <a href="userdashboard.html" class="logo">
+            <a routerLink="" class="logo">
                 <!-- <h3 class="page--title h3">LTI Insurance</h3> -->
-                <img src="assets/img/logo.png" alt="">
+                <img src="../../assets/images/logo_new.png" alt="" width=60%>
             </a>
             <!-- Logo End -->
 
@@ -117,8 +117,8 @@
                                     </thead>
                                     <tbody>
                                         <!-- Table Row Start -->
-                                        <tr *ngFor="let claim of vehicleclaims[0]">  
-                                            <!-- <td>{{claim.claimId}}</td> -->
+                                        <tr *ngFor="let claim of vehicleclaims">  
+                                            <td>{{claim.claimId}}</td>
                                             <td>{{claim.claimDate}}</td>
                                             <td>{{claim.reasonOfClaim}}</td>
                                             <td>{{claim.claimStatus}}</td>
@@ -142,6 +142,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
+                                
                                 <table class="table style--2">
                                     <thead>
                                         <tr>
@@ -154,7 +155,7 @@
                                     </thead>
                                     <tbody>
                                         <!-- Table Row Start -->
-                                        <tr *ngFor="let claim1 of travelclaims[0]">
+                                        <tr *ngFor="let claim1 of travelclaims">
                                             <td>{{claim1.claimId}}</td>
                                             <td>{{claim1.claimDate}}</td>
                                             <td>{{claim1.reasonOfClaim}}</td>

@@ -7,7 +7,7 @@
                 <!-- Logo Start -->
                 <a href="userdashboard.html" class="logo">
                     <!-- <h3 class="page--title h3">LTI Insurance</h3> -->
-                    <img src="../../assets/img/logo.png" alt="">
+                    <img src="../../assets/images/logo_new.png" alt="" width="60%">
                 </a>
                 <!-- Logo End -->
 
@@ -168,11 +168,86 @@
                                                     </div>
                                                     </div>
                                                 </div>
-                                                <!--  -->
+                                                <!-- (click)="renewMotor(policy)" -->
                                                 <td>
-                                                    <button class="label label-success" (click)="renewMotor(policy)">Renew</button>
+                                                    <button class="label label-success"  data-toggle="modal" data-target="#paymentModalCenter">Renew</button>
                                                 </td>
-                                                
+                                                <!-- Payment Modal -->
+                                                <div class="modal fade" id="paymentModalCenter" tabindex="-1" role="dialog" aria-labelledby="paymentModalCenter" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                          <h5 class="modal-title" id="exampleModalLongTitle">Payment</h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form role="form" >
+                                                                <div class="form-group"> 
+                                                                    <label for="username">
+                                                                        <h6>Card Owner</h6>
+                                                                    </label> 
+                                                                    <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> 
+                                                                </div>
+                                
+                                                                <div class="form-group"> 
+                                                                    <label for="cardNumber">
+                                                                        <h6>Card number</h6>
+                                                                    </label>
+                                                                    <div class="input-group"> 
+                                                                        <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control " required pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$">
+                                                                        <!-- <div *ngIf="credno.invalid && (credno.touched||credno.dirty)" style="color: red;border: red;">
+                                                                          <div *ngIf="credno.errors.required">Registration Number is required</div>
+                                                                          <div *ngIf="credno.errors.pattern">Invalid Registration Number</div>
+                                                                      </div> -->
+                                                                      <br>
+                                                                        <div class="input-group-append"> 
+                                                                            <span class="input-group-text text-muted"> 
+                                                                                <i class="fab fa-cc-visa mx-1"></i> 
+                                                                                <i class="fab fa-cc-mastercard mx-1"></i> 
+                                                                                <i class="fab fa-cc-amex mx-1"></i> 
+                                                                            </span> 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                
+                                                                <div class="row">
+                                                                    <div class="col-sm-8">
+                                                                        <div class="form-group"> 
+                                                                            <label>
+                                                                                <span class="hidden-xs">
+                                                                                    <h6>Expiration Date</h6>
+                                                                                </span>
+                                                                            </label>
+                                                                            <div class="input-group"> 
+                                                                                <input type="number" placeholder="MM" name="" class="form-control" required> 
+                                                                                <input type="number" placeholder="YY" name="" class="form-control" required> 
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- <div *ngFor="let policy of policies">
+                                                                        <div>{{policy}}</div> -->
+                                                                    <!-- </div> -->
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-group mb-4"> 
+                                                                            <label matTooltip="Three digit CV code on the back of your card">
+                                                                                <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                                                            </label> <input type="text" required class="form-control"> 
+                                                                        </div>
+                                                                    </div>
+                                
+                                                                </div>
+                        
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                          <button type="button" class="btn btn-primary" (click)="renewMotor(policy)" data-dismiss="modal">Save changes</button>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
                                             </tr>
 
                                         </tbody>
@@ -215,18 +290,19 @@
                                                 <!-- <td><button class="btn btn-rounded btn-success btn-sm mb-3">Published</button></td> -->
                                                 <td>
                                                     <!-- <button class="label label-info" (click)="applyClaim()">Claim</button> -->
-                                                    <button *ngIf="ifClicked" class="label label-info" data-toggle="modal" data-target="#exampleModalCenter"> Claim</button>  
-                                                    <p *ngIf="claimstatus === 'PENDING'; else second">PENDING</p>
-                                                    <ng-template #second>
-                                                        <p *ngIf="claimstatus === 'ACCEPTED';else third">ACCEPTED</p>
+                                                    <button  class="label label-info" data-toggle="modal" data-target="#exampleModalCenter"> Claim</button>  
+                                                    <!-- <p *ngIf="policy1.claimstatus == 'PENDING'">PENDING</p> -->
+                                                    <!-- <ng-template #second>
+                                                        <p *ngIf="policy1.claimstatus == 'ACCEPTED'">ACCEPTED</p>
                                                     </ng-template>
                                                     <ng-template #third>
                                                         <p>REJECTED</p>
-                                                    </ng-template>
+                                                    </ng-template> -->
                                                     <!-- <p *ngIf="claimstatus==ACCEPTED">ACCEPTED</p> -->
                                                     <!-- <p *ngIf="claimstatus==REJECTED">REJECTED</p> -->
                                                 </td>
-                                                <!-- Modal -->
+                                                <td><button class="label label-success"  data-toggle="modal" data-target="#travelPaymentModal">Renew</button></td>
+                                                <!-- Claim Modal -->
                                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
@@ -259,6 +335,82 @@
                                                 </div>
                                                 <!--  -->
 
+                                                <!-- Payment Modal -->
+                                                <div class="modal fade" id="travelPaymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalCenter" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                          <h5 class="modal-title" id="exampleModalLongTitle">Payment</h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form role="form" >
+                                                                <div class="form-group"> 
+                                                                    <label for="username">
+                                                                        <h6>Card Owner</h6>
+                                                                    </label> 
+                                                                    <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> 
+                                                                </div>
+                                
+                                                                <div class="form-group"> 
+                                                                    <label for="cardNumber">
+                                                                        <h6>Card number</h6>
+                                                                    </label>
+                                                                    <div class="input-group"> 
+                                                                        <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control " required pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$">
+                                                                        <!-- <div *ngIf="credno.invalid && (credno.touched||credno.dirty)" style="color: red;border: red;">
+                                                                          <div *ngIf="credno.errors.required">Registration Number is required</div>
+                                                                          <div *ngIf="credno.errors.pattern">Invalid Registration Number</div>
+                                                                      </div> -->
+                                                                      <br>
+                                                                        <div class="input-group-append"> 
+                                                                            <span class="input-group-text text-muted"> 
+                                                                                <i class="fab fa-cc-visa mx-1"></i> 
+                                                                                <i class="fab fa-cc-mastercard mx-1"></i> 
+                                                                                <i class="fab fa-cc-amex mx-1"></i> 
+                                                                            </span> 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                
+                                                                <div class="row">
+                                                                    <div class="col-sm-8">
+                                                                        <div class="form-group"> 
+                                                                            <label>
+                                                                                <span class="hidden-xs">
+                                                                                    <h6>Expiration Date</h6>
+                                                                                </span>
+                                                                            </label>
+                                                                            <div class="input-group"> 
+                                                                                <input type="number" placeholder="MM" name="" class="form-control" required> 
+                                                                                <input type="number" placeholder="YY" name="" class="form-control" required> 
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- <div *ngFor="let policy of policies">
+                                                                        <div>{{policy}}</div> -->
+                                                                    <!-- </div> -->
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-group mb-4"> 
+                                                                            <label matTooltip="Three digit CV code on the back of your card">
+                                                                                <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                                                            </label> <input type="text" required class="form-control"> 
+                                                                        </div>
+                                                                    </div>
+                                
+                                                                </div>
+                        
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                          <button type="button" class="btn btn-primary" (click)="renewMotor(policy)">Save changes</button>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
                                                 
                                                 
                                             </tr>

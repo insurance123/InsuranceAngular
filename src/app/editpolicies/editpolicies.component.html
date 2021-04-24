@@ -45,7 +45,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="profile.html"><i class="far fa-user"></i>Profile</a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a href="#"><i class="fa fa-power-off" (click)="logout()"></i>Logout</a></li>
+                        <li><a routerLink=""><i class="fa fa-power-off" (click)="logout()"></i>Logout</a></li>
                     </ul>
                 </li>
                 <!-- Nav User End -->
@@ -149,21 +149,24 @@
                                     <span class="label-text col-md-3 col-form-label">Policy Name: *</span>
 
                                     <div class="col-md-9">
-                                        <input type="text" placeholder="Policy Name" name="policyName" class="form-control" #policyName="ngModel" [(ngModel)]="policy.policyName" required>
+                                        <input type="text" placeholder="Policy Name" name="policyName" class="form-control" #policyName="ngModel" [(ngModel)]="policy.policyName" required pattern="^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)">
+                                        <div *ngIf="policyName.invalid && (policyName.touched || policyName.dirty)" style="color: red;border: red;">
+                                            <div *ngIf=policyName.errors.required>Policy Name is required</div>
+                                            <div *ngIf=policyName.errors.pattern>Policy Name must contain letters</div>
+                           
+                                        </div><br>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <span class="label-text col-md-3 col-form-label">Policy Type</span>
                                     <div class="btn-group col-md-9">
-                                        <!-- <button class="btn btn-rounded btn-primary dropdown-toggle" data-toggle="dropdown">Choose</button>
-
-                                        <div class="dropdown-menu col-md-3" data-x-placement="bottom-start">
-                                            <a href="#" class="dropdown-item">Two-Wheeler</a>
-                                            <a href="#" class="dropdown-item">Four-Wheeler </a>
-                                            <a href="#" class="dropdown-item">Travel</a>
-                                        </div> -->
-                                        <input type="text" name="policyName" class="form-control" #policyName="ngModel" [(ngModel)]="policy.policyFor" placeholder="Bike/Car/Travel" required>
+                                
+                                        <input type="text" name="policyName" class="form-control" pattern="Bike|Car|Travel" #policyType="ngModel" [(ngModel)]="policy.policyFor" placeholder="Bike/Car/Travel" required>
+                                        <div *ngIf="policyType.invalid && (policyType.touched || policyType.dirty)" style="color: red;border: red;">
+                                            <div *ngIf=policyType.errors.required>Policy Name is required</div>
+                                            <div *ngIf=policyType.errors.pattern>Invalid Policy Type</div>
+                                        </div>
                                         
                                     </div>
                                 </div>
@@ -172,7 +175,12 @@
                                     <span class="label-text col-md-3 col-form-label">Duration*</span>
 
                                     <div class="col-md-9">
-                                        <input type="text" placeholder="Duration" name="number" class="form-control" #duration="ngModel" [(ngModel)]="policy.duration" required>
+                                        <input type="text" placeholder="Duration" name="number" class="form-control" #duration="ngModel" [(ngModel)]="policy.duration" required pattern="[0-9]">
+                                        <div *ngIf="duration.invalid && (duration.touched || duration.dirty)" style="color: red;border: red;">
+                                        <div *ngIf=duration.errors.required>Policy Duration is required</div>
+                                        <div *ngIf=duration.errors.pattern>Policy Duration must contain numbers</div>
+                       
+                                    </div><br>
                                     </div>
                                 </div>
 
@@ -180,7 +188,12 @@
                                     <span class="label-text col-md-3 col-form-label">Amount</span>
 
                                     <div class="col-md-9">
-                                        <input type="text" placeholder="Premium Amount" name="Amount" class="form-control" #amount="ngModel" [(ngModel)]="policy.premiumAmount">
+                                        <input type="number" placeholder="Premium Amount" name="Amount" class="form-control" #amount="ngModel" [(ngModel)]="policy.premiumAmount" required pattern="[0-9]">
+                                        <div *ngIf="amount.invalid && (amount.touched || amount.dirty)" style="color: red;border: red;">
+                                            <div *ngIf=amount.errors.required>Policy Amount is required</div>
+                                            <div *ngIf=amount.errors.pattern>Policy Amount must contain numbers</div>
+                           
+                                        </div><br>
                                     </div>
                                 </div>
 

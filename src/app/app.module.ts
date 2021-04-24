@@ -31,6 +31,10 @@ import { EditpoliciesComponent } from './editpolicies/editpolicies.component';
 import { PoliciesComponent } from './policies/policies.component';
 import { UserDetailsDtoComponent } from './user-details-dto/user-details-dto.component';
 
+import { AuthguardServiceService } from './authguard-service.service';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +56,9 @@ import { UserDetailsDtoComponent } from './user-details-dto/user-details-dto.com
     ClaimsComponent,
     EditpoliciesComponent,
     PoliciesComponent,
-    UserDetailsDtoComponent
+    UserDetailsDtoComponent,
+    ResetpasswordComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -66,9 +72,10 @@ import { UserDetailsDtoComponent } from './user-details-dto/user-details-dto.com
     MatSelectModule,
     MatTableModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+   
   ],
-  providers: [],
+  providers: [ AuthguardServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

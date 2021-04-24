@@ -236,3 +236,11 @@ color: #e42125;
 font-size: medium;
 font-weight: bold;
 }
+
+.show {
+  pointer-events: auto;
+}
+ 
+.hide {
+  pointer-events: none;
+}

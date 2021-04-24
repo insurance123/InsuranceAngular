@@ -4,8 +4,8 @@ import { Vehicle } from "./vehicle";
 
 export class CustomerVehiclePolicy {
     customerVehiclePolicyId: number;
-    startDate: String;
-    endDate: String;
+    startDate: Date;
+    endDate: Date;
     coverageAmount: number;
     premiumAmount:number;
     policyId :number;

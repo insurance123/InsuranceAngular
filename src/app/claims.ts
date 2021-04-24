@@ -7,5 +7,5 @@ export class Claims {
 	proofOfClaim:String ;
 	claimStatus: String;
 	claimAmount:number;
-    customerVehiclePolicy: CustomerVehiclePolicy;
+    customerVehiclePolicyId: number;
 }

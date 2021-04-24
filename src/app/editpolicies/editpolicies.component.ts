@@ -18,6 +18,9 @@ export class EditpoliciesComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  logout() {
+    localStorage.removeItem("adminId");
+  }
 
 
   addPolicy(policyForm:NgForm) {

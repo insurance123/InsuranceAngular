@@ -15,6 +15,11 @@ import { RenewVehicleComponent } from './renew-vehicle/renew-vehicle.component';
 import { UserClaimsComponent } from './user-claims/user-claims.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserPoliciesComponent } from './user-policies/user-policies.component';
+import { AuthenticationGuard } from './authentication.guard';
+import { Forgotpassword } from './forgotpassword';
+import { Resetpassword } from './resetpassword';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 const routes: Routes = [
   {
@@ -39,28 +44,34 @@ const routes: Routes = [
     path: "buytravel", component: BuyTravelComponent
   },
   {
-    path: "userdashboard", component: UserDashboardComponent
+    path: "userdashboard", component: UserDashboardComponent, canActivate:[AuthenticationGuard]
   },
   {
-    path: "editdetails", component: EditDetailsComponent
+    path: "editdetails", component: EditDetailsComponent, canActivate:[AuthenticationGuard]
   },
   {
-    path: "userpolicies", component: UserPoliciesComponent
+    path: "userpolicies", component: UserPoliciesComponent,canActivate:[AuthenticationGuard]
   },
   {
-    path: "userclaims", component: UserClaimsComponent
+    path: "userclaims", component: UserClaimsComponent,canActivate:[AuthenticationGuard]
   },
   {
-    path: "admindashboard",component:AdminComponent
+    path: "admindashboard",component:AdminComponent, canActivate:[AuthenticationGuard]
   },
   {
-    path: "policies", component: PoliciesComponent
+    path: "policies", component: PoliciesComponent, canActivate:[AuthenticationGuard]
   },
   {
-    path: "editpolicies", component: EditpoliciesComponent
+    path: "editpolicies", component: EditpoliciesComponent, canActivate:[AuthenticationGuard]
   },
   {
-    path: "claims", component: ClaimsComponent
+    path: "claims", component: ClaimsComponent, canActivate:[AuthenticationGuard]
+  },
+  {
+    path: "forgotpassword", component: ForgotpasswordComponent
+  },
+  {
+    path: "resetpassword", component: ResetpasswordComponent
   }
 
 ];
