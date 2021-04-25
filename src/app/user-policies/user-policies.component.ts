@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Claims } from '../claims';
 import { CustomerTravelPolicy } from '../customer-travel-policy';
 import { CustomerVehiclePolicy } from '../customer-vehicle-policy';
+import { TravelClaims } from '../travel-claims';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
@@ -23,6 +25,8 @@ export class UserPoliciesComponent implements OnInit {
   constructor(private service:UserService, private router:Router) { }
   vehiclepolicies:Array<CustomerVehiclePolicy> = new Array<CustomerVehiclePolicy>();
   travelpolicies:Array<CustomerTravelPolicy> = new Array<CustomerTravelPolicy>();
+  vehicleclaims:Array<Claims> = new Array<Claims>();
+  travelclaims:Array<TravelClaims> = new Array<TravelClaims>();
   ngOnInit(): void {
 
     this.userId = localStorage.getItem('customerId');
@@ -34,6 +38,20 @@ export class UserPoliciesComponent implements OnInit {
     );
     this.service.getMotorPolicies(this.userId).subscribe(
       motorPolicies => {
+        this.service.getMotorClaims(this.userId).subscribe(
+          motorclaims => {
+            for(let i in motorclaims){
+              this.vehicleclaims.push(motorclaims[i]);
+              for(let j in this.vehiclepolicies){
+                if(motorclaims[i].customerVehiclePolicyId == motorPolicies[j].customerVehiclePolicyId){
+                  motorPolicies[j].claimStatus = true;
+                  console.log(motorPolicies)
+                }
+              }
+            console.log(motorclaims[i]);
+            }
+          }
+        );
         this.vehiclepolicies.push(motorPolicies);
         console.log(this.vehiclepolicies[0]);
       }
@@ -42,6 +60,17 @@ export class UserPoliciesComponent implements OnInit {
       travelPolicies => {
         this.travelpolicies.push(travelPolicies);
         console.log(this.travelpolicies[0]);
+      }
+    );
+
+    
+    this.service.getTravelClaims(this.userId).subscribe(
+      travelClaims => {
+        for(let i in travelClaims){
+          this.travelclaims.push(travelClaims[i]);
+          console.log(this.travelclaims[i]);
+        }
+        
       }
     );
 
@@ -98,6 +127,15 @@ export class UserPoliciesComponent implements OnInit {
           this.claimstatus="REJECTED";
         else (motorClaim.claimStatus=="PENDING")
           this.claimstatus="PENDING";
+
+          Swal.fire(
+            {
+              title: "Policy Claimed",
+              text: "Policy Claimed Successfully",
+              icon: "success",
+              confirmButtonText: "Okay"
+            }
+          );
       }
     );
   }

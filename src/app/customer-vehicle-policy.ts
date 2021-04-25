@@ -11,4 +11,5 @@ export class CustomerVehiclePolicy {
     policyId :number;
     customerId: Number;
     vehicleId: number;
+    claimStatus:boolean;
 }

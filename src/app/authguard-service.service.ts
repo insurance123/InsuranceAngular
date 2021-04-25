@@ -10,4 +10,7 @@ export class AuthguardServiceService {
   gettoken(){  
     return !!localStorage.getItem("customerId");  
     }  
+  getAdminToken(){
+    return !!localStorage.getItem("adminId");
+  }
 }

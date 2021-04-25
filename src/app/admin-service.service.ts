@@ -37,4 +37,11 @@ export class AdminServiceService {
   updateTravelStatus(updateStatus:UpdateStatus):Observable<TravelClaims>{
     return this.httpClient.put<TravelClaims>('http://localhost:9090/travelstatus',updateStatus);
   }
+
+  getVehicleClaims():Observable<Claims>{
+    return this.httpClient.get<Claims>('http://localhost:9090/viewAllMotorClaims');
+  }
+  getTravelClaims():Observable<TravelClaims>{
+    return this.httpClient.get<TravelClaims>('http://localhost:9090/viewAllTravelClaims');
+  }
 }

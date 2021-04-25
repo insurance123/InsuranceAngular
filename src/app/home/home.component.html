@@ -59,7 +59,7 @@
                             <!-- dropdown starts-->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Resources </a>
-                                <div class="dropdown-menu dropdown-animate" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="#reviews">Reviews</a> <a class="dropdown-item" href="#features">Features</a> <a class="dropdown-item" href="#cta">Contact</a> </div>
+                                <div class="dropdown-menu dropdown-animate" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="#reviews">Reviews</a>  <a class="dropdown-item" href="#cta">Contact</a> <a class="dropdown-item" href="#features">Features</a> </div>
                             </li>
                             <!-- dropdown ends-->
 
@@ -118,33 +118,33 @@
                         <div class="dtr-form dtr-submit-full">
                             <form id="contactform">
                                 <fieldset>
-                                    <p>
-                                        <input name="name" type="text" placeholder="Name">
-                                    </p>
-                                    <p>
-                                        <input name="number" class="number" type="text" placeholder="Phone">
-                                    </p>
-                                    <p>
-                                        <input name="email" class="required email" type="text" placeholder="Email">
-                                    </p>
-                                    <p class="antispam">Leave this empty: <br />
+                                    <div>
+                                        <input name="name" type="text" placeholder="Name" required #nm="ngModel" [(ngModel)]="queryForm.userName">
+                                    </div><br>
+                                    <div>
+                                        <input name="number" class="required number" type="text" placeholder="Phone" #contact="ngModel" [(ngModel)]="queryForm.phone">
+                                    </div><br>
+                                    <div>
+                                        <input name="email" class="required email" type="text" placeholder="Email" #mail="ngModel" [(ngModel)]="queryForm.email">
+                                    </div><br>
+                                    <div class="antispam">Leave this empty: <br />
                                         <input name="url" />
-                                    </p>
-                                    <p>
+                                    </div>
+                                    <div>
                                         <!-- <select name="subject" class="dtr-select">
                                         <option value="">Select Insurance Type</option>
                                         <option value="2motor">2-Wheeler Insurance</option>
                                         <option value="4motor">4-Wheeler Insurance</option>
                                         <option value="travel">Travel Insurance</option>
                                     </select> -->
-                                    <mat-select class="dropdown" [(value)]='insuranceType' placeholder="Select Type">
-                                        <mat-option value='Bike'>Bike</mat-option>
+                                    <mat-select class="dropdown" [(value)]='insuranceType' placeholder="Select Type" required>
+                                        <mat-option value='Bike' selected>Bike</mat-option>
                                         <mat-option value='Car'>Car</mat-option>
                                         <mat-option value='Travel'>Travel</mat-option>
                                       </mat-select>
             
-                                    </p>
-                                    <button type="submit" class="dtr-btn-round dtr-btn-blue" data-toggle="modal" data-target="#exampleModalCenter" (click)="fetchPolicy()"> Get a quote</button>                                            <!--<div id="result"></div>-->
+                                    </div><br>
+                                    <button type="submit" class="dtr-btn-round dtr-btn-blue" [disabled]="queryForm.email == '' || queryForm.userName=='' || queryForm.phone=='' ||insuranceType==null" data-toggle="modal" data-target="#exampleModalCenter" (click)="fetchPolicy()"> Get a quote</button>                                            <!--<div id="result"></div>-->
                                 </fieldset>
                             </form>
                         </div>
@@ -559,32 +559,7 @@
                             <!-- icon ends -->
                         </div>
 
-                        <!-- form starts -->
-                        <!-- <div class="dtr-form dtr-submit-full">
-                            <form id="contactform" method="post" action="contact-form.php">
-                                <fieldset>
-                                    <div class="dtr-form-row-2col">
-                                        <p class="dtr-form-column">
-                                            <input name="name" type="text" placeholder="Name">
-                                        </p>
-                                        <p class="dtr-form-column">
-                                            <input name="number" class="number" type="text" placeholder="Phone">
-                                        </p>
-                                    </div>
-                                    <p>
-                                        <input name="email" class="required email" type="text" placeholder="Email">
-                                    </p>
-                                    <p class="antispam">Leave this empty: <br />
-                                        <input name="url" />
-                                    </p>
-                                    <p>
-                                        <textarea rows="6" name="message" id="message" class="required" placeholder="Message"></textarea>
-                                    </p>
-                                    <button type="submit" class="dtr-btn-round dtr-btn-blue">Send</button>
-                                    <div id="result"></div>
-                                </fieldset>
-                            </form>
-                        </div> -->
+                
 
 
                         <div class="dtr-form dtr-submit-full">
@@ -594,10 +569,10 @@
                                         <p>
                                             <!-- <input class="form-control" type="text" name="name" placeholder="Full Name" #name="ngModel" [(ngModel)]="contactus.userName"> -->
                                             
-                                            <input class="form-control" type="text" name="name" placeholder="eg.John Doe" #nm="ngModel"  minlength="4" required #name=ngModel [(ngModel)] = contactus.userName>
+                                            <input class="form-control" type="text" name="name" placeholder="eg.John Doe" #nm="ngModel"  minlength="4" pattern="^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)" required #name=ngModel [(ngModel)] = contactus.userName>
                                             <div *ngIf="nm.invalid && (nm.touched||nm.dirty)" style="color: red;border: red;">
                                                 <div *ngIf=nm.errors.required>Name is required</div>
-                                                <div *ngIf=nm.errors.pattern>Name must contain atleast 4 character</div>
+                                                <div *ngIf=nm.errors.pattern>Name must contain letters</div>
                                                 <div *ngIf=nm.errors.minlength>Name must contain atleast 4 character</div> 
                                             <!-- </div> -->
                                             <br>
@@ -624,7 +599,7 @@
                                         <p>
                                             <textarea rows="6" class="form-control" type="text" name="query" required placeholder="Write your query here" #query="ngModel" [(ngModel)]="contactus.query"></textarea>
                                         </p>
-                                        <button type="submit" class="dtr-btn-round dtr-btn-blue">Send</button>
+                                        <button type="submit" class="dtr-btn-round dtr-btn-blue" [disabled]="!queryform.valid">Send</button>
                                         <div id="result"></div>
                                     </fieldset>
                                 </form>

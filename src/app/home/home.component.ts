@@ -1,4 +1,5 @@
 import { formatCurrency } from '@angular/common';
+import { ngModuleJitUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
   policy:Policy = new Policy();
   insuranceType:'Bike';
   userId;
+  queryForm={userName:"", email:"", phone:""};
   constructor(private homeService:HomeService, private service:VehicleInsuranceService, private router: Router) { }
 
   ngOnInit(): void {

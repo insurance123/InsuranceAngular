@@ -128,13 +128,13 @@
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <select name="filter" data-trigger="selectmenu" data-minimum-results-for-search="-1">
+                        <!-- <select name="filter" data-trigger="selectmenu" data-minimum-results-for-search="-1">
                                         <option value="top-search">Recent Claims</option>
                                         <option value="average-search">Latest Claims</option>
-                                    </select>
+                                    </select> -->
                     </h3>
 
-                    <div class="dropdown">
+                    <!-- <div class="dropdown">
                         <button type="button" class="btn-link dropdown-toggle" data-toggle="dropdown">
                                         <i class="fa fa-ellipsis-v"></i>
                                     </button>
@@ -143,53 +143,47 @@
                             <li><a href="#"><i class="fa fa-cogs"></i>Settings</a></li>
                             <li><a href="#"><i class="fa fa-times"></i>Remove Panel</a></li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table style--2">
+                    <div>
+                        <h3 style="text-align: center;">
+                            Claims Listing
+                        </h3>
+                    </div>
+                    <div>
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Policy ID</th>
-                                    <th>Customer Name</th>
-                                    <th>Amount Claimed</th>
-                                    <th>Duration</th>
                                     <th>Claim ID</th>
+                                    <th>Policy ID</th>
+                                    <th>Claim Date</th>
+                                    <th>Amount</th>
+                                    <th>Document proof</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Table Row Start -->
-                                <tr>
-                                    <td>3BSD59</td>
-                                    <td><a href="#" class="btn-link">Leisure Suit Casual</a></td>
-                                    <td>$99</td>
-                                    <td>2</td>
-                                    <td><span class="text-muted">#BG6R9853lP</span></td>
-                                    <td><span class="label label-success">Paid</span></td>
+                                <tr *ngFor="let c of claims[0]">
+                                    <td>{{c.claimId}}</td>
+                                    <td>{{c.customerVehiclePolicyId}}</td>
+                                    <td>{{c.claimDate}}</td>
+                                    <td>{{c.claimAmount}}</td>
+                                    <td><a href="../../assets/uploads/proof-1101Mini Project II - PhoneBook.pdf" class="btn btn-outline-info btn-sm mb-3" target="_blank">View</a></td>
+                                    <td>{{c.claimStatus}}</td>
                                 </tr>
                                 <!-- Table Row End -->
 
                                 <!-- Table Row Start -->
-                                <tr>
-                                    <td>3BSD59</td>
-                                    <td><a href="#" class="btn-link">Leisure Suit Casual</a></td>
-                                    <td>$99</td>
-                                    <td>2</td>
-                                    <td><span class="text-muted">#BG6R9853lP</span></td>
-                                    <td><span class="label label-warning">Due</span></td>
-                                </tr>
-                                <!-- Table Row End -->
-
-                                <!-- Table Row Start -->
-                                <tr>
-                                    <td>3BSD59</td>
-                                    <td><a href="#" class="btn-link">Leisure Suit Casual</a></td>
-                                    <td>$99</td>
-                                    <td>2</td>
-                                    <td><span class="text-muted">#BG6R9853lP</span></td>
-                                    <td><span class="label label-info">Rejected</span></td>
+                                <tr *ngFor="let c of travelClaims">
+                                    <td>{{c.claimId}}</td>
+                                    <td>{{c.customerTravelPolicyId}}</td>
+                                    <td>{{c.claimDate}}</td>
+                                    <td>{{c.claimAmount}}</td>
+                                    <td><a href="../../assets/uploads/proof-1101Case Study - General Insurance.pdf" class="btn btn-outline-info btn-sm mb-3" target="_blank">View</a></td>
+                                    <td>{{c.claimStatus}}</td>
                                 </tr>
                                 <!-- Table Row End -->
                             </tbody>
@@ -198,8 +192,13 @@
                 </div>
             </div>
             <div class="panel">
-                <div class="records--list" data-title="Policy Listing">
-                    <table id="recordsListView">
+                <div>
+                    <h3 style="text-align: center;">
+                        Policy Listing
+                    </h3>
+                </div>
+                <div>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Policy ID</th>

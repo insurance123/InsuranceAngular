@@ -27,8 +27,8 @@ export class UserService {
     return this.httpClient.post<LoginStatus>("http://localhost:9090/logincustomer",user);
   }
 
-  loginAdmin(admin:Admin):Observable<Admin>{
-    return this.httpClient.post<Admin>("http://localhost:9090/loginadmin",admin);
+  loginAdmin(admin:Admin):Observable<LoginStatus>{
+    return this.httpClient.post<LoginStatus>("http://localhost:9090/loginadmin",admin);
   }
 
   getUserDetails(userId:number):Observable<User> {
@@ -82,5 +82,6 @@ export class UserService {
     return this.httpClient.get<User>("http://localhost:9090/findcustomerbyemail?userEmail="+userEmail);
   
   }
+
   
 }

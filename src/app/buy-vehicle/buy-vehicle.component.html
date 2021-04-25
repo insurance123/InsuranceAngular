@@ -67,7 +67,9 @@
 
             <div *ngIf="Step1">
               <mat-form-field [style.width.px]=350>
-                <div class="label">Registration Number</div>
+                <div class="label">Registration Number
+                  <span style="color: red;">*</span>
+                </div>
                 <div class="vertical-space"></div>
                 <!-- <input matInput name="registrationNumber" required #regnumber="ngModel" [(ngModel)]="vehicle.registrationNumber"> -->
                 <input matInput #regno="ngModel" name="registrationNumber" (keyup)="showState()" pattern="^[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{4}$" required  #regnumber="ngModel" [(ngModel)]="vehicle.registrationNumber">
@@ -81,17 +83,21 @@
                 <!-- <div class="vertical-space"></div> -->
 
               <mat-form-field [style.width.px]=340>
-                <div class="label">Registration State</div>
+                <div class="label">Registration State
+                  <span style="color: red;">*</span>
+                </div>
                 <div class="vertical-space"></div>
                 <input matInput  name="registrationState" required #regstate="ngModel" [(ngModel)]="vehicle.registrationState">
               </mat-form-field><br>
               <div class="vertical-space"></div>
-              <div class="dtr-btn" ><a (click)="showForm2()"><span><i class="icon-arrow-right"></i></span></a></div>
+              <button class="dtr-btn" (click)="showForm2()" [disabled]="vehicle.registrationNumber == null || vehicle.registrationState == null || vehicle.registrationNumber == '' || vehicle.registrationState == ''"><span><i class="icon-arrow-right" ></i></span></button>
             </div>
 
             <div *ngIf="Step2">
               <mat-form-field [style.width.px]=350>
-                <div class="label">Vehicle Manufacturer:</div>
+                <div class="label">Vehicle Manufacturer
+                  <span style="color: red;">*</span>
+                </div>
                 <div class="vertical-space"></div>
                 <input matInput name="manufacturer" required #manufacturer="ngModel" [(ngModel)]="vehicle.manufacturer">
               </mat-form-field>
@@ -99,19 +105,21 @@
                 <!-- <div class="vertical-space"></div> -->
 
               <mat-form-field [style.width.px]=340>
-                <div class="label">Vehicle Model</div>
+                <div class="label">Vehicle Model
+                  <span style="color: red;">*</span>
+                </div>
                 <div class="vertical-space"></div>
                 <input matInput name="model"  required #model="ngModel" [(ngModel)]="vehicle.model">
-                {{vehicle.model}}
-                {{vehicle.manufacturer}}
               </mat-form-field><br>
               <div class="vertical-space"></div>
-              <div class="dtr-btn"><a (click)="showForm3()" [class]="aClass"><span><i class="icon-arrow-right"></i></span></a></div>
+              <button class="dtr-btn" (click)="showForm3()" [disabled]="vehicle.manufacturer == null || vehicle.model == null || vehicle.manufacturer == '' || vehicle.model == ''" ><span><i class="icon-arrow-right"></i></span></button>
             </div>
 
             <div *ngIf="Step3">
               <mat-form-field [style.width.px]=350>
-                <div class="label">Vehicle Type</div>
+                <div class="label">Vehicle Type
+                  <span style="color: red;">*</span>
+                </div>
                 <div class="vertical-space"></div>
                 <!-- <input matInput name="vehicleType" required #vehicleType="ngModel" [(ngModel)]="vehicle.vehicleType"> -->
                 <mat-select [(value)]='vehicleType'>
@@ -123,17 +131,22 @@
                 <!-- <div class="vertical-space"></div> -->
 
               <mat-form-field [style.width.px]=340>
-                <div class="label">Engine Number</div>
+                <div class="label">Engine Number
+                  <span style="color: red;">*</span>
+                </div>
                 <div class="vertical-space"></div>
                 <input matInput name="engineNumber" required #engineNumber="ngModel" [(ngModel)]="vehicle.engineNumber">
               </mat-form-field><br>
               <div class="vertical-space"></div>
-              <div class="dtr-btn"><a (click)="showForm4()" [style.pointer-events]="(vehicle.engineNumber == null ? 'none':'auto') "><span><i class="icon-arrow-right"></i></span></a></div>
+              <button class="dtr-btn" (click)="showForm4()" [disabled]="vehicleType == null || vehicle.engineNumber== null || vehicleType == '' || vehicle.engineNumber == ''" ><span><i class="icon-arrow-right"></i></span></button>
+          
             </div>
 
             <div *ngIf="Step4">
               <mat-form-field [style.width.px]=350>
-                <div class="label">Chassis Number</div>
+                <div class="label">Chassis Number
+                  <span style="color: red;">*</span>
+                </div>
                 <div class="vertical-space"></div>
                 <input matInput name="chassisNumber"  required #chassisnumber="ngModel" [(ngModel)]="vehicle.chassisNumber">
               </mat-form-field>
@@ -141,7 +154,9 @@
                 <!-- <div class="vertical-space"></div> -->
 
               <mat-form-field [style.width.px]=340>
-                <div class="label">Vehicle Fuel Type is: </div>
+                <div class="label">Vehicle Fuel Type
+                  <span style="color: red;">*</span>
+                </div>
                 <div class="vertical-space"></div>
                 <!-- <input matInput name="fuelType" required #fuelType="ngModel" [(ngModel)]="vehicle.fuelType"> -->
                 <mat-select [(value)]='fuelType'>
@@ -149,12 +164,14 @@
                   <mat-option value='Diesel'>Diesel</mat-option>
                 </mat-select>
               </mat-form-field><br>
-              <div class="dtr-btn"><a (click)="showForm5()" [style.pointer-events]="(vehicle.chassisNumber == null ? 'none':'auto') "><span><i class="icon-arrow-right"></i></span></a></div>
+              <button class="dtr-btn" (click)="showForm5()" [disabled]="fuelType == null || vehicle.chassisNumber== null || fuelType == '' || vehicle.chassisNumber == ''" ><span><i class="icon-arrow-right"></i></span></button>
               <!-- <div class="dtr-btn"><button mat-button matStepperNext>Choose Plan</button></div> -->
             </div>
             <div *ngIf="Step5">
               <mat-form-field [style.width.px]=350>
-                <div class="label">Age of the Vehicle</div>
+                <div class="label">Age of the Vehicle
+                  <span style="color: red;">*</span>
+                </div>
                 <div class="vertical-space"></div>
                 <!-- <input matInput name="age"  required #age="ngModel" [(ngModel)]="vehicle.age"> -->
               <!-- </mat-form-field> -->
@@ -255,7 +272,7 @@
                 <label for="exampleFormControlFile1">Upload RC Book: </label><br>
                 <input type="file" name="document" class="form-control-file btn btn-dark btn-sm" id="exampleFormControlFile1" (change)="onFileChange($event)" [ngModelOptions]="{standalone: true}">
               </div>
-              <button type="submit" class="btn btn-dark btn-sm">Pay</button>
+              <button type="submit" class="btn btn-dark btn-sm" [disabled]="!uploadDoc.valid">Pay</button>
             </form>
           </div>
           <!-- <div class="card-footer">
@@ -269,7 +286,7 @@
         <!-- For demo purpose -->
         <div class="row mb-4">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-6">Bootstrap Payment Forms</h1>
+                <h1 class="display-6">Payment Form</h1>
             </div>
         </div> <!-- End -->
         <div class="row">
@@ -287,7 +304,7 @@
                         <div class="tab-content">
                             <!-- credit card info-->
                             <div id="credit-card" class="tab-pane fade show active pt-3">
-                                <form role="form" >
+                                <form role="form" #payForm="ngForm">
                                     <div class="form-group"> 
                                         <label for="username">
                                             <h6>Card Owner</h6>
@@ -344,7 +361,7 @@
                                     </div>
     
                                     <div class="card-footer"> 
-                                        <button class="subscribe btn btn-primary btn-block shadow-sm" (click)="addInsurance()"> Confirm Payment </button>
+                                        <button class="subscribe btn btn-primary btn-block shadow-sm" (click)="addInsurance()" [disabled]="!payForm.valid"> Confirm Payment </button>
                                     </div>    
                                 </form>
                             

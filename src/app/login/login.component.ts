@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
                   icon: "error",
                   confirmButtonText: "Okay"
               });
+              loginForm.resetForm();
           }
           else{
             localStorage.setItem('customerId', String(fetchedData.userId));
@@ -54,36 +55,10 @@ export class LoginComponent implements OnInit {
            });
            this.router.navigate(['']);
           }
-          //localStorage.setItem('customerId', String(fetchedData.userId));
-          //alert(Number(sessionStorage.getItem('customer')));
           
-          // Swal.fire({
-          //   title: "Login Successful",
-          //   text:"Please proceed to avail the services",
-          //   icon: "success",
-          //   confirmButtonText: "Okay"
-          // });
-          // this.router.navigate(['']);
         }
       );
-      // this.user.userEmail = this.userEmail;
-      // this.user.userEmail = this.userPassword;
-      // this.service.loginUser(this.user).subscribe(
-      //   fetchedData=>{
-      //     console.log(fetchedData);
-      //     if(fetchedData.status == "SUCCESS"){
-      //       sessionStorage.setItem('customerId', String(fetchedData.userId));
-      //       // console.log(fetchedData.customerId);
-      //       Swal.fire({
-      //               title: "Login Successful",
-      //               text:"Please proceed to avail the services",
-      //               icon: "success",
-      //               confirmButtonText: "Okay"
-      //             });
-      //             this.router.navigate(['']);
-      //     }
-      //   }
-      // );
+     
     }
     else{
       this.admin.adminEmail = this.userEmail;
@@ -91,8 +66,28 @@ export class LoginComponent implements OnInit {
       this.service.loginAdmin(this.admin).subscribe(
         fetchedData=>{
           console.log(fetchedData);
-          alert("Admin Logged In Successful");
-          this.router.navigate(['/admindashboard']);
+          //alert("Admin Logged In Successful");
+          if(fetchedData.adminStatus == "Failed"){
+            Swal.fire({
+              title: "Login Failed",
+               text:"Please check your credentials",
+               icon: "error",
+               confirmButtonText: "Okay"
+           });
+           loginForm.resetForm();
+          }
+          else{
+            localStorage.setItem('adminId', String(fetchedData.adminId));
+            console.log(fetchedData.adminId);
+            Swal.fire({
+              title: "Login Success",
+               text:"Successfully logged in!",
+               icon: "success",
+               confirmButtonText: "Okay"
+             
+           });
+           this.router.navigate(['/admindashboard']);
+          }
         }
       );
     }

@@ -16,6 +16,7 @@ import { UserClaimsComponent } from './user-claims/user-claims.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserPoliciesComponent } from './user-policies/user-policies.component';
 import { AuthenticationGuard } from './authentication.guard';
+import { AdminguardGuard } from './adminguard.guard';
 import { Forgotpassword } from './forgotpassword';
 import { Resetpassword } from './resetpassword';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
@@ -56,16 +57,16 @@ const routes: Routes = [
     path: "userclaims", component: UserClaimsComponent,canActivate:[AuthenticationGuard]
   },
   {
-    path: "admindashboard",component:AdminComponent, canActivate:[AuthenticationGuard]
+    path: "admindashboard",component:AdminComponent, canActivate:[AdminguardGuard]
   },
   {
-    path: "policies", component: PoliciesComponent, canActivate:[AuthenticationGuard]
+    path: "policies", component: PoliciesComponent, canActivate:[AdminguardGuard]
   },
   {
-    path: "editpolicies", component: EditpoliciesComponent, canActivate:[AuthenticationGuard]
+    path: "editpolicies", component: EditpoliciesComponent, canActivate:[AdminguardGuard]
   },
   {
-    path: "claims", component: ClaimsComponent, canActivate:[AuthenticationGuard]
+    path: "claims", component: ClaimsComponent, canActivate:[AdminguardGuard]
   },
   {
     path: "forgotpassword", component: ForgotpasswordComponent

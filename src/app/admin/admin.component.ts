@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from '../admin-service.service';
+import { Claims } from '../claims';
 import { Policy } from '../policy';
+import { TravelClaims } from '../travel-claims';
 
 @Component({
   selector: 'app-admin',
@@ -11,7 +13,25 @@ export class AdminComponent implements OnInit {
 
   constructor(private service:AdminServiceService) { }
   policies:Array<Policy> = new Array<Policy>();
+  claims:Array<Claims> = new Array<Claims>();
+  travelClaims:Array<TravelClaims> = new Array();
   ngOnInit(): void {
+    this.service.getVehicleClaims().subscribe(
+      fetchedClaims=>{
+        this.claims.push(fetchedClaims);
+      }
+    );
+
+    this.service.getTravelClaims().subscribe(
+      fetchedClaims=>
+     {
+       for(let i in fetchedClaims){
+         console.log(fetchedClaims[i]);
+         this.travelClaims.push(fetchedClaims[i]);
+       }
+       //this.travelClaims.push(fetchedClaims);
+     }
+    );
     //this.loadJsFile("../../assets/js/bootstrap.bundle.min.js.map"); 
     this.service.getPolicies().subscribe(
       fetchedPolicies=> {
@@ -20,6 +40,7 @@ export class AdminComponent implements OnInit {
         
       }
     );
+  
   }
   public loadJsFile(url) {  
     let node = document.createElement('script');  
