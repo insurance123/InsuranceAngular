@@ -135,14 +135,14 @@
                                                 <!-- <td><button class="btn btn-rounded btn-success btn-sm mb-3">Published</button></td> -->
                                                 <td>
                                                     <!-- <button class="label label-info" (click)="applyClaim()">Claim</button> -->
-                                                    <button  class="label label-info" data-toggle="modal" data-target="#exampleModalCenter" [disabled]="policy.claimStatus"> Claim</button>  
+                                                    <button  class="label label-info" data-toggle="modal" data-target="#exampleModalCenter" [disabled]="!policy.claim"> Claim</button>  
                                                 </td>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                        <h3 style="font-size: 24px;" class="modal-title" id="exampleModalLongTitle">Policy Details</h3>
+                                                        <h3 style="font-size: 24px;" class="modal-title" id="exampleModalLongTitle">Vehicle Policy Details</h3>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -285,12 +285,14 @@
                                                 <td>{{policy1.startDate}}</td>
                                                 <td>{{policy1.endDate}}</td>
                                                 <td>{{policy1.coverageAmount}}</td>                                
-                                                <td>{{policy1.premiumAmount}}</td>                                
+                                                <td>{{policy1.premiumAmount}}</td>  
+                                                <!-- <td> {{policy1.travelclaims.claimStatus}}</td>                               -->
                                                 <!-- <td>{{policy.duration}}<span *ngIf="policy.policyFor=='Bike' || policy.policyFor=='Car'"> Year</span><span *ngIf="policy.policyFor=='Travel'"> Day</span></td> -->
                                                 <!-- <td><button class="btn btn-rounded btn-success btn-sm mb-3">Published</button></td> -->
                                                 <td>
                                                     <!-- <button class="label label-info" (click)="applyClaim()">Claim</button> -->
-                                                    <button  class="label label-info" data-toggle="modal" data-target="#exampleModalCenter"> Claim</button>  
+                                                    <button  class="label label-info" data-toggle="modal" data-target="#travelModalCenter" *ngIf="policy1.travelClaim==null"> Claim</button>
+                                                    <div *ngIf="policy1.travelClaim != null">Already applied for claim</div>
                                                     <!-- <p *ngIf="policy1.claimstatus == 'PENDING'">PENDING</p> -->
                                                     <!-- <ng-template #second>
                                                         <p *ngIf="policy1.claimstatus == 'ACCEPTED'">ACCEPTED</p>
@@ -302,12 +304,12 @@
                                                     <!-- <p *ngIf="claimstatus==REJECTED">REJECTED</p> -->
                                                 </td>
                                                 <td><button class="label label-success"  data-toggle="modal" data-target="#travelPaymentModal">Renew</button></td>
-                                                <!-- Claim Modal -->
-                                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <!-- Travel Claim Modal -->
+                                                <div class="modal fade" id="travelModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                        <h3 style="font-size: 24px;" class="modal-title" id="exampleModalLongTitle">Policy Details</h3>
+                                                        <h3 style="font-size: 24px;" class="modal-title" id="exampleModalLongTitle">Travel Policy Details</h3>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
