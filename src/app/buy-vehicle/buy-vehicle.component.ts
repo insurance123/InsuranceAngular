@@ -149,8 +149,8 @@ export class BuyVehicleComponent implements OnInit {
       confirmButtonText: `Log In`,
       preConfirm: () => {
         return [
-          this.userEmail = (<HTMLInputElement>document.getElementById('swal-input1')).value,
-          this.userPassword = (<HTMLInputElement>document.getElementById('swal-input2')).value,
+          this.userEmail = (<HTMLInputElement><unknown>document.getElementById('swal-input1')).value,
+          this.userPassword = (<HTMLInputElement><unknown>document.getElementById('swal-input2')).value,
           this.checkUser.userEmail = this.userEmail,
           this.checkUser.password = this.userPassword,
           this.userService.loginUser(this.checkUser).subscribe(

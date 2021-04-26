@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AdminServiceService } from '../admin-service.service';
 import { Claims } from '../claims';
 import { TravelClaims } from '../travel-claims';
@@ -54,6 +55,12 @@ export class ClaimsComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }
     );
+    Swal.fire({
+      title: "Successful",
+      text: "Claim " + status,
+      confirmButtonText: "Okay",
+      icon: "success"
+    })
     
   }
 
@@ -66,6 +73,12 @@ export class ClaimsComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }
     );
+    Swal.fire({
+      title: "Successful",
+      text: "Claim " + status,
+      confirmButtonText: "Okay",
+      icon: "success"
+    })
   }
 
 }
