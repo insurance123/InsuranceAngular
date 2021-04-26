@@ -148,12 +148,12 @@
                                 <td>{{c.customerVehiclePolicyId}}</td>
                                 <td>{{c.claimDate}}</td>
                                 <td>{{c.claimAmount}}</td>
-                                <td><a href="../../assets/uploads/proof-1101Mini Project II - PhoneBook.pdf" class="btn btn-outline-info btn-sm mb-3" target="_blank">View</a></td>
+                                <td><a href="../../assets/uploads/{{c.proofOfClaim}}" class="btn btn-outline-info btn-sm mb-3" target="_blank">View</a></td>
                                 <td>{{c.claimStatus}}</td>
                                 <td>
                                     <div class="col mb-1">
                                         <button class="btn btn-rounded btn-success btn-sm mb-3" (click)="updateVehicleStatus(c.claimId,'ACCEPTED')">Approve</button>
-
+                                        &nbsp;&nbsp;
                                         <button class="btn btn-rounded btn-danger btn-sm mb-3" (click)="updateVehicleStatus(c.claimId,'REJECTED')">Reject</button>
                                     </div>
                                 </td>
@@ -193,12 +193,12 @@
                                 <td>{{c.customerTravelPolicyId}}</td>
                                 <td>{{c.claimDate}}</td>
                                 <td>{{c.claimAmount}}</td>
-                                <td><a href="../../assets/uploads/proof-1101Case Study - General Insurance.pdf" class="btn btn-outline-info btn-sm mb-3" target="_blank">View</a></td>
+                                <td><a href="../../assets/uploads/{{c.proofOfClaim}}" class="btn btn-outline-info btn-sm mb-3" target="_blank">View</a></td>
                                 <td>{{c.claimStatus}}</td>
                                 <td>
                                     <div class="col mb-1">
                                         <button class="btn btn-rounded btn-success btn-sm mb-3" (click)="updateTravelStatus(c.claimId,'ACCEPTED')">Approve</button>
-
+                                        &nbsp;&nbsp;
                                         <button class="btn btn-rounded btn-danger btn-sm mb-3" (click)="updateTravelStatus(c.claimId,'REJECTED')">Reject</button>
                                     </div>
                                 </td>

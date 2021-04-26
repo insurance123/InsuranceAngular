@@ -101,31 +101,37 @@ export class BuyVehicleComponent implements OnInit {
     this.showPayment = false;
   }
   onFileChange(event){
-   
     this.document = event.target.files[0];
-    
+  }
+  uploadDocument(formData:FormData) {
+    this.documentService.uploadDocument(formData).subscribe(
+      fetchedData=>{
+         console.log(fetchedData);
+       }
+     );
   }
   showPay() {
-    console.log(this.document);
-    let formData: FormData = new FormData();
-    this.userId = localStorage.getItem('customerId');
-    formData.append('userId', this.userId);
-    formData.append('rcBook', this.document);
-    for (var pair of formData.getAll("documentPath")) {
-      console.log(pair); 
-  }
-    console.log(JSON.stringify(formData));
+  //   console.log(this.document);
+  //   let formData: FormData = new FormData();
+  //   this.userId = localStorage.getItem('customerId');
+  //   formData.append('userId', this.userId);
+  //   formData.append('rcBook', this.document);
+  //   for (var pair of formData.getAll("documentPath")) {
+  //     console.log(pair); 
+  // }
+  //   console.log(JSON.stringify(formData));
     // this.userId = localStorage.getItem('customerId');
     // this.formData.append('userId', this.userId);
     // this.formData.append('documentPath', this.document);
     //console.log(this.formData);
+    
+    // this.uploadDocument(formData);
+    // console.log("--------------------")
+    this.showPaymentPage();
+  }
+  showPaymentPage() {
     this.uploadForm = false;
     this.showPayment = true;
-     this.documentService.uploadDocument(formData).subscribe(
-     fetchedData=>{
-        console.log(fetchedData);
-      }
-    );
   }
 
   logout() {
@@ -138,6 +144,7 @@ export class BuyVehicleComponent implements OnInit {
   userEmail:String;
   userPassword:String;
   checkUser:User = new User();
+
   checkLogin(){
    if(this.userId == null) {
     Swal.fire({
@@ -165,7 +172,15 @@ export class BuyVehicleComponent implements OnInit {
               
               this.service.addVehicle(this.vehicle).subscribe(
                 fetchedData=>{
-                  this.vehicleId = fetchedData.vehicleId;
+                  if(fetchedData == null) {
+                    Swal.fire({
+                      title: "Registration Number already exist",
+                      text: "Don't buy a new policy, renew it from Dashboard",
+                      icon: "error",
+                      showCloseButton : true
+                    });
+                  }
+                    this.vehicleId = fetchedData.vehicleId;
                 }
               );
             }
@@ -208,6 +223,27 @@ addVehicle() {
 }
 
 addInsurance() {
+  console.log(this.document);
+    let formData: FormData = new FormData();
+    this.userId = localStorage.getItem('customerId');
+    formData.append('userId', this.userId);
+    formData.append('rcBook', this.document);
+    for (var pair of formData.getAll("documentPath")) {
+      console.log(pair); 
+  }
+    console.log(JSON.stringify(formData));
+    // this.userId = localStorage.getItem('customerId');
+    // this.formData.append('userId', this.userId);
+    // this.formData.append('documentPath', this.document);
+    //console.log(this.formData);
+    
+    this.uploadDocument(formData);
+
+
+
+
+
+
   this.vehicle.vehicleId = this.vehicleId;
   // this.addVehicle();
   this.cvp.startDate = new Date(); //Get today's date

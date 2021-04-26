@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Forgotpassword } from '../forgotpassword';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import {WOW} from "wowjs/dist/wow.min";
 
 @Component({
   selector: 'app-forgotpassword',
@@ -14,6 +15,16 @@ export class ForgotpasswordComponent implements OnInit {
   constructor(private service:UserService,private router:Router) { }
 
   ngOnInit(): void {
+    const wow = new WOW({
+      live: false
+    });
+    wow.init();
+    wow.sync();
+  }
+  public animate(){
+    const wow = new WOW();
+    wow.init();
+    wow.sync();
   }
 //fg:ForgotPassword=new ForgotPassword();
 user1:User = new User();
