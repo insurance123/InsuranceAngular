@@ -149,10 +149,10 @@
                                     <span class="label-text col-md-3 col-form-label">Policy Name: *</span>
 
                                     <div class="col-md-9">
-                                        <input type="text" placeholder="Policy Name" name="policyName" class="form-control" #policyName="ngModel" [(ngModel)]="policy.policyName" required pattern="^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)">
+                                        <input type="text" placeholder="Policy Name" name="policyName" class="form-control" #policyName="ngModel" [(ngModel)]="policy.policyName" required>
                                         <div *ngIf="policyName.invalid && (policyName.touched || policyName.dirty)" style="color: red;border: red;">
                                             <div *ngIf=policyName.errors.required>Policy Name is required</div>
-                                            <div *ngIf=policyName.errors.pattern>Policy Name must contain letters</div>
+                                            <!-- <div *ngIf=policyName.errors.pattern>Policy Name must contain letters</div> -->
                            
                                         </div><br>
                                     </div>
@@ -164,7 +164,7 @@
                                 
                                         <input type="text" name="policyName" class="form-control" pattern="Bike|Car|Travel" #policyType="ngModel" [(ngModel)]="policy.policyFor" placeholder="Bike/Car/Travel" required>
                                         <div *ngIf="policyType.invalid && (policyType.touched || policyType.dirty)" style="color: red;border: red;">
-                                            <div *ngIf=policyType.errors.required>Policy Name is required</div>
+                                            <div *ngIf=policyType.errors.required>Policy Type is required</div>
                                             <div *ngIf=policyType.errors.pattern>Invalid Policy Type</div>
                                         </div>
                                         
@@ -189,11 +189,11 @@
 
                                     <div class="col-md-9">
                                         <input type="number" placeholder="Premium Amount" name="Amount" class="form-control" #amount="ngModel" [(ngModel)]="policy.premiumAmount" required pattern="[0-9]">
-                                        <div *ngIf="amount.invalid && (amount.touched || amount.dirty)" style="color: red;border: red;">
+                                        <!-- <div *ngIf="amount.invalid && (amount.touched || amount.dirty)" style="color: red;border: red;">
                                             <div *ngIf=amount.errors.required>Policy Amount is required</div>
                                             <div *ngIf=amount.errors.pattern>Policy Amount must contain numbers</div>
                            
-                                        </div><br>
+                                        </div><br> -->
                                     </div>
                                 </div>
 

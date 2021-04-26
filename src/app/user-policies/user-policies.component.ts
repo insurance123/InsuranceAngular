@@ -38,20 +38,20 @@ export class UserPoliciesComponent implements OnInit {
     );
     this.service.getMotorPolicies(this.userId).subscribe(
       motorPolicies => {
-        this.service.getMotorClaims(this.userId).subscribe(
-          motorclaims => {
-            for(let i in motorclaims){
-              this.vehicleclaims.push(motorclaims[i]);
-              for(let j in this.vehiclepolicies){
-                if(motorclaims[i].customerVehiclePolicyId == motorPolicies[j].customerVehiclePolicyId){
-                  motorPolicies[j].claimStatus = true;
-                  console.log(motorPolicies)
-                }
-              }
-            console.log(motorclaims[i]);
-            }
-          }
-        );
+        // this.service.getMotorClaims(this.userId).subscribe(
+        //   motorclaims => {
+        //     for(let i in motorclaims){
+        //       this.vehicleclaims.push(motorclaims[i]);
+        //       for(let j in this.vehiclepolicies){
+        //         if(motorclaims[i].customerVehiclePolicyId == motorPolicies[j].customerVehiclePolicyId){
+        //           motorPolicies[j].claimStatus = true;
+        //           console.log(motorPolicies)
+        //         }
+        //       }
+        //     console.log(motorclaims[i]);
+        //     }
+        //   }
+        // );
         this.vehiclepolicies.push(motorPolicies);
         console.log(this.vehiclepolicies[0]);
       }
@@ -84,14 +84,14 @@ export class UserPoliciesComponent implements OnInit {
     this.document = event.target.files[0];
   }
 
-  renewMotor(policy:CustomerVehiclePolicy){
+  renewMotor(){
     this.userId = localStorage.getItem('customerId');
-    console.log(policy);
-    policy.startDate=new Date();
-    policy.endDate=new Date();
-    policy.customerId=this.userId;
+    console.log(this.fetchedFrontPolicy);
+    this.fetchedFrontPolicy.startDate=new Date();
+    this.fetchedFrontPolicy.endDate=new Date();
+    this.fetchedFrontPolicy.customerId=this.userId;
     
-    this.service.renewMotor(policy.customerVehiclePolicyId).subscribe(
+    this.service.renewMotor(this.fetchedFrontPolicy.customerVehiclePolicyId).subscribe(
       renew => {
         console.log(renew);
         Swal.fire(
@@ -107,9 +107,13 @@ export class UserPoliciesComponent implements OnInit {
     );
   }
 
-  applyMotorClaim(policy:CustomerVehiclePolicy){
-    let cvpId = String(policy.customerVehiclePolicyId);
-    console.log(policy);
+  fetchedFrontPolicy: CustomerVehiclePolicy = new CustomerVehiclePolicy();
+  fetchedPolicy(policy:CustomerVehiclePolicy){
+    this.fetchedFrontPolicy = policy;
+  }
+  applyMotorClaim(){
+    let cvpId = String(this.fetchedFrontPolicy.customerVehiclePolicyId);
+    console.log("hello",this.fetchedFrontPolicy); 
     let formData: FormData = new FormData();
     // formData.append("claimDate", "2021-04-23");
     formData.append("reasonOfClaim",this.reasonOfClaim);
@@ -139,10 +143,13 @@ export class UserPoliciesComponent implements OnInit {
       }
     );
   }
-  
-  applyTravelClaim(policy1:CustomerTravelPolicy){
-    let ctpId = String(policy1.customerTravelPolicyId);
-    console.log(policy1);
+  fetchedTravelFrontPolicy: CustomerTravelPolicy = new CustomerTravelPolicy();
+  fetchedTravelPolicy(policy:CustomerTravelPolicy){
+    this.fetchedTravelFrontPolicy = policy;
+  }
+  applyTravelClaim(){
+    let ctpId = String(this.fetchedTravelFrontPolicy.customerTravelPolicyId);
+    console.log(this.fetchedTravelFrontPolicy);
     let formData: FormData = new FormData();
     // formData.append("claimDate", "2021-04-23");
     formData.append("reasonOfClaim",this.reasonOfClaim);
@@ -160,7 +167,17 @@ export class UserPoliciesComponent implements OnInit {
           this.claimstatus="REJECTED";
         else (travelClaim.claimStatus=="PENDING")
           this.claimstatus="PENDING";
+
+          Swal.fire(
+            {
+              title: "Policy Claimed",
+              text: "Policy Claimed Successfully",
+              icon: "success",
+              confirmButtonText: "Okay"
+            }
+          );
       }
+      
     );
   }
 

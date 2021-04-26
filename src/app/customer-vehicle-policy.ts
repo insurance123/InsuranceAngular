@@ -1,3 +1,4 @@
+import { Claims } from "./claims";
 import { Policy } from "./policy";
 import { User } from "./user";
 import { Vehicle } from "./vehicle";
@@ -11,5 +12,6 @@ export class CustomerVehiclePolicy {
     policyId :number;
     customerId: Number;
     vehicleId: number;
-    claimStatus:boolean;
+    //claimStatus:boolean;
+    claims: Claims;
 }

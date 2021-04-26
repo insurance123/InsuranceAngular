@@ -100,7 +100,7 @@
               <br>
               <div class="vertical-space"></div>
               <!-- <div class="vertical-space"></div> -->
-              <div class="dtr-btn"><a (click)="showForm2()"><span><i class="icon-arrow-right"></i></span></a></div>
+              <button class="dtr-btn" [disabled]="travel.startDate == null || travel.endDate == null || travel.startDate == '' || travel.endDate == ''" (click)="showForm2()"><span><i class="icon-arrow-right"></i></span></button>
             </div>
 
             <div *ngIf="Step2">
@@ -118,7 +118,7 @@
                 <input matInput name="destination" required #destination="ngModel" [(ngModel)]="travel.destination">
               </mat-form-field><br>
               <!-- <div class="vertical-space"></div> -->
-              <div class="dtr-btn"><a (click)="showForm3()"><span><i class="icon-arrow-right"></i></span></a></div>
+              <button class="dtr-btn" [disabled]="travel.source == null || travel.destination == null || travel.source == '' || travel.destination == ''" (click)="showForm3()"><span><i class="icon-arrow-right"></i></span></button>
             </div>
 
             <div *ngIf="Step3">
@@ -145,7 +145,7 @@
               </mat-form-field>
 
               <div class="vertical-space"></div>
-                <button class="dtr-btn" mat-button matStepperNext><span><i class="icon-arrow-right"></i></span></button>
+                <button class="dtr-btn" mat-button matStepperNext [disabled]="travel.modeOfTransport == null || user.dateOfBirth == null || travel.modeOfTransport == '' || user.dateOfBirth == ''"><span><i class="icon-arrow-right"></i></span></button>
 
             </div>
           </form>

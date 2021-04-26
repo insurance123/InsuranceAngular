@@ -1,0 +1,9 @@
+1. Project Name, Team members Name along with TL
+2. About your project (analysis)
+3. E-R diagram (Design)
+4. Database Schema(design)
+5. Tools & Technologies
+6. Agile(Scrum board & sprints)
+
+Directly open your browser and do not show your code base(spring boot) or database tool(sql developer)
+
