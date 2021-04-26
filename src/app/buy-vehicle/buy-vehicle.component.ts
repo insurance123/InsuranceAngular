@@ -207,10 +207,14 @@ addVehicle() {
     );
 }
 
+// year = new Date(). getFullYear();
+// month = new Date(). getMonth();
+// day = new Date(). getDate();
 addInsurance() {
   this.vehicle.vehicleId = this.vehicleId;
   // this.addVehicle();
   this.cvp.startDate = new Date(); //Get today's date
+  //this.cvp.endDate = new Date(year+1, month, day);
     if(this.selectedPolicy.duration == 1) {
       var year = new Date(this.cvp.startDate).getFullYear();
       var month = new Date(this.cvp.startDate).getMonth();
@@ -232,7 +236,7 @@ addInsurance() {
       var year = new Date(this.cvp.startDate).getFullYear();
       var month = new Date(this.cvp.startDate).getMonth();
       var day = new Date(this.cvp.startDate).getDate();
-      var date = new Date(year + 3, month, day);
+      var date = new Date(year + 5, month, day);
       this.cvp.endDate = date;
       this.calculatedCoverage = 500000;
     }
