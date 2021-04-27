@@ -46,12 +46,13 @@
                             <div *ngIf="em.errors.pattern">Invalid email</div>
                         </div><br>
                         <!-- Not working -->
-                        <input type="password" class="form-control" #pwd="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" minlength="8" required id="password" name="password" placeholder="Enter a strong Password" #password=ngModel [(ngModel)] ="user.password">
+                        <input type="password" class="form-control" #pwd="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" minlength="8" required id="password" name="password" placeholder="Enter a strong password" #password=ngModel [(ngModel)] ="user.password">
                             <div *ngIf="pwd.invalid && (pwd.touched||pwd.dirty)" style="color: red;border: red;">
                                 <div *ngIf="pwd.errors.required">Password is required</div>
                                 <div *ngIf="pwd.errors.minlength">Your password should be of minimum 8 characters</div>
                                 <div *ngIf="pwd.errors.pattern"><p style="color: red;">Your password should contain atleast <br> one capital character, <br> one digit and <br> a special symbol</p></div>
                             </div>
+                            
                         <div class="form-button">
                             <button id="submit" type="submit"  [disabled]="!regForm.valid">Register</button>
                         </div>

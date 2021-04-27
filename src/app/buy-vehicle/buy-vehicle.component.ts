@@ -106,7 +106,7 @@ export class BuyVehicleComponent implements OnInit {
   uploadDocument(formData:FormData) {
     this.documentService.uploadDocument(formData).subscribe(
       fetchedData=>{
-         console.log(fetchedData);
+        //  console.log(fetchedData);
        }
      );
   }
@@ -285,7 +285,7 @@ addInsurance() {
       fetchedData=>{
         Swal.fire({
           title: "Successful",
-          text: "Insurance bought successfully. Check your E-Mail for details.",
+          text: "Insurance bought successfully.",
           icon: "success",
           confirmButtonText: "Okay"
         });
@@ -344,14 +344,8 @@ calculatePremium() {
       this.policy2.duration = 5;
       this.policy2.premiumAmount = this.basePremium * 5 - 1000;
       this.displayPolicies[2] = this.policy2;
-
-
-
-    }
- 
-    
+    } 
   )
-  
 }
 
 }

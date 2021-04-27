@@ -99,8 +99,8 @@ export class BuyTravelComponent implements OnInit {
           confirmButtonText: `Log In`,
           preConfirm: () => {
             return [
-              this.userEmail = (<HTMLInputElement>document.getElementById('swal-input1')).value,
-              this.userPassword = (<HTMLInputElement>document.getElementById('swal-input2')).value,
+              this.userEmail = (<HTMLInputElement><unknown>document.getElementById('swal-input1')).value,
+              this.userPassword = (<HTMLInputElement><unknown>document.getElementById('swal-input2')).value,
               this.checkUser.userEmail = this.userEmail,
               this.checkUser.password = this.userPassword,
               this.userService.loginUser(this.checkUser).subscribe(
@@ -157,7 +157,7 @@ export class BuyTravelComponent implements OnInit {
       fetchedData=>{
         Swal.fire({
           title: "Successful",
-          text: "Insurance bought successfully. Check your E-Mail for details.",
+          text: "Insurance bought successfully.",
           icon: "success",
           confirmButtonText: "Okay"
         });

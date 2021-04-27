@@ -5,7 +5,7 @@
       <div class="container">
 
           <!-- light logo -->
-          <a class="navbar-brand logo-light" routerLink="/"><img src="../assets/images/LTI-LOGO.png" alt="logo"></a>
+          <a class="navbar-brand logo-light" routerLink="/"><img src="../../assets/images/logo_new.png" alt="logo"></a>
           <!-- dark logo -->
           <!-- <a class="navbar-brand logo-dark" href="#home"><img src="../assets/images/LTI-LOGO.png" alt="logo"></a> -->
 
@@ -175,11 +175,11 @@
                 <div class="vertical-space"></div>
                 <!-- <input matInput name="age"  required #age="ngModel" [(ngModel)]="vehicle.age"> -->
               <!-- </mat-form-field> -->
-              <input matInput #agecheck="ngModel" pattern="^([0-9]|1[0-5])$" name="age" required  #age="ngModel" [(ngModel)]="vehicle.age">
+              <input matInput #agecheck="ngModel" pattern="^([1-9]|1[0-5])$" name="age" required  #age="ngModel" [(ngModel)]="vehicle.age">
               </mat-form-field>
               <div *ngIf="agecheck.invalid && (agecheck.touched||agecheck.dirty)" style="color: red;border: red;">
                   <div *ngIf="agecheck.errors.required">Vehicle age is required</div>
-                  <div *ngIf="agecheck.errors.pattern">Age should between 0-15</div>
+                  <div *ngIf="agecheck.errors.pattern">Age should between 1-15</div>
               </div><br>
 
                 <div class="vertical-space"></div>
