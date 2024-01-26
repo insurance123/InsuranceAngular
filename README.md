@@ -1,4 +1,6 @@
-# General
+# Online Vehicle Insurance
+
+This project is an innovative online insurance platform designed to facilitate the seamless acquisition and management of vehicle insurance policies. Tailored for user convenience, the platform enables users to effortlessly purchase new policies, renew existing ones, and engage in various insurance-related transactions for their vehicles. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
